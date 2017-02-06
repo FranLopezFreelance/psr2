@@ -1,0 +1,35 @@
+.article-create {
+  margin-left: 35px;
+}
+.article-edit {
+  margin-right: 15px;
+}
+
+.principal {
+  display: none;
+}
+
+.label-warning {
+  margin-left: 15px;
+}
+
+.actions {
+  margin-top: 10px;
+  display: block;
+}
+
+.list-group-item:hover {
+  background-color: #EFF8FB;
+}
+
+.table-contents {
+  border-top: 2px solid gray;
+}
+
+.line-hight {
+  border-bottom: 2px solid gray;
+}
+
+.editor, .creator {
+  margin-left: 15px;
+}
