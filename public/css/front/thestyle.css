@@ -253,15 +253,6 @@ a.tag {
   font-size: 11px;
   font-weight: 500;
 }
-a.tag.red-bloque {
-  background-color: #fd1c18;
-}
-a.tag.blue-bloque {
-  background-color: #0096ec;
-}
-a.tag.especial-bloque {
-  background-color: #74a95f;
-}
 a.vermas {
   text-transform: uppercase;
   font-size: 11px;
@@ -298,30 +289,13 @@ div.mini-video {
   margin-bottom: 20px;
 }
 div.mini-video div.content-mini {
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 0.2s ease-out;
 }
 div.mini-video div.content-mini:hover {
   transition: all 0.2s ease-out;
   box-shadow: 0 8px 8px rgba(0, 0, 0, 0.25), 0 2px 2px rgba(0, 0, 0, 0.22);
-}
-div.mini-video div.content-mini div.tag.programa {
-  text-align: center;
-  color: white;
-  font-weight: 600;
-  font-size: 13px;
-  text-transform: uppercase;
-  padding: 3px 0;
-}
-div.mini-video div.content-mini div.tag.programa.red-bloque {
-  background-color: #fd1c18;
-}
-div.mini-video div.content-mini div.tag.programa.blue-bloque {
-  background-color: #0096ec;
-}
-div.mini-video div.content-mini div.tag.programa.especial-bloque {
-  background-color: #74a95f;
 }
 div.mini-video img {
   width: 100%;
@@ -330,11 +304,11 @@ div.mini-video:hover {
   text-decoration: none;
 }
 div.mini-video p.title {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 800;
   padding: 10px 10px 0px 10px;
   margin-bottom: 10px;
-  height: 60px;
+  min-height: 60px;
   line-height: 20px;
 }
 div.mini-video span.stats {
@@ -440,14 +414,6 @@ nav.main-menu li.dropdown > ul.dropdown-menu > li > a {
     display: block;
   }
 }
-nav.main-menu a.nohover {
-  cursor: pointer;
-  vertical-align: bottom;
-}
-nav.main-menu a.nohover i {
-  font-size: 30px;
-  padding-top: 25px;
-}
 nav.main-menu ul.nav li {
   padding: 5px 0px!important;
 }
@@ -492,7 +458,7 @@ nav.main-menu ul.nav li {
 }
 nav.main-menu ul.nav li a {
   color: black;
-  font-weight: 400;
+  font-weight: 600;
   text-transform: uppercase;
   font-size: 14px;
 }
@@ -555,9 +521,6 @@ body.site.fixed nav.main-menu {
   max-width: 100%;
   border-bottom: none;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
-}
-body.site.fixed nav.main-menu i {
-  padding-top: 15px;
 }
 @media (min-width: 768px) {
   body.site.fixed nav.main-menu ul > li {
@@ -631,63 +594,6 @@ div.footer div.the-end {
 div.footer div.the-end > div {
   color: white;
   padding-top: 10px;
-}
-@media (min-width: 992px) {
-  div#search-modal .modal-dialog {
-    padding: 0 50px;
-  }
-}
-div#search-modal .modal-content {
-  background-color: transparent;
-  padding: 0;
-  border: none;
-  margin-top: 45%;
-}
-div#search-modal input {
-  width: 75%;
-  float: left;
-  border-radius: 0;
-  border: none;
-  font-size: 30px;
-  padding: 10px 10px 10px 20px;
-}
-@media (min-width: 768px) {
-  div#search-modal input {
-    width: 85%;
-  }
-}
-div#search-modal button.close {
-  position: absolute;
-  top: -60px;
-  opacity: 1;
-  width: 40px;
-  height: 40px;
-  background-color: black;
-  border-radius: 50%;
-}
-div#search-modal button.close span {
-  color: white!important;
-  vertical-align: top;
-  line-height: 17px;
-}
-div#search-modal form > button {
-  width: 25%;
-  float: left;
-  border-radius: 0;
-  border: none;
-  background: #0063a4;
-  color: white;
-  font-size: 30px;
-}
-@media (min-width: 768px) {
-  div#search-modal form > button {
-    width: 15%;
-  }
-}
-div#search-modal form > button i {
-  font-size: 50px;
-  padding: 0px;
-  vertical-align: middle;
 }
 .extra-slider {
   padding: 0;
@@ -874,10 +780,6 @@ div.wrapper ul {
 div.sidebar {
   background-color: white;
 }
-div.sidebar h3 {
-  font-size: 20px;
-  text-transform: uppercase;
-}
 div.sidebar img.sidebar {
   width: 100%;
 }
@@ -890,33 +792,13 @@ div.sidebar div.tag-cloud a.tag {
   display: inline-block;
 }
 div.sidebar div.articulos-recomendados div.articulo-recomendado {
-  padding-bottom: 10px;
-}
-div.sidebar div.articulos-recomendados div.articulo-recomendado div.imagen {
-  width: 50%;
-  float: left;
-}
-div.sidebar div.articulos-recomendados div.articulo-recomendado div.link {
-  width: 50%;
-  float: left;
-  padding-left: 10px;
+  padding-bottom: 20px;
 }
 div.sidebar div.articulos-recomendados div.articulo-recomendado a {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 800;
   padding-top: 10px;
-  line-height: 18px;
   display: inline-block;
-}
-div.sidebar div.redes img {
-  width: 22%;
-  max-width: 64px;
-  margin-right: 5px;
-}
-@media (min-width: 992px) {
-  div.sidebar div.redes img {
-    margin-right: 3px;
-  }
 }
 div.sidebar div.pilares-sidebar {
   background-color: #1a1a1a;
@@ -945,55 +827,12 @@ div.sidebar div.pilares-sidebar div.pilar-sidebar a.number {
 div.sidebar div.pilares-sidebar div.pilar-sidebar a.name {
   position: absolute;
   padding-left: 80px;
-  padding-right: 10px;
   top: 50%;
   transform: translate(0px, -50%);
-  line-height: 16px;
+  line-height: 20px;
   font-weight: 800;
   color: black;
   font-size: 15px;
-}
-div.section {
-  padding-bottom: 50px;
-}
-div.section div.tag-page {
-  padding: 30px 8px;
-  margin-bottom: 40px;
-}
-div.section div.seach-page {
-  padding: 30px 8px;
-}
-div.section div.seach-page h1 {
-  font-size: 30px;
-}
-div.section div.seach-page form {
-  margin-top: 30px;
-  display: block;
-  height: 80px;
-}
-div.section div.seach-page form input {
-  padding: 10px;
-  min-width: 285px;
-  vertical-align: middle;
-  border: solid 1px rgba(0, 0, 0, 0.3);
-  margin: 0;
-  float: left;
-  outline: none;
-}
-div.section div.seach-page form button {
-  float: left;
-  border: none;
-  margin: 0;
-  padding: 0;
-  outline: none;
-}
-div.section div.seach-page form i {
-  padding: 8px 10px;
-  vertical-align: middle;
-  border: solid 1px rgba(0, 0, 0, 0.3);
-  border-right: none;
-  margin: 0;
-  cursor: pointer;
 }
 div.section h1 {
   text-transform: uppercase;
@@ -1038,10 +877,6 @@ div.section div.content-of-list a.title {
 }
 div.section div.content-of-list span.stats {
   padding: 11px 0 8px 0;
-}
-div.section div.content-of-list a.vermas {
-  margin-top: 10px;
-  display: inline-block;
 }
 div.section a.verMasContenido {
   display: none;
@@ -1091,9 +926,6 @@ div.home-videos div.video {
   background-color: grey;
   position: relative;
 }
-div.home-videos div.video img {
-  width: 100%;
-}
 div.home-videos div.video span {
   position: absolute;
   text-align: left;
@@ -1111,7 +943,7 @@ div.home-videos div.video span {
     font-size: 25px;
   }
 }
-div.home-videos div.video-internacional > div.video span {
+div.home-videos div.video-internacional > div.video > span {
   border-left: 7px solid #fd1c18;
 }
 div.home-mas-videos {
@@ -1311,79 +1143,8 @@ div.home-articulos div.articulo-recomendado div.tags a {
   color: white;
   font-weight: 500;
 }
-div.home-contacto {
-  background-color: #00456e;
-  border-bottom: solid 20px #012d48;
-  padding-top: 50px;
-}
-div.home-contacto h3 {
-  display: block;
-  color: white;
-  text-align: center;
-  margin-bottom: 50px;
-  font-size: 30px;
-}
-div.home-contacto input,
-div.home-contacto textarea {
-  background-color: #1e3851;
-  border-radius: 0;
-  border: none;
-  color: white;
-}
-div.home-contacto input:focus,
-div.home-contacto textarea:focus {
-  outline: none;
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-}
-div.home-contacto input {
-  padding: 25px 10px;
-}
-div.home-contacto textarea {
-  padding-top: 15px;
-}
-div.home-contacto div.line {
-  float: left;
-  width: 88%;
-  border-bottom: solid 1px white;
-  height: 15px;
-}
-div.home-contacto button {
-  border-radius: 0;
-  border: none;
-  background-color: white;
-  color: black;
-  font-size: 20px;
-  font-weight: 800;
-  float: right;
+div.home-contacto img {
   width: 100%;
-  margin-top: 15px;
-}
-@media (min-width: 768px) {
-  div.home-contacto button {
-    width: 10%;
-    font-size: 12px;
-    margin-top: 0px;
-  }
-}
-div.home-contacto ::-webkit-input-placeholder {
-  color: white;
-}
-div.home-contacto ::-moz-placeholder {
-  color: white;
-}
-div.home-contacto :-ms-textarea-placeholder {
-  color: white;
-}
-div.home-contacto :-moz-placeholder {
-  color: white;
-}
-div.home-contacto div.center {
-  text-align: center;
-  margin-top: 50px;
-}
-div.home-contacto div.center p {
-  font-size: 26px;
-  font-weight: 700;
 }
 div.header-pilar {
   min-height: 261px;
@@ -1426,10 +1187,6 @@ div.header-pilar h3 {
 div.section.pilares {
   padding-top: 30px;
 }
-div.section.pilares div.sidebar div.sidebar-item {
-  margin-bottom: 30px;
-  margin-top: 0px!important;
-}
 div.section.pilares div.sidebar p.sidebar-title {
   background-color: #767676;
   color: white;
@@ -1437,6 +1194,7 @@ div.section.pilares div.sidebar p.sidebar-title {
   text-align: center;
   font-size: 20px;
   padding: 18px 5px;
+  margin-top: 28px;
 }
 div.section.pilares div.sidebar div.infografias img {
   width: 100%;
@@ -1451,25 +1209,21 @@ div.section.pilares div.sidebar div.videos a > p {
   text-transform: uppercase;
   color: #167ac6;
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 800;
   padding-top: 5px;
 }
 div.section.pilares div.content-pilar {
   padding: 30px 15px;
-  font-size: 20px;
-}
-div.section.pilares div.content-pilar a {
-  color: #0063a4;
 }
 body.hard-backdrop div.modal-backdrop {
   opacity: 0.8;
   background: white;
 }
-div.modal.modal-pilar#modal-video {
+div.modal#modal-video {
   padding: 17px;
   height: 100%;
 }
-div.modal.modal-pilar#modal-video div.v-container {
+div.modal#modal-video div.v-container {
   max-width: 1440px;
   position: absolute;
   z-index: -1000;
@@ -1479,18 +1233,18 @@ div.modal.modal-pilar#modal-video div.v-container {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-div.modal.modal-pilar div.modal-dialog {
+div.modal div.modal-dialog {
   width: 90%;
   margin: 20px auto;
 }
-div.modal.modal-pilar div.modal-dialog img.large-infografia {
+div.modal div.modal-dialog img.large-infografia {
   width: 100%;
 }
-div.modal.modal-pilar div.modal-dialog div.modal-body {
+div.modal div.modal-dialog div.modal-body {
   margin: 0;
   padding: 0;
 }
-div.modal.modal-pilar button {
+div.modal button {
   position: fixed;
   opacity: 1;
   top: 20px;
@@ -1503,7 +1257,7 @@ div.modal.modal-pilar button {
   background-color: black;
   border-radius: 50%;
 }
-div.modal.modal-pilar button span {
+div.modal button span {
   color: white!important;
   vertical-align: top;
   line-height: 17px;
@@ -1512,7 +1266,7 @@ div.programas-section div.section-intro div.border-bottom-hard {
   border-bottom: none!important;
 }
 div.programas-section div.list-content {
-  padding-top: 25px;
+  padding-top: 20px;
 }
 div.programas-section div.list-content div.col.col-lg-3 {
   padding: 0 10px;
@@ -1524,11 +1278,8 @@ div.programas-section div.list-content div.mini-video {
       .q(@md,{min-height: 235px;});
       .q(@sm,{min-height: 265px;});*/
 }
-div.programas-section div.list-content div.mini-video p.title {
-  font-size: 15px;
-  line-height: 18px;
-  height: 50px;
-  margin-bottom: 0px!important;
+div.programas-section div.list-content div.mini-video p.title.short {
+  font-size: 18px;
 }
 div.section div.content {
   padding: 30px 40px 40px 40px;
@@ -1559,9 +1310,6 @@ div.section div.content div.text {
   padding: 30px 0;
   font-size: 20px;
   color: black;
-}
-div.section div.content div.text a {
-  color: #0063a4;
 }
 div.section div.content div.bottom-line {
   padding-top: 10px;
