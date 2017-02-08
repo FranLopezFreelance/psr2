@@ -7,8 +7,6 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><h4><a href="/backend/sections">Secciones</a> / Editar</h4></div>
                 <div class="panel-body">
-                  <a class="btn btn-primary" href="/backend/sections">Volver a Secciones</a>
-                  <hr />
 
                   @if(isset($message))
                     <div class="col-md-10 col-md-offset-1">
@@ -21,9 +19,24 @@
                   <form class="form-horizontal" role="form" method="POST" action="/backend/sections/{{ $section->id }}">
 
                       {{ csrf_field() }}
-                      {{ method_field('PUT') }}
+                      {{ method_field('patch') }}
 
-                      <input name="_method" type="hidden" value="PUT">
+                      <div class="form-group{{ $errors->has('topnav') ? ' has-error' : '' }}">
+                          <div class="col-md-6 col-md-offset-4">
+
+                              @if($section->topnav)
+                                <input type="checkbox" name="topnav"  checked/> Activo en Top-Nav
+                              @else
+                                <input type="checkbox" name="topnav"/> Activo en Top-Nav
+                              @endif
+
+                              @if ($errors->has('topnav'))
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('topnav') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                      </div>
 
                       <div class="form-group{{ $errors->has('level') ? ' has-error' : '' }}">
                           <label for="level" class="col-md-4 control-label">Nivel</label>

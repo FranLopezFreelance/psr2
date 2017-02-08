@@ -6,6 +6,13 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
+                  
+                  @if(isset($message))
+                      <div class="alert alert-success message">
+                          <h5>{{ $message }}</h5>
+                      </div>
+                  @endif
+
                   <h4>
                         @if(isset($subSubSection))
                           <a href="/backend/contents/subSection/{{ $subSubSection->id }}"> {{ $subSubSection->name }}</a>

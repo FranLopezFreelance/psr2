@@ -122,6 +122,13 @@ class SectionsController extends Controller
                               ->where('active', 1)->get();
 
       $section->update($request->all());
+
+      if($request->input('topnav')){
+        $section->topnav = 1;
+      }else{
+        $section->topnav = 0;
+      }
+
       $sections = Section::all();
       $message = 'Las modificaciones fueron guardadas.';
       $typeviews = Typeview::all();

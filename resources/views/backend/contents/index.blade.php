@@ -7,9 +7,7 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4>
-                <a href="/backend/contents/section/2  ">Contenidos</a>
-                <!-- <a class="btn btn-success article-create" href="/backend/contents/createBySection/{{ $section->id }}">Crear</a> -->
-                <a class="btn btn-default btn-xs pull-right" href="/" target="_blank">Web</a>
+                <a href="/backend/contents/section/2">Contenidos</a>
             </h4>
           </div>
         </div>
@@ -81,8 +79,12 @@
                               <td colspan="5"><h4><a href="/backend/contents/{{ $content->id }}">{{ $content->title }}</a></h4></td>
                             </tr>
                             <tr class="line-hight">
-                              <td>Pgrama N°: {{ $content->reference }}</td>
-                              <td>{{ $content->renderDate() }}</td>
+                              @if($content->typeview_id == 4)
+                                <td>Pgrama N°: {{ $content->reference }}</td>
+                                <td>{{ $content->renderDate() }}</td>
+                              @else
+                                <td colspan="2">{{ $content->renderDate() }}</td>
+                              @endif
                               <td>
                                 @if(isset($content->creator->name))
                                   {{ $content->creator->name }}
