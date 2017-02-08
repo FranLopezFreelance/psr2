@@ -3,19 +3,26 @@ h4.title{
   margin: 0 auto;
   display: block;
   text-align: center;
-  padding: 40px;
+  padding: 15px 5px;
   text-transform: uppercase;
   font-size: 28px;
   font-weight: 800;
-  letter-spacing: 2px;
+  //letter-spacing: 2px;
+  .q(@md,{
+    padding: 40px;
+    });
 }
 
 div.home-videos{
   min-height: 200px;
-  background-color: @blue;
+  h4{background-color: @blue;}
   padding-bottom: 20px;
   padding: 0px;
 
+  div.video-nacional{
+    margin-bottom: 20px;
+    .q(@md,{  margin-bottom: 0px;});
+  }
 
   .q(@sm,{
     div.video-nacional{
@@ -27,8 +34,14 @@ div.home-videos{
   });
 
   div.video{
+    img{width: 100%;}
     background-color: grey;
     position: relative;
+    &.hardblue span{border-left: 7px solid @blue-border-video;}
+    &.red span{border-left: 7px solid @red-border-video;}
+    &.especial span{border-left: 7px solid @especial-border-video;}
+    &.doctrina span{border-left: 7px solid @doctrina-border-video;}
+
     span{
       position: absolute;
       text-align: left;
@@ -39,18 +52,15 @@ div.home-videos{
       font-size: 15px;
       padding: 8px 20px;
       color:white;
-      border-left: 7px solid @blue-border-video;
       .q(@md,{font-size: 25px;});
     }
   }
 
-  div.video-internacional>div.video>span{
-    border-left: 7px solid @red-border-video;
-  }
 }
 
 div.home-mas-videos{
-  padding-left: 30px;
+  //padding-left: 30px;
+
   .title{
     color:black;
   }
@@ -118,9 +128,12 @@ div.home-pilares{
       p.title{
         color: black;
         padding: 5px 20px 15px 20px;
-        font-size: 18px;
+        font-size: 22px;
         font-weight: 600;
-        line-height: 21px;
+        line-height: 23px;
+        .q(@xs,{font-size: 35px;line-height: 35px;});
+        .q(@sm,{min-height: 130px;});
+        .q(@md,{font-size: 18px;line-height: 21px;min-height:0px;});
       }
     }
   }
@@ -237,5 +250,66 @@ div.home-articulos{
 }
 
 div.home-contacto{
-  img{width: 100%;}
+  background-color: #00456e;
+  border-bottom: solid 20px #012d48;
+  padding-top: 50px;
+  h3{
+    display: block;
+    color: white;
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 30px;
+  }
+  input,textarea{
+    background-color: #1e3851;
+    .rounded(0);
+    border: none;
+    &:focus{outline: none;.drop-shadow(0,0,0,0);}
+    color:white;
+    //.placeholder(white);
+  }
+  input{
+    padding: 25px 10px;
+  }
+  textarea{padding-top: 15px;}
+  div.line{
+    float: left;
+    width: 88%;
+    border-bottom:  solid 1px white;
+    height: 15px;
+  }
+  button{
+    .rounded(0);
+    border:none;
+    background-color: white;
+    color:black;
+    font-size: 20px;
+    font-weight: 800;
+    float: right;
+    width: 100%;
+    margin-top: 15px;
+    .q(@sm,{
+      width: 10%;
+      font-size: 12px;
+      margin-top: 0px;
+      });
+  }
+  ::-webkit-input-placeholder {color: white;}
+  ::-moz-placeholder {color: white;}
+  :-ms-textarea-placeholder {color: white;}
+  :-moz-placeholder {color: white;}
+
+  div.center{
+    text-align: center;
+    margin-top: 50px;
+    p{
+      font-size: 26px;
+      font-weight: 700;
+    }
+  }
+  img{
+    max-width: 390px;
+    width: 100%;
+  }
+
 }

@@ -1,23 +1,23 @@
 <div class="home-articulos container-fluid">
   <div class="row">
     <div class="col-md-6 col-sm-12">
-      <h4>Artículos</h4>
+      <h3>Artículos</h3>
       @include('front.home.assets.carousel-home-articulos')
       </div>
     <div class="col-md-6 col-sm-12">
-      <h4>Recomendados</h4>
+
         <div class="col-md-6 col-sm-12">
-            @include('front.home.assets.articulo-recomendado',array('title'=>"La deuda pública de Macri en 2016",'img'=>'./img/test/merkel.jpg','txt'=>'Hace pocas semanas el Ministerio de Economía (MECON) ','url'=>'articulos/nacional/macri-gato'))
-            @include('front.home.assets.articulo-recomendado',array('title'=>"La deuda pública de Macri en 2016",'img'=>'./img/test/merkel.jpg','txt'=>'Hace pocas semanas el Ministerio de Economía (MECON) ','url'=>'articulos/nacional/macri-gato'))
+          <h3>Recomendados</h3>
+          <?php $articulo = $articulos[0];?>
+            @include('front.home.assets.articulo-recomendado',$articulo)
+            <?php $articulo = $articulos[1];?>
+            @include('front.home.assets.articulo-recomendado',$articulo)
         </div>
         <div class="col-md-6 col-sm-12">
-          <span>LOS MÁS VISTOS</span>
-          @include('front.home.assets.articulo-masvistos',array('title'=>"Economía en la Era Macri"))
-          @include('front.home.assets.articulo-masvistos',array('title'=>"Represión en Argentina: EE.UU., Israel y las multinacionales, detrás"))
-          @include('front.home.assets.articulo-masvistos',array('title'=>"Dramática situación eléctrica en Gaza"))
-          @include('front.home.assets.articulo-masvistos',array('title'=>"Establishment de EE.UU. trabaja para alejar a Trump de Rusia"))
-          @include('front.home.assets.articulo-masvistos',array('title'=>"El cruel plan del fundador de Blackwater para “salvar” a Europa de los refugiados"))
-
+          <h3>Los más vistos</h3>
+          @foreach($masvistos as $articulo)
+          @include('front.home.assets.articulo-masvistos',$articulo)
+          @endforeach
 
         </div>
 
