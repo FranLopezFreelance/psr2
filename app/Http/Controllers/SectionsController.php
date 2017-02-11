@@ -21,19 +21,21 @@ class SectionsController extends Controller
     public function index()
     {
       $menuSections = Section::where('level', 1)
+                              ->where('active', 1)->get();
+
+      $menuLeftSections = Section::where('level', 1)
                               ->where('topnav_back', 1)
                               ->where('active', 1)->get();
 
       $sections = Section::where('level', 1)->where('active', 1)->get();
       $section = $sections->where('id', 1)->first();
       $subSections = $section->childrens;
-      return view('backend.sections.index', compact('section', 'sections', 'subSections', 'menuSections'));
+      return view('backend.sections.index', compact('section', 'sections', 'subSections', 'menuSections', 'menuLeftSections'));
     }
 
     public function getBySection(Section $section)
     {
       $menuSections = Section::where('level', 1)
-                              ->where('topnav_back', 1)
                               ->where('active', 1)->get();
 
       $sections = Section::where('level', 1)->get();

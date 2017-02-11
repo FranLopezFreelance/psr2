@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                  
+
                   @if(isset($message))
                       <div class="alert alert-success message">
                           <h5>{{ $message }}</h5>
@@ -86,6 +86,8 @@
                                 @endif
                             </div>
                         </div>
+
+                        
 
                         <div class="form-group{{ $errors->has('dest') ? ' has-error' : '' }}">
                             <div class="col-md-6 col-md-offset-4">
