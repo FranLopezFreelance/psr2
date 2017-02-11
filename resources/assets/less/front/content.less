@@ -1,15 +1,20 @@
 div.section div.content{
-  padding: 30px 40px 40px 40px;
-  
+
+  //padding-top: 15px;
+  //.q(@sm,{padding: 30px 100px 40px 40px;});
+  //.q(@xl,{padding: 30px 40px 40px 40px;});
+
   h1{
     text-transform: uppercase;
     font-weight: 800;
     color:black;
-    padding-bottom: 10px;
-    line-height: 40px;
-    font-size: 30px;
-    //border-bottom: solid 1px @alpha-grey;
-    letter-spacing: 1px;
+    //padding-bottom: 10px;
+    font-size: 25px;
+    line-height: 30px;
+    .q(@sm,{
+        font-size: 30px;
+        line-height: 36px;
+      });
   }
   img.main-image{
     width: 100%;
@@ -17,22 +22,34 @@ div.section div.content{
   a.btn-video{
     cursor: pointer;
   }
-  div.breadcumb{
-    padding: 6px 0 10px 0;
-    //line-height: 15px;
+  .q(@xs,{
+    div.breadcumb{padding: 0px 0 10px 0;}
+    span.stats{padding: 11px 0 10px 0;}
+    });
+
+  div.addthis{
+    padding-top: 10px;
+    .q(@sm,{padding-top: 20px;});
   }
   span.stats{
     float: right;
-    padding: 11px 0 10px 0;
+    padding: 5px 0;
   }
+
   div.text{
-    padding: 30px 0;
-    font-size: 20px;
+    padding: 10px 0;
+    font-size: 15px;
+    .q(@sm,{font-size: 20px;});
     color:black;
+    a{
+      color:@blue;
+    }
   }
   div.bottom-line{
-    padding-top: 10px;
-    border-bottom: solid 1px @alpha-grey;
+    //padding-top: 10px;
+    //border-bottom: solid 1px @alpha-grey;
+    padding-bottom: 10px;
+    border-top: solid 1px @alpha-grey;
   }
   div.author{
     &.border{

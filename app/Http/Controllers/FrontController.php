@@ -72,9 +72,14 @@ class FrontController extends Controller
       $nacional = $primero;
       $internacional = $segundo;
     }
+
+    $articulos = Content::where([['typeview_id','=',3],['dest','=',1]])->orderBy('date','desc')->get();
+    $masvistos = Content::where([['typeview_id','=',3]])->orderBy('views','desc')->take(5)->get();
+    //dd($masvistos);
+
   //  dd($videos);
 
-    return view('front.index', compact('target','nacional','internacional','videos'));
+    return view('front.index', compact('target','nacional','internacional','videos','articulos','masvistos'));
   }
 
   public function getSection($section, Request $request){
@@ -140,19 +145,6 @@ class FrontController extends Controller
             'next_page' => $contents->nextPageUrl()
         ];
     }
-  }
-
-  public function getMoreHomeVideos(Request $request){
-  $contents = Content::where('typeview_id','=',4)->orderBy('date','desc')->paginate(12);//ver de ordenar el request
-
-    if($request->ajax()) {
-      $colsm = 3;
-      $colmd = 3;
-        return [
-            'videos' => view('front.home.assets.ajax-video-render')->with(compact('contents','colsm','colmd'))->render(),
-            'next_page' => $contents->nextPageUrl()
-        ];
-    }else return view('front.home.assets.ajax-video-render')->with(compact('contents'));
   }
 
   public function getContentsByTag($tag, Request $request){

@@ -1,14 +1,14 @@
 <div class="articulo-recomendado col-xs-12">
+<!--
+  <div class="tags">
+    @foreach($articulo->tags as $tag)
+    <a href="{{$tag->getFullUrl()}}" class="tag">{{$tag->name}}</a>
+    @endforeach
+  </div>
+-->
+    <a href="{{$articulo->getFullUrl()}}" ><img class="lazy" data-original="{{$articulo->getImageByType(2)}}" alt=""></a>
 
-<div class="tags">
-  <a href="tags/argentina" class="tag">Argentina</a>
-</div>
-
-  <img class="lazy" data-original="/{{$img}}" alt="">
-  @include('front.home.assets.addthis-articulo-home')
-  <h5 class="title">{{$title}}</h5>
-  <span class="stats">17 diciembre 2016 | 15:26 GMT<span class="views">10.100</span></span>
-  <p>{{$txt}}</p>
-  <a class="vermas" href="{{$url}}">Leer Más...</a>
+  <a href="{{$articulo->getFullUrl()}}" class="title">{{$articulo->title}}</a>
+  <span class="stats">{{$articulo->getDate()}}<span class="views"><i class="material-icons eye">remove_red_eye</i>{{$articulo->views}}</span></span>
 
 </div>
