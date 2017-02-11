@@ -88,7 +88,7 @@ class FrontController extends Controller
       $contents = Content::whereRaw($sql)->paginate(12);
       $target = $section;
 
-      if($request->ajax())return  $this->renderAjax($request,$section,$contents);
+
 
       return view($section->typeView->index_view, compact('target','contents'));
     }else{
@@ -106,6 +106,14 @@ class FrontController extends Controller
           $target = $subSection;
 
           if($request->ajax())return  $this->renderAjax($request,$subSection,$contents);
+
+          if($subSection->typeview_id == 2){
+            $doctrina = Content::join('tagscontents','contents.id','=','tagscontents.content_id')
+            ->where([['tagscontents.tag_id',50],['contents.typeview_id',4]])
+            ->get();
+
+            return view($subSection->typeView->index_view, compact('target','contents','doctrina'));
+          }
 
           return view($subSection->typeView->index_view, compact('target','contents'));
         }else{

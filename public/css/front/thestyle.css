@@ -252,7 +252,7 @@ a.tag.hardblue {
   background-color: #0096ec;
 }
 a.tag.especial {
-  background-color: #74a95f;
+  background-color: #767676;
 }
 a.tag.doctrina {
   background-color: black;
@@ -346,7 +346,7 @@ div.mini-video {
     background-color: #0096ec;
   }
   div.mini-video div.content-mini div.tag.programa.especial-bloque {
-    background-color: #74a95f;
+    background-color: #767676;
   }
   div.mini-video div.content-mini div.tag.programa.doctrina-bloque {
     background-color: black;
@@ -371,7 +371,7 @@ div.mini-video div.content-mini div.tag.programa.blue-bloque {
   background-color: #0096ec;
 }
 div.mini-video div.content-mini div.tag.programa.especial-bloque {
-  background-color: #74a95f;
+  background-color: #767676;
 }
 div.mini-video a {
   display: inline-block;
@@ -979,7 +979,7 @@ div.sidebar h3 {
   font-size: 20px;
   text-transform: uppercase;
 }
-div.sidebar img.sidebar {
+div.sidebar img {
   width: 100%;
 }
 div.sidebar div.sidebar-item {
@@ -1273,7 +1273,7 @@ div.home-videos div.video.red span {
   border-left: 7px solid #fd1c18;
 }
 div.home-videos div.video.especial span {
-  border-left: 7px solid #74a95f;
+  border-left: 7px solid #767676;
 }
 div.home-videos div.video.doctrina span {
   border-left: 7px solid black;
@@ -1355,7 +1355,7 @@ div.home-pilares div.pilar div.pilar-content p.tipo {
   text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 15px;
-  border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+  border-bottom: solid 1px #767676;
 }
 div.home-pilares div.pilar div.pilar-content p.title {
   color: black;
@@ -1388,6 +1388,9 @@ div.addthis {
 div.home-articulos {
   border-bottom: solid 5px black;
   padding-bottom: 20px;
+}
+div.home-articulos h3 {
+  padding-bottom: 10px;
 }
 div.home-articulos div.slider-articulos {
   width: 100%;
@@ -1483,19 +1486,25 @@ div.home-articulos div.articulo-seccion p {
 }
 div.home-articulos div.articulo-masvisto {
   margin-top: 10px;
-  border-bottom: solid 1px rgba(0, 0, 0, 0.1);
 }
 div.home-articulos div.articulo-masvisto a.title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   padding: 10px 0;
   display: block;
+  letter-spacing: 0;
 }
 div.home-articulos div.articulo-recomendado {
   padding: 10px;
 }
 div.home-articulos div.articulo-recomendado img {
   width: 100%;
+}
+div.home-articulos div.articulo-recomendado a.title {
+  display: block;
+  font-size: 16px;
+  font-weight: 800;
+  padding: 5px 0;
 }
 div.home-articulos div.articulo-recomendado div.tags {
   position: absolute;
@@ -1625,6 +1634,9 @@ div.header-pilar h3 {
 div.section.pilares {
   padding-top: 30px;
 }
+div.section.pilares div.sidebar img {
+  width: 100%;
+}
 div.section.pilares div.sidebar div.sidebar-item {
   margin-bottom: 30px;
   margin-top: 0px!important;
@@ -1643,12 +1655,14 @@ div.section.pilares div.sidebar div.infografias img {
 div.section.pilares div.sidebar div.infografias a {
   cursor: pointer;
 }
+div.section.pilares div.sidebar div.videos a {
+  cursor: pointer;
+}
 div.section.pilares div.sidebar div.videos img {
   width: 100%;
 }
 div.section.pilares div.sidebar div.videos a > p {
   text-transform: uppercase;
-  color: #167ac6;
   font-size: 15px;
   font-weight: 700;
   padding-top: 5px;
@@ -1772,14 +1786,14 @@ div.section div.content div.text a {
 }
 div.section div.content div.bottom-line {
   padding-bottom: 10px;
-  border-top: solid 1px rgba(0, 0, 0, 0.2);
+  border-top: solid 1px #767676;
 }
 div.section div.content div.author {
   padding-bottom: 20px;
 }
 @media (min-width: 768px) {
   div.section div.content div.author.border {
-    border-right: solid 1px rgba(0, 0, 0, 0.2);
+    border-right: solid 1px #767676;
   }
 }
 div.section div.content div.author span {
