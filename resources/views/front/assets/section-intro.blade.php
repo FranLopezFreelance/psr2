@@ -16,7 +16,7 @@
   </div>
   <div class="col-sm-6">
     <h1 class="hidden-xs">{{$target->name}}</h1>
-    <p>{{$target->text}}</p>
+    <p>{!!$target->text!!}</p>
     @include('front.assets.addthis')
   </div>
 <div class="border-bottom-hard col-xs-12 hidden-xs"></div>

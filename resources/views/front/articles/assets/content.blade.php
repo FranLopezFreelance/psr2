@@ -15,8 +15,11 @@
   </div>
   <div class="col-xs-12">
     @if ($video)
-    <a class="btn-video" onclick="showVideo('{{$content->video_id}}')"><img class="main-image" src="{{$content->getImageByType(1)}}" alt=""></a>
-    <div class="video-container hidden"></div>
+  <div class="video-container">
+      <iframe id="ytplayer" type="text/html" width="100%" height="360"
+      src="http://www.youtube.com/embed/{{$content->video_id}}/?autoplay=0&playlist=lUsc5Bl_F8s,FSxdRJVqFq4,YI1WwxMsB1w,PGY5AS3uIcM"
+      frameborder="0"></iframe>
+    </div>
     @include('front.assets.addthis')
     @else
     <img class="main-image" src="{{$content->getImageByType(1)}}" alt="">

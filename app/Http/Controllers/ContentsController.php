@@ -130,6 +130,7 @@ class ContentsController extends Controller
 
         return view('backend.contents.create', compact('section', 'sections', 'subSections',
         'typeviews', 'authors', 'menuSections', 'tags', 'videoTypes', 'menuLeftSections', 'medios', 'radios', 'mediaTypes'));
+
     }
 
     public function createBySubSection(Section $section, Section $subSection)
@@ -159,6 +160,7 @@ class ContentsController extends Controller
 
         return view('backend.contents.create', compact('section', 'subSection', 'sections', 'subSections', 'radios',
         'typeviews', 'authors', 'menuSections', 'tags', 'videoTypes', 'subSubSection', 'subSubSections', 'medios', 'mediaTypes'));
+
     }
 
     /**

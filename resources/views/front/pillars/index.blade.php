@@ -10,24 +10,25 @@ $subs[3]->headerTitle = 'Rescatar a Las Instituciones Republicanas de su depende
 $subs[4]->headerTitle = 'Restablecer los Valores Éticos y Morales';$subs[4]->btnName = 'Quinto Pilar';$subs[4]->pilarType = 'Filosófico';
 foreach ($subs as $sub) {if($target->url == $sub->url)$target=$sub;}
 ?>
+<div class="container-fluid">
+  <div class="row">
+    @include('front.pillars.assets.botonera')
+  </div>
+
+</div>
 
 <div class="container-fluid header-pilar" style="background-image: url(/img/pilares/internas/{{$target->url}}.jpg)">
 <div class="h-container"><h2>{{$target->btnName}}<span class="h-border"></span></h2></div>
 <div class="h-container"><h1>{{$target->headerTitle}}<span class="h-border"></h1></div>
-<div class="h-container"><h3>Pilar de Carácter {{$target->pilarType}}</h3></div>
+<!--<div class="h-container"><h3>Pilar de Carácter {{$target->pilarType}}</h3></div>-->
 </div>
 <div class="container-fluid section pilares">
 
   <div class="row">
 
-  <div class="col-md-9">
-      @include('front.pillars.assets.botonera')
       @include('front.pillars.assets.show-pilar-in-section')
-  </div>
 
-  <div class="col-md-3 sidebar">
-      @include('front.pillars.assets.sidebar')
-  </div>
+
   </div>
 
 </div>

@@ -252,7 +252,7 @@ a.tag.hardblue {
   background-color: #0096ec;
 }
 a.tag.especial {
-  background-color: #74a95f;
+  background-color: #767676;
 }
 a.tag.doctrina {
   background-color: black;
@@ -346,7 +346,7 @@ div.mini-video {
     background-color: #0096ec;
   }
   div.mini-video div.content-mini div.tag.programa.especial-bloque {
-    background-color: #74a95f;
+    background-color: #767676;
   }
   div.mini-video div.content-mini div.tag.programa.doctrina-bloque {
     background-color: black;
@@ -371,7 +371,7 @@ div.mini-video div.content-mini div.tag.programa.blue-bloque {
   background-color: #0096ec;
 }
 div.mini-video div.content-mini div.tag.programa.especial-bloque {
-  background-color: #74a95f;
+  background-color: #767676;
 }
 div.mini-video a {
   display: inline-block;
@@ -689,11 +689,24 @@ div.footer {
   background-color: #282828;
   min-height: 400px;
   padding-bottom: 100px;
+  position: relative;
 }
 @media (min-width: 768px) {
   div.footer {
     padding-bottom: 10px;
   }
+}
+div.footer a.toTop {
+  background: rgba(255, 255, 255, 0.2);
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  padding-right: 5px;
+  cursor: pointer;
+}
+div.footer a.toTop i {
+  cursor: pointer;
 }
 div.footer span,
 div.footer a.link {
@@ -718,6 +731,84 @@ div.footer div.the-end {
 div.footer div.the-end > div {
   color: white;
   padding-top: 10px;
+}
+div#form-result .modal-dialog {
+  padding-top: 150px;
+}
+@media (min-width: 992px) {
+  div#form-result .modal-dialog {
+    width: 800px;
+  }
+}
+div#form-result .modal-dialog img.w {
+  width: 100%;
+}
+div#form-result .modal-dialog div.bottom {
+  position: relative;
+  text-align: center;
+  background-color: white;
+}
+div#form-result .modal-dialog div.bottom img.l {
+  padding: 50px;
+}
+@media (min-width: 992px) {
+  div#form-result .modal-dialog div.bottom img.l {
+    position: absolute;
+    top: 25px;
+    margin-left: -96px;
+    padding: 0;
+  }
+}
+div#form-result .modal-dialog div.top {
+  position: relative;
+  text-align: center;
+  background-color: #21476b;
+}
+@media (min-width: 992px) {
+  div#form-result .modal-dialog div.top {
+    background-color: transparent;
+  }
+}
+div#form-result .modal-dialog div.top img {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+div#form-result .modal-content {
+  background-color: transparent;
+}
+div#form-result p {
+  display: block;
+  text-align: center;
+  padding: 50px 20px 40px 20px;
+  margin: 0;
+}
+div#form-result span.fnombre {
+  color: white;
+  font-size: 35px;
+  display: inline-block;
+  border-bottom: 1px solid #506e8a;
+  padding: 0 20px;
+  font-style: normal;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+div#form-result span {
+  color: white;
+  font-size: 35px;
+  padding: 0 20px;
+  display: block;
+  font-style: italic;
+  font-weight: 300;
+}
+div#form-result span.r {
+  font-size: 25px;
+}
+div#form-result button {
+  position: absolute;
+  right: 0;
+  z-index: 100;
 }
 @media (min-width: 992px) {
   div#search-modal .modal-dialog {
@@ -979,7 +1070,7 @@ div.sidebar h3 {
   font-size: 20px;
   text-transform: uppercase;
 }
-div.sidebar img.sidebar {
+div.sidebar img {
   width: 100%;
 }
 div.sidebar div.sidebar-item {
@@ -1273,7 +1364,7 @@ div.home-videos div.video.red span {
   border-left: 7px solid #fd1c18;
 }
 div.home-videos div.video.especial span {
-  border-left: 7px solid #74a95f;
+  border-left: 7px solid #767676;
 }
 div.home-videos div.video.doctrina span {
   border-left: 7px solid black;
@@ -1355,7 +1446,7 @@ div.home-pilares div.pilar div.pilar-content p.tipo {
   text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 15px;
-  border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+  border-bottom: solid 1px #767676;
 }
 div.home-pilares div.pilar div.pilar-content p.title {
   color: black;
@@ -1388,6 +1479,9 @@ div.addthis {
 div.home-articulos {
   border-bottom: solid 5px black;
   padding-bottom: 20px;
+}
+div.home-articulos h3 {
+  padding-bottom: 10px;
 }
 div.home-articulos div.slider-articulos {
   width: 100%;
@@ -1483,19 +1577,25 @@ div.home-articulos div.articulo-seccion p {
 }
 div.home-articulos div.articulo-masvisto {
   margin-top: 10px;
-  border-bottom: solid 1px rgba(0, 0, 0, 0.1);
 }
 div.home-articulos div.articulo-masvisto a.title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   padding: 10px 0;
   display: block;
+  letter-spacing: 0;
 }
 div.home-articulos div.articulo-recomendado {
   padding: 10px;
 }
 div.home-articulos div.articulo-recomendado img {
   width: 100%;
+}
+div.home-articulos div.articulo-recomendado a.title {
+  display: block;
+  font-size: 16px;
+  font-weight: 800;
+  padding: 5px 0;
 }
 div.home-articulos div.articulo-recomendado div.tags {
   position: absolute;
@@ -1508,8 +1608,12 @@ div.home-articulos div.articulo-recomendado div.tags a {
 }
 div.home-contacto {
   background-color: #00456e;
-  border-bottom: solid 20px #012d48;
+  background-color: #21476b;
+  border-bottom: solid 20px #102233;
   padding-top: 50px;
+  background-image: url('/img/fondo-contacto.jpg');
+  background-position: top right;
+  background-repeat: no-repeat;
 }
 div.home-contacto h3 {
   display: block;
@@ -1520,7 +1624,7 @@ div.home-contacto h3 {
 }
 div.home-contacto input,
 div.home-contacto textarea {
-  background-color: #1e3851;
+  background-color: rgba(30, 56, 81, 0.7);
   border-radius: 0;
   border: none;
   color: white;
@@ -1622,8 +1726,35 @@ div.header-pilar h3 {
   font-weight: 100;
   letter-spacing: 2px;
 }
-div.section.pilares {
-  padding-top: 30px;
+div.section.pilares img.infografia {
+  width: 100%;
+}
+div.section.pilares div.info-pilar {
+  font-size: 18px;
+  margin-top: 20px;
+  padding: 10px 30px;
+}
+div.section.pilares div.info-pilar p.quote {
+  font-size: 25px;
+  font-style: italic;
+  padding: 0 20px;
+  margin: 30px 0px 30px 20px;
+  border-left: solid 5px #0063a4;
+  color: #767676;
+}
+div.section.pilares div.info-pilar p.title {
+  font-size: 25px;
+  font-weight: 800;
+  padding: 20px 0;
+}
+div.section.pilares div.info-pilar ul {
+  margin: 20px 0;
+}
+div.section.pilares div.info-pilar ul li {
+  margin: 10px 0;
+}
+div.section.pilares div.sidebar img {
+  width: 100%;
 }
 div.section.pilares div.sidebar div.sidebar-item {
   margin-bottom: 30px;
@@ -1643,12 +1774,14 @@ div.section.pilares div.sidebar div.infografias img {
 div.section.pilares div.sidebar div.infografias a {
   cursor: pointer;
 }
+div.section.pilares div.sidebar div.videos a {
+  cursor: pointer;
+}
 div.section.pilares div.sidebar div.videos img {
   width: 100%;
 }
 div.section.pilares div.sidebar div.videos a > p {
   text-transform: uppercase;
-  color: #167ac6;
   font-size: 15px;
   font-weight: 700;
   padding-top: 5px;
@@ -1772,14 +1905,14 @@ div.section div.content div.text a {
 }
 div.section div.content div.bottom-line {
   padding-bottom: 10px;
-  border-top: solid 1px rgba(0, 0, 0, 0.2);
+  border-top: solid 1px #767676;
 }
 div.section div.content div.author {
   padding-bottom: 20px;
 }
 @media (min-width: 768px) {
   div.section div.content div.author.border {
-    border-right: solid 1px rgba(0, 0, 0, 0.2);
+    border-right: solid 1px #767676;
   }
 }
 div.section div.content div.author span {
@@ -1819,4 +1952,53 @@ div.section div.content div.tags a.tag {
   left: 0;
   width: 100%;
   height: 100%;
+}
+div.prensa div.content-of-prensa-list {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.2s ease-out;
+}
+div.prensa div.content-of-prensa-list:hover {
+  transition: all 0.2s ease-out;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.25), 0 2px 2px rgba(0, 0, 0, 0.22);
+}
+div.prensa div.reel {
+  margin-bottom: 50px;
+}
+div.prensa div.pimagen {
+  margin-bottom: 10px;
+}
+div.prensa div.pimagen img {
+  width: 100%;
+}
+div.prensa .title {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+div.prensa div.extra-slider {
+  padding: 20px 100px;
+}
+div.prensa div.extra-slider i.material-icons {
+  color: black;
+}
+div.prensa div.pcontent {
+  margin-bottom: 20px;
+  min-height: 70px;
+}
+div.prensa div.pcontent > a {
+  float: left;
+  width: 30%;
+}
+div.prensa div.pcontent > a img {
+  padding-left: 15px;
+}
+div.prensa div.pcontent div.title {
+  float: left;
+  text-align: left;
+  padding-left: 20px;
+  padding-right: 10px;
+  width: 70%;
+}
+div.prensa div.pcontent div.title a {
+  word-wrap: break-word;
 }

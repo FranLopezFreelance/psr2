@@ -32,7 +32,7 @@
       <div class="clearfix"></div>
       <div class="center">
         <p>NO SOMOS LA OPOSICION</p>
-        <img class="lazy" data-original="/img/test/form.jpg" alt="">
+        <img class="lazy" data-original="/img/contacto.png" alt="">
       </div>
 
     </div>
@@ -43,13 +43,22 @@
 <div id="form-result" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">MENSAJE RECIBIDO</h4>
+      
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+      <div class="top">
+        <img class="w"  src="/img/azul.jpg" alt="">
+        <p>
+          <span class="fnombre"></span>
+          <span>¡Gracias por escribirnos!</span>
+          <span class="r">Nos comunicaremos a la brevedad con vos</span>
+        </p>
       </div>
-      <div class="modal-body">
-        <p>Gracias <span class="fnombre"></span>!</p>
+      <div class="bottom">
+        <img class="w hidden-xs hidden-sm" src="/img/gris.jpg" alt="">
+        <img  class="l" src="/img/logo_contacto.png" alt="">
       </div>
+
       </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->

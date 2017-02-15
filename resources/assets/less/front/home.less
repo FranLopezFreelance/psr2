@@ -146,6 +146,9 @@ div.addthis{
 div.home-articulos{
   border-bottom: solid 5px black;
   padding-bottom: 20px;
+  h3{
+    padding-bottom: 10px;
+  }
 
   div.slider-articulos{
     width: 100%;
@@ -225,18 +228,26 @@ div.home-articulos{
 
   div.articulo-masvisto{
     margin-top: 10px;
-    border-bottom: solid 1px rgba(0,0,0,0.1);
+
+    //border-bottom: solid 1px rgba(0,0,0,0.1);
     a.title{
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 600;
       padding: 10px 0;
       display: block;
+      letter-spacing: 0;
     }
   }
 
   div.articulo-recomendado{
     padding: 10px;
     img{width: 100%;}
+    a.title{
+      display: block;
+      font-size: 16px;
+      font-weight: 800;
+      padding: 5px 0;
+    }
 
     div.tags{
       position: absolute;
@@ -251,8 +262,12 @@ div.home-articulos{
 
 div.home-contacto{
   background-color: #00456e;
-  border-bottom: solid 20px #012d48;
+  background-color: #21476b;
+  border-bottom: solid 20px #102233;
   padding-top: 50px;
+  background-image: url('/img/fondo-contacto.jpg');
+  background-position: top right;
+  background-repeat: no-repeat;
   h3{
     display: block;
     color: white;
@@ -261,7 +276,7 @@ div.home-contacto{
     font-size: 30px;
   }
   input,textarea{
-    background-color: #1e3851;
+    background-color: rgba(30,56,81,0.7);
     .rounded(0);
     border: none;
     &:focus{outline: none;.drop-shadow(0,0,0,0);}

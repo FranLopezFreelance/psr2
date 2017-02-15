@@ -1,10 +1,15 @@
 
-<div class="row">
-  <div class="col-xs-12">
-    <div class="content-pilar">
-      <p>{!!(count($contents))? $contents[0]->text:'No hay contenido'!!}</p>
-    </div>
+@if($target->id == 12 || $target->id == 13 || $target->id == 14)
 
-  </div>
+      <img class="infografia" src="/img/pilares/infografias/{{$target->url}}.jpg" alt="">
 
-</div>
+@endif
+      <div class="info-pilar">
+        <div class="col-xs-9">
+          {!!(count($contents))? $contents[0]->text:'No hay contenido'!!}
+        </div>
+        <div class="sidebar col-xs-3 ">
+            @include('front.pillars.assets.sidebar')
+        </div>
+
+      </div>
