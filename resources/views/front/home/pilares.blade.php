@@ -7,13 +7,13 @@
     'type'=>'Filosófico','url'=>'/pilares/estado-nacional-soberano'))
     @include('front.home.assets.pilar',
     array('n'=>2,'nPilar'=>'segundo','title'=>"Recuperar nuestra Moneda Nacional Soberana",
-    'type'=>'Filosófico','url'=>'/pilares/moneda-soberana'))
+    'type'=>'Práctico','url'=>'/pilares/moneda-soberana'))
     @include('front.home.assets.pilar',
     array('n'=>3,'nPilar'=>'tercer','title'=>"Rechazar el sistema de deuda pública externa e interna",
-    'type'=>'Filosófico','url'=>'/pilares/rechazar-el-sistema-de-deuda'))
+    'type'=>'Práctico','url'=>'/pilares/rechazar-el-sistema-de-deuda'))
     @include('front.home.assets.pilar',
     array('n'=>4,'nPilar'=>'cuarto','title'=>"Rescatar las Instituciones Republicanas de su dependencia del dinero",
-    'type'=>'Filosófico','url'=>'/pilares/rescatar-las-instituciones-republicanas'))
+    'type'=>'Práctico','url'=>'/pilares/rescatar-las-instituciones-republicanas'))
     @include('front.home.assets.pilar',
     array('n'=>5,'nPilar'=>'quinto','title'=>"Restaurar los valores Éticos Tradicionales",
     'type'=>'Filosófico','url'=>'/pilares/restablecer-los-valores-eticos-y-morales'))

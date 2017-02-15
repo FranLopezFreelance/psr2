@@ -17,7 +17,7 @@ class FrontController extends Controller
   private $sections;
   public function __construct() {
       $allSections = Section::all();
-      $this->sections = $allSections->where('level', 1);
+      $this->sections = Section::where([['level','=', 1],['active','=',1]])->get();//¨POR FOOTERNO PUEDO USAR ALLSECTIONS
       //$recomendados = Content::where('dest','=',1)->take(5)->get();
       $recomendados = Content::take(5)->get();
       //$sql ="SELECT *, tags.id as tid, count(*) as cant FROM tags INNER JOIN tagscontents ON tags.id = tagscontents.tag_id GROUP BY tid order by cant DESC limit 5";
@@ -75,9 +75,6 @@ class FrontController extends Controller
 
     $articulos = Content::where([['typeview_id','=',3],['dest','=',1]])->orderBy('date','desc')->get();
     $masvistos = Content::where([['typeview_id','=',3]])->orderBy('views','desc')->take(5)->get();
-    //dd($masvistos);
-
-  //  dd($videos);
 
     return view('front.index', compact('target','nacional','internacional','videos','articulos','masvistos'));
   }
@@ -87,8 +84,6 @@ class FrontController extends Controller
       $sql = 'section_id in (SELECT id from sections WHERE section_id = '.$section->id.')';
       $contents = Content::whereRaw($sql)->paginate(12);
       $target = $section;
-
-
 
       return view($section->typeView->index_view, compact('target','contents'));
     }else{
@@ -145,7 +140,7 @@ class FrontController extends Controller
             'next_page' => $contents->nextPageUrl()
         ];
     }
-    else if($section->typeview_id == 4) {
+    else if($section->typeview_id == 4 || $section->typeview_id == 5) {
       $colsm = 4;
       $colmd = 4;
         return [
@@ -222,6 +217,24 @@ class FrontController extends Controller
       $message = $contact->name." gracias por ponerte en contacto con nosotros. Pronto nos vamos a poner en contacto con vos.";
 
       return view('front.index', compact('target','nacional','internacional','videos','message'));
+  }
+
+  public function getContentsOfPrensa(Request $request){
+
+      $sql = 'section_id = 25';
+      $videos = Content::whereRaw($sql)->get();
+
+      $sql = 'section_id = 20';
+      $articulos = Content::whereRaw($sql)->get();
+
+      $sql = 'section_id = 30';
+      $radio = Content::whereRaw($sql)->get();
+
+      $section = Section::where('url', 'PSR-en-los-medios')->first();
+      $target = $section;
+
+      return view($section->typeView->index_view, compact('target','videos','articulos','radio'));
+
   }
 
 }

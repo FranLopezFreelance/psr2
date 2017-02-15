@@ -1,14 +1,5 @@
 
-  @if($target->id == 12 || $target->id == 13 || $target->id == 14)
-  <div class="col-xs-12">
-    <div class="infografias sidebar-item">
-      <p class="sidebar-title">Infografías</p>
-      <a data-toggle="modal" data-target="#pilar-infografia-modal">
-        <img src="/img/pilares/infografias/thumb-{{$target->url}}.jpg" alt="">
-      </a>
-    </div>
-  </div>
-  @endif
+
 
   <div class="col-xs-12">
     <div class="videos sidebar-item">

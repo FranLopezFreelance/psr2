@@ -40,14 +40,14 @@
   </div>
 
 </div>
-
+<!--
 <div class="col-xs-12 col-sm-6 col-md-12">
   <div class=" sidebar-item">
   <img class="hidden-xs" src="/img/sidebar/contactateconpsr.jpg" alt="">
   <img class="visible-xs" src="/img/sidebar/contactateconpsr-mobile.jpg" alt="">
   </div>
 </div>
-
+-->
 <div class="clearfix"></div>
 <div class="col-xs-12 col-sm-6 col-md-12 ">
   <h3>SEGUINOS EN</h3>

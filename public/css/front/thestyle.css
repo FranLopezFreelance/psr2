@@ -689,11 +689,24 @@ div.footer {
   background-color: #282828;
   min-height: 400px;
   padding-bottom: 100px;
+  position: relative;
 }
 @media (min-width: 768px) {
   div.footer {
     padding-bottom: 10px;
   }
+}
+div.footer a.toTop {
+  background: rgba(255, 255, 255, 0.2);
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  padding-right: 5px;
+  cursor: pointer;
+}
+div.footer a.toTop i {
+  cursor: pointer;
 }
 div.footer span,
 div.footer a.link {
@@ -718,6 +731,84 @@ div.footer div.the-end {
 div.footer div.the-end > div {
   color: white;
   padding-top: 10px;
+}
+div#form-result .modal-dialog {
+  padding-top: 150px;
+}
+@media (min-width: 992px) {
+  div#form-result .modal-dialog {
+    width: 800px;
+  }
+}
+div#form-result .modal-dialog img.w {
+  width: 100%;
+}
+div#form-result .modal-dialog div.bottom {
+  position: relative;
+  text-align: center;
+  background-color: white;
+}
+div#form-result .modal-dialog div.bottom img.l {
+  padding: 50px;
+}
+@media (min-width: 992px) {
+  div#form-result .modal-dialog div.bottom img.l {
+    position: absolute;
+    top: 25px;
+    margin-left: -96px;
+    padding: 0;
+  }
+}
+div#form-result .modal-dialog div.top {
+  position: relative;
+  text-align: center;
+  background-color: #21476b;
+}
+@media (min-width: 992px) {
+  div#form-result .modal-dialog div.top {
+    background-color: transparent;
+  }
+}
+div#form-result .modal-dialog div.top img {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+div#form-result .modal-content {
+  background-color: transparent;
+}
+div#form-result p {
+  display: block;
+  text-align: center;
+  padding: 50px 20px 40px 20px;
+  margin: 0;
+}
+div#form-result span.fnombre {
+  color: white;
+  font-size: 35px;
+  display: inline-block;
+  border-bottom: 1px solid #506e8a;
+  padding: 0 20px;
+  font-style: normal;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+div#form-result span {
+  color: white;
+  font-size: 35px;
+  padding: 0 20px;
+  display: block;
+  font-style: italic;
+  font-weight: 300;
+}
+div#form-result span.r {
+  font-size: 25px;
+}
+div#form-result button {
+  position: absolute;
+  right: 0;
+  z-index: 100;
 }
 @media (min-width: 992px) {
   div#search-modal .modal-dialog {
@@ -1517,8 +1608,12 @@ div.home-articulos div.articulo-recomendado div.tags a {
 }
 div.home-contacto {
   background-color: #00456e;
-  border-bottom: solid 20px #012d48;
+  background-color: #21476b;
+  border-bottom: solid 20px #102233;
   padding-top: 50px;
+  background-image: url('/img/fondo-contacto.jpg');
+  background-position: top right;
+  background-repeat: no-repeat;
 }
 div.home-contacto h3 {
   display: block;
@@ -1529,7 +1624,7 @@ div.home-contacto h3 {
 }
 div.home-contacto input,
 div.home-contacto textarea {
-  background-color: #1e3851;
+  background-color: rgba(30, 56, 81, 0.7);
   border-radius: 0;
   border: none;
   color: white;
@@ -1631,8 +1726,32 @@ div.header-pilar h3 {
   font-weight: 100;
   letter-spacing: 2px;
 }
-div.section.pilares {
-  padding-top: 30px;
+div.section.pilares img.infografia {
+  width: 100%;
+}
+div.section.pilares div.info-pilar {
+  font-size: 18px;
+  margin-top: 20px;
+  padding: 10px 30px;
+}
+div.section.pilares div.info-pilar p.quote {
+  font-size: 25px;
+  font-style: italic;
+  padding: 0 20px;
+  margin: 30px 0px 30px 20px;
+  border-left: solid 5px #0063a4;
+  color: #767676;
+}
+div.section.pilares div.info-pilar p.title {
+  font-size: 25px;
+  font-weight: 800;
+  padding: 20px 0;
+}
+div.section.pilares div.info-pilar ul {
+  margin: 20px 0;
+}
+div.section.pilares div.info-pilar ul li {
+  margin: 10px 0;
 }
 div.section.pilares div.sidebar img {
   width: 100%;
@@ -1833,4 +1952,53 @@ div.section div.content div.tags a.tag {
   left: 0;
   width: 100%;
   height: 100%;
+}
+div.prensa div.content-of-prensa-list {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.2s ease-out;
+}
+div.prensa div.content-of-prensa-list:hover {
+  transition: all 0.2s ease-out;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.25), 0 2px 2px rgba(0, 0, 0, 0.22);
+}
+div.prensa div.reel {
+  margin-bottom: 50px;
+}
+div.prensa div.pimagen {
+  margin-bottom: 10px;
+}
+div.prensa div.pimagen img {
+  width: 100%;
+}
+div.prensa .title {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+div.prensa div.extra-slider {
+  padding: 20px 100px;
+}
+div.prensa div.extra-slider i.material-icons {
+  color: black;
+}
+div.prensa div.pcontent {
+  margin-bottom: 20px;
+  min-height: 70px;
+}
+div.prensa div.pcontent > a {
+  float: left;
+  width: 30%;
+}
+div.prensa div.pcontent > a img {
+  padding-left: 15px;
+}
+div.prensa div.pcontent div.title {
+  float: left;
+  text-align: left;
+  padding-left: 20px;
+  padding-right: 10px;
+  width: 70%;
+}
+div.prensa div.pcontent div.title a {
+  word-wrap: break-word;
 }

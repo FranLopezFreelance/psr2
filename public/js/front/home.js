@@ -15,6 +15,11 @@ function resolveSlider() {
 }
 var headerH = 80;
 
+$("a[href='#top']").click(function() {
+  $("html, body").animate({ scrollTop: 0 }, "slow");
+  return false;
+});
+
 $('#search-input').keyup(function(){
   var url = $('#search-input').val();
   $('#search').attr('action','/search/'+url);
@@ -24,6 +29,7 @@ $('#search-input-main').keyup(function(){
   var url = $('#search-input-main').val();
   $('#search-main').attr('action','/search/'+url);
 });
+
 
 $('.contact-form').on('submit', function(e) {
         e.preventDefault();
@@ -84,6 +90,9 @@ $("document").ready(function() {
   auto: 7,
   speed:0.6,
   });
+  $(".slider-prensa-videos").extraSlider({auto: false,speed:0.6});
+  $(".slider-prensa-articulos").extraSlider({auto: false,speed:0.6});
+  $(".slider-prensa-radio").extraSlider({auto: false,speed:0.6});
 
   $('#search-modal').on('shown.bs.modal', function () {$('#search-modal input').focus();})
 

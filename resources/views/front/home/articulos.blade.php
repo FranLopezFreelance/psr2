@@ -23,7 +23,7 @@
 
     </div>
   </div>
-
+<!--
   <div class="row">
     @include('front.home.assets.articulo-seccion',array('name'=>"Economía",'url'=>'articulos/economia','title'=>'Argentina Endeudada','img'=>'./img/test/bonos.jpg','txt'=>'Y esto sucede aun en un entorno internacional de cooperación entre los Estados, pero sobre todo sucede cuando la realidad internacional es preocupante y casi no existen certidumbres sobre el curso del orden internacional.'))
     @include('front.home.assets.articulo-seccion',array('name'=>"Geopolítica",'url'=>'articulos/geopolítica','title'=>'Hacia un Mundo Multpolar','img'=>'./img/test/rusia.jpg','txt'=>'Y esto sucede aun en un entorno internacional de cooperación entre los Estados, pero sobre todo sucede cuando la realidad internacional es preocupante y casi no existen certidumbres sobre el curso del orden internacional.'))
@@ -31,5 +31,5 @@
     @include('front.home.assets.articulo-seccion',array('name'=>"Política",'url'=>'articulos/politica','title'=>'Sudamérica en Peligro','img'=>'./img/test/theeconomist.jpg','txt'=>'La perturbadora imputación de Donald Trump de que Obama es el "fundador" de los yihadistas de Isis/Daesh ha causado tremendo revuelo tanto en Estados...'))
     @include('front.home.assets.articulo-seccion',array('name'=>"Medio Ambiente",'url'=>'articulos/energia-y-medio-ambiente','title'=>'','img'=>'./img/test/ecologia.jpg','txt'=>'Las negociaciones en Brasil, para la venta de manantiales del acuífero con los principales conglomerados transnacionales del sector, entre ellos Nestlé y Coca-Cola, siguen a pasos agigantados.'))
   </div>
-
+-->
 </div>

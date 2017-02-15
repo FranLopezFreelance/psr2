@@ -4,13 +4,13 @@
     <div class="col-xs-12 col-md-6 video-nacional">
       <div class="video {{$nacional->getProgramaTag()->color}}">
         <a href="{{$nacional->getFullUrl()}}"><img  data-original="{{$nacional->getImageByType(2)}}" alt=""></a>
-        <a href="{{$nacional->getFullUrl()}}"><span>{{str_limit($nacional->title,100)}}</span></a>
+        <!--<a href="{{$nacional->getFullUrl()}}"><span>{{str_limit($nacional->title,100)}}</span></a>-->
       </div>
     </div>
     <div class="col-xs-12 col-md-6 video-internacional">
       <div class="video {{$nacional->getProgramaTag()->color}}">
         <a href="{{$internacional->getFullUrl()}}"><img  data-original="{{$internacional->getImageByType(2)}}" alt=""></a>
-        <a href="{{$internacional->getFullUrl()}}"><span>{{str_limit($internacional->title,100)}}</span></a>
+        <!--<a href="{{$internacional->getFullUrl()}}"><span>{{str_limit($internacional->title,100)}}</span></a>-->
       </div>
     </div>
   </div>

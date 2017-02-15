@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Author;
 use App\Content;
+use App\Medio;
 use App\Section;
 use App\Tag;
 use App\Typeview;
@@ -30,7 +31,11 @@ class ContentsController extends Controller
                                 ->where('topnav_back', 1)
                                 ->where('active', 1)->get();
 
+        $menuLeftSections = Section::where('level', 1)
+                              ->where('active', 1)->get();
+
         $sections = Section::all();
+
         $principalSections = $sections->where('level', 1)
                                       ->where('topnav_back', 1)
                                       ->where('active', 1);//->get();
@@ -40,7 +45,7 @@ class ContentsController extends Controller
         $subSections = $sections->where('level', 2);
         $subSection = $sections->where('level', 2)->first();
         $contents = Content::where('section_id', $subSection->id)->paginate(15);
-        return view('backend.contents.index', compact('sections', 'section', 'subSection', 'contents', 'menuSections'));
+        return view('backend.contents.index', compact('sections', 'section', 'subSection', 'contents', 'menuSections', 'menuLeftSections'));
     }
 
     public function getBySection(Section $section)
@@ -49,14 +54,18 @@ class ContentsController extends Controller
                                 ->where('topnav_back', 1)
                                 ->where('active', 1)->get();
 
+        $menuLeftSections = Section::where('level', 1)
+                              ->where('active', 1)->get();
 
         if($subSection = $section->childrens()->first()){
           $contents = $subSection->contents;
+          $contents = Content::where('section_id', $subSection->id)->paginate(15);
+        }else{
+          $subSection = null;
+          $contents = $section->contents()->paginate(15);
         }
 
-        $contents = Content::where('section_id', $subSection->id)->paginate(15);
-
-        return view('backend.contents.index', compact('section', 'subSection', 'contents', 'menuSections'));
+        return view('backend.contents.index', compact('section', 'subSection', 'contents', 'menuSections', 'menuLeftSections'));
     }
 
     public function getBySubSection(Section $subSection)
@@ -65,6 +74,9 @@ class ContentsController extends Controller
                                 ->where('topnav_back', 1)
                                 ->where('active', 1)->get();
 
+        $menuLeftSections = Section::where('level', 1)
+                                    ->where('active', 1)->get();
+
         if($subSection->level == 2){
           $section = $subSection->parent;
         }elseif($subSection->level == 3){
@@ -72,7 +84,7 @@ class ContentsController extends Controller
         }
 
         $contents = Content::where('section_id', $subSection->id)->orderBy('date', 'desc')->paginate(15);
-        return view('backend.contents.index', compact('section', 'subSection', 'contents', 'menuSections'));
+        return view('backend.contents.index', compact('section', 'subSection', 'contents', 'menuSections', 'menuLeftSections'));
     }
 
     /**
@@ -96,14 +108,24 @@ class ContentsController extends Controller
                               ->where('topnav_back', 1)
                               ->where('active', 1)->get();
 
+        $menuLeftSections = Section::where('level', 1)
+                                    ->where('active', 1)->get();
+
         $sections = Section::all();
         $videoTypes = Videotype::all();
-        $subSections = $sections->where('section_id', $section->id);
         $typeviews = Typeview::all();
         $authors = Author::all();
         $tags = Tag::all();
+        $medios = Medio::all();
+
+        if($section->childrens()->count() > 0){
+          $subSections = $sections->where('section_id', $section->id);
+        }else{
+          $subSections = null;
+        }
+
         return view('backend.contents.create', compact('section', 'sections', 'subSections',
-        'typeviews', 'authors', 'menuSections', 'tags', 'videoTypes'));
+        'typeviews', 'authors', 'menuSections', 'tags', 'videoTypes', 'menuLeftSections', 'medios'));
     }
 
     public function createBySubSection(Section $section, Section $subSection)
@@ -127,8 +149,9 @@ class ContentsController extends Controller
         $typeviews = Typeview::all();
         $authors = Author::all();
         $tags = Tag::all();
+        $medios = Medio::all();
         return view('backend.contents.create', compact('section', 'subSection', 'sections', 'subSections',
-        'typeviews', 'authors', 'menuSections', 'tags', 'videoTypes', 'subSubSection', 'subSubSections'));
+        'typeviews', 'authors', 'menuSections', 'tags', 'videoTypes', 'subSubSection', 'subSubSections', 'medios'));
     }
 
     /**
@@ -171,6 +194,20 @@ class ContentsController extends Controller
         $imageSmall = $imageFile->resize(320, 180);
         $imageSmall->save($path.'small/'.$name);
         $content->img_url = $name;
+      }else if($content->section_id == 30){///radio zonica
+        $name = $url.'.jpg';
+        $ytimg = 'http://img.youtube.com/vi/'.$content->video_id.'/maxresdefault.jpg';
+        $file_headers = @get_headers($ytimg);
+        $exists = (!$file_headers || $file_headers[0] == 'HTTP/1.0 404 Not Found') ?false:true;
+        if($exists){
+          $imageFile = Image::make($ytimg);
+          $imageFile->save($path.'standard/'.$name);
+          $imageMedium = $imageFile->resize(750, 422);
+          $imageMedium->save($path.'medium/'.$name);
+          $imageSmall = $imageFile->resize(320, 180);
+          $imageSmall->save($path.'small/'.$name);
+          $content->img_url = $name;
+        }
       }
 
       $content->user_id = Auth::user()->id;
