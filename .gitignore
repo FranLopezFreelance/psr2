@@ -1,5 +1,14 @@
 /node_modules
 /public/storage
+/public/img/articulos
+/public/img/authors
+/public/img/libros
+/public/img/pilares
+/public/img/programas
+/public/img/secciones
+/public/img/sidebar
+/public/img/social
+/public/img/test
 /vendor
 /.idea
 Homestead.json
