@@ -20,8 +20,11 @@ class ContactsController extends Controller
                               ->where('topnav_back', 1)
                               ->where('active', 1)->get();
 
+        $menuLeftSections = Section::where('level', 1)
+                              ->where('active', 1)->get();
+
         $contacts = Contact::all();
-        return view('backend.contacts.index', compact('contacts', 'menuSections'));
+        return view('backend.contacts.index', compact('contacts', 'menuSections', 'menuLeftSections'));
     }
 
     /**

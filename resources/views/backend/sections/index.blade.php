@@ -20,8 +20,8 @@
             </div>
               <div class="panel-body">
                   <ul>
-                    @forelse($menuLeftSections as $principalSection)
-                      @if($principalSection->id >1)
+                    @forelse($menuSections as $principalSection)
+                      @if($principalSection->id > 1)
                         <li><a href="/backend/sections/{{ $principalSection->id }}">{{ $principalSection->name }}</a></li>
                       @endif
                     @empty
@@ -33,8 +33,10 @@
       </div>
       <div class="col-md-8">
           <div class="panel panel-default">
-              <div class="panel-heading"><h3><a href="/backend/sections/{{ $section->id }}">{{ $section->name }}</a>
-              <a class="btn btn-success article-create" href="/backend/sections/{{ $section->id }}/edit">Editar</a></h3>
+              <div class="panel-heading"><h3>
+                <a href="/backend/sections/{{ $section->id }}">{{ $section->name }}</a>
+                <a class="btn btn-primary" href="/backend/sections/{{ $section->id }}/edit">Editar</a>
+              </h3>
               </div>
               <div class="panel-body">
                 @if(isset($message))

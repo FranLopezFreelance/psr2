@@ -7,7 +7,7 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4>
-                <a href="/backend/contents/section/2">Contenidos</a>
+                <a href="/backend/contents/section/2  ">Contenidos</a>
             </h4>
           </div>
         </div>
@@ -18,20 +18,13 @@
             </div>
               <div class="panel-body">
                   <ul>
-                    @forelse($menuSections as $principalSection)
-                      <li><a href="/backend/sections/{{ $principalSection->id }}">{{ $principalSection->name }}</a></li>
-                    @empty
-                      No hay secciones aquí.
-                    @endforelse
-                  </ul>
-
-                  <ul>
-                    @forelse($menuSections as $principalSection)
-                      @if($principalSection->childrens()->count() > 0)
-                        <li><a href="/backend/contents/section/{{ $principalSection->id }}">{{ $principalSection->name }} ({{ $principalSection->childrens()->count() }})</a></li>
-                      @else
-                        <li><a href="">{{ $principalSection->name }} ({{ $principalSection->childrens()->count() }})</a></li>
-                      @endif
+                    @forelse($menuLeftSections as $principalSection)
+                      @if($principalSection->id > 1)
+                        @if($principalSection->childrens()->count() > 0)
+                          <li><a href="/backend/contents/section/{{ $principalSection->id }}">{{ $principalSection->name }} ({{ $principalSection->childrens()->count() }})</a></li>
+                        @else
+                          <li><a href="">{{ $principalSection->name }} ({{ $principalSection->childrens()->count() }})</a></li>
+                        @endif
                           @if($principalSection->id == $section->id)
                             <ul>
                               @forelse($principalSection->childrens->where('active', 1) as $children)
@@ -50,6 +43,7 @@
                               @endforelse
                             </ul>
                           @endif
+                      @endif
                     @empty
                       No hay secciones aquí.
                     @endforelse
@@ -60,9 +54,15 @@
       <div class="col-md-9">
           <div class="panel panel-default">
               <div class="panel-heading">
-                <h4>{{ $subSection->parent->name }} / {{ $subSection->name }}
-                  <a class="btn btn-success article-create" href="/backend/contents/createBySection/{{ $section->id }}/{{ $subSection->id }}">Crear</a>
-                </h4>
+                @if(isset($subSection))
+                  <h4>{{ $subSection->parent->name }} / {{ $subSection->name }}
+                    <a class="btn btn-success article-create" href="/backend/contents/createBySection/{{ $section->id }}/{{ $subSection->id }}">Crear</a>
+                  </h4>
+                @else
+                  <h4>{{ $section->name }}
+                    <a class="btn btn-success article-create" href="/backend/contents/createBySection/{{ $section->id }}">Crear</a>
+                  </h4>
+                @endif
               </div>
               <div class="panel-body">
                 @if(isset($message))

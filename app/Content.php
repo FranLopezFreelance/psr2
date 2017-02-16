@@ -7,8 +7,8 @@ use Carbon\Carbon;
 
 class Content extends Model
 {
-    protected $fillable = ['section_id', 'videotype_id', 'url', 'title', 'html_title', 'description', 'social_desc',
-    'social_img', 'typeview_id', 'text', 'author_id', 'tags', 'video_id', 'img_url', 'date', 'reference', 'user_id'];
+    protected $fillable = ['section_id', 'videotype_id', 'mediatype_id', 'url', 'title', 'html_title', 'description', 'social_desc', 'radio_url',
+    'social_img', 'typeview_id', 'text', 'author_id', 'tags', 'video_id', 'img_url', 'date', 'reference', 'user_id', 'filter_id'];
 
     public function typeView(){
         return $this->belongsTo('App\Typeview', 'typeview_id');

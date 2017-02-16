@@ -20,6 +20,7 @@
   </div>
 
 <div class="footer container-fluid">
+  <a class="toTop" href='#top'><i class="material-icons">keyboard_arrow_up</i></a>
 <div class="row">
   <div class="col-md-1 hidden-xs"></div>
   <div class="col-xs-6 col-sm-3 col-md-2">
@@ -80,6 +81,7 @@
     <a class="link" href="{{$sections[5]->getFullUrl()}}">{{$sections[5]->name}}</a>
     @endif
 
+    @if(count($sections)>6)
     @if($sections[6]->getSubSections())
     <span>{{$sections[6]->name}}</span>
     <ul class="list-unstyled">
@@ -90,7 +92,9 @@
     @else
     <a class="link" href="{{$sections[6]->getFullUrl()}}">{{$sections[6]->name}}</a>
     @endif
+    @endif
 
+    @if(count($sections)>7)
     @if($sections[7]->getSubSections())
     <span>{{$sections[7]->name}}</span>
     <ul class="list-unstyled">
@@ -101,11 +105,13 @@
     @else
     <a class="link" href="{{$sections[7]->getFullUrl()}}">{{$sections[7]->name}}</a>
     @endif
+    @endif
 
   </div>
 
   <div class="col-xs-6 col-sm-3 col-md-2">
 
+    @if(count($sections)>8)
     @if($sections[8]->getSubSections())
     <span>{{$sections[8]->name}}</span>
     <ul class="list-unstyled">
@@ -116,7 +122,9 @@
     @else
     <a class="link" href="{{$sections[8]->getFullUrl()}}">{{$sections[8]->name}}</a>
     @endif
+    @endif
 
+    @if(count($sections) > 9)
     @if($sections[9]->getSubSections())
     <span>{{$sections[9]->name}}</span>
     <ul class="list-unstyled">
@@ -127,7 +135,9 @@
     @else
     <a class="link" href="{{$sections[9]->getFullUrl()}}">{{$sections[9]->name}}</a>
     @endif
+    @endif
 
+    @if(count($sections)>10)
     @if($sections[10]->getSubSections())
     <span>{{$sections[10]->name}}</span>
     <ul class="list-unstyled">
@@ -137,6 +147,7 @@
     </ul>
     @else
     <a class="link" href="{{$sections[10]->getFullUrl()}}">{{$sections[10]->name}}</a>
+    @endif
     @endif
 
   </div>

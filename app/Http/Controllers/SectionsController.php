@@ -131,6 +131,8 @@ class SectionsController extends Controller
         $section->topnav = 0;
       }
 
+      $section->save();
+
       $sections = Section::all();
       $message = 'Las modificaciones fueron guardadas.';
       $typeviews = Typeview::all();

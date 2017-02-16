@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Author;
 use App\Content;
 use App\Medio;
-use App\Mediatype;
-use App\Radio;
 use App\Section;
 use App\Tag;
 use App\Typeview;
@@ -119,8 +117,6 @@ class ContentsController extends Controller
         $authors = Author::all();
         $tags = Tag::all();
         $medios = Medio::all();
-        $radios = Radio::all();
-        $mediaTypes = Mediatype::all();
 
         if($section->childrens()->count() > 0){
           $subSections = $sections->where('section_id', $section->id);
@@ -129,7 +125,7 @@ class ContentsController extends Controller
         }
 
         return view('backend.contents.create', compact('section', 'sections', 'subSections',
-        'typeviews', 'authors', 'menuSections', 'tags', 'videoTypes', 'menuLeftSections', 'medios', 'radios', 'mediaTypes'));
+        'typeviews', 'authors', 'menuSections', 'tags', 'videoTypes', 'menuLeftSections', 'medios'));
     }
 
     public function createBySubSection(Section $section, Section $subSection)
@@ -154,11 +150,8 @@ class ContentsController extends Controller
         $authors = Author::all();
         $tags = Tag::all();
         $medios = Medio::all();
-        $radios = Radio::all();
-        $mediaTypes = Mediatype::all();
-
-        return view('backend.contents.create', compact('section', 'subSection', 'sections', 'subSections', 'radios',
-        'typeviews', 'authors', 'menuSections', 'tags', 'videoTypes', 'subSubSection', 'subSubSections', 'medios', 'mediaTypes'));
+        return view('backend.contents.create', compact('section', 'subSection', 'sections', 'subSections',
+        'typeviews', 'authors', 'menuSections', 'tags', 'videoTypes', 'subSubSection', 'subSubSections', 'medios'));
     }
 
     /**
@@ -188,15 +181,9 @@ class ContentsController extends Controller
       }elseif($request->input('typeview_id') == 4){
         $path = 'img/programas/';
         $contentName = 'Programa';
-      }elseif($request->input('typeview_id') == 5){
-        $path = 'img/radios/';
-        $contentName = 'Radio';
-      }elseif($request->input('typeview_id') == 6){
-        $path = 'img/medios/';
-        $contentName = 'Medios';
       }
 
-      //Redimensiono y Guardo las ImÃ¡genes (Si la imÃ¡gene se cargo)
+           //Redimensiono y Guardo las Imágenes (Si la imágene se cargo)
       if($request->file('img')){
         $file = $request->file('img');
     		$name = $url.'.'.$file->getClientOriginalExtension();
@@ -225,38 +212,22 @@ class ContentsController extends Controller
 
       $content->user_id = Auth::user()->id;
 
-      $content->filter_id = $request->input('filter_id');
-
-      $content->typeview_id = $content->section_id;
-
       $content->save();
-
-      // dd($content);
 
       //Guardando Tags asociados
       $content->tags()->sync($request->input('tags'), false);
 
       //Cargando los datos de la vista
       $menuSections = Section::where('level', 1)->where('topnav_back', 1)->where('active', 1)->get();
-
-      // dd($content->section_id);
-
-      if($content->section->level == 2){
-        $subSection = $content->section;
-        $section = $subSection->parent;
-        $sections = $section->getSubSections();
-        $redirect = '/backend/contents/createBySection/'.$section->id.'/'.$subSection->id;
-      }else{
-        $subSection = null;
-        $sections = null;
-        $redirect = '/backend/contents/createBySection/'.$content->section_id;
-
-      }
+      $subSection = $content->section;
+      $section = $subSection->parent;
+      $sections = $section->getSubSections();
 
       //Mensaje
-      $message = 'El contenido se ha sido creado correctamente!.';
-      return redirect($redirect)->with('message', $message);
-      // return view('backend.contents.show', compact('content', 'sections', 'section', 'subSection', 'menuSections', 'message'));
+      $message = 'El '.$contentName.' ha sido creado.';
+      return redirect('/backend/contents/createBySection/'.$section->id.'/'.$subSection->id);
+
+      return view('backend.contents.show', compact('content', 'sections', 'section', 'subSection', 'menuSections', 'message'));
     }
 
     /**
@@ -302,28 +273,22 @@ class ContentsController extends Controller
 
       $sections = Section::all();
 
-      // dd($content->section);
-
-      if($content->section->level == 1){
-        $section = $content->section;
-        $subSection = null;
-        $subSubSections = null;
+      if($content->section->level == 3){
+        $section = $content->section->parent->parent;
+        $subSection = $content->section->parent;
+        $subSubSection = $content->section;
+        $subSubSections = $sections->where('section_id', $subSection->id);
       }else{
         $section = $content->section->parent;
         $subSection = $content->section;
         $subSubSection = "";
       }
 
-
-
       $subSections = $sections->where('section_id', $section->id);
       $videoTypes = Videotype::all();
       $typeviews = Typeview::all();
       $authors = Author::all();
       $tags = Tag::all();
-      $radios = Radio::all();
-      $mediaTypes = Mediatype::all();
-
       return view('backend.contents.edit', compact('section', 'subSection', 'subSubSection', 'content', 'sections', 'subSections',
       'typeviews', 'authors', 'menuSections', 'tags', 'subSubSections', 'videoTypes'));
     }
@@ -367,11 +332,11 @@ class ContentsController extends Controller
 
         $sections = Section::all();
 
-        if($content->section->level == 1){
-          $section = $content->section;
-          $subSection = null;
-          $subSubSection = null;
-          $subSubSections = null;
+        if($content->section->level == 3){
+          $section = $content->section->parent->parent;
+          $subSection = $content->section->parent;
+          $subSubSection = $content->section;
+          $subSubSections = $sections->where('section_id', $subSection->id);
         }else{
           $section = $content->section->parent;
           $subSection = $content->section;
@@ -445,12 +410,6 @@ class ContentsController extends Controller
         $path = 'img/articulos/';
       }elseif($content->typeview_id == 4){
         $path = 'img/programas/';
-      }elseif($request->input('typeview_id') == 5){
-        $path = 'img/radio/';
-        $contentName = 'Radio';
-      }elseif($request->input('typeview_id') == 6){
-        $path = 'img/medios/';
-        $contentName = 'Medios';
       }
 
       $file = $request->file('file');

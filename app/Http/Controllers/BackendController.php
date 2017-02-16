@@ -14,7 +14,12 @@ class BackendController extends Controller
 
     public function index(){
       $menuSections = Section::where('level', 1)
-                              ->where('topnav_back', 1)->get();
-      return view('backend.index', compact('menuSections'));
+                              ->where('topnav_back', 1)
+                              ->where('active', 1)->get();
+
+      $muneLeftSections = Section::where('level', 1)
+                              ->where('active', 1)->get();
+
+      return view('backend.index', compact('menuSections', 'muneLeftSections'));
     }
 }
