@@ -8,13 +8,8 @@
                 <div class="panel-heading">
                   <h4>
                       @if(isset($subSection))
-                        @if(isset($subSubSection))
-                          <a href="/backend/contents/subSection/{{ $subSubSection->id }}"> {{ $subSubSection->name }}</a>
-                          / Nuevo {{ $subSubSection->typeview->name }}
-                        @else
                           <a href="/backend/contents/subSection/{{ $subSection->id }}"> {{ $subSection->name }}</a>
                           / Nuevo {{ $subSection->typeview->name }}
-                        @endif
                       @else
                         <a href="/backend/contents/section/{{ $section->id }}"> {{ $section->name }}</a>
                         / Nuevo {{ $section->typeview->name }}

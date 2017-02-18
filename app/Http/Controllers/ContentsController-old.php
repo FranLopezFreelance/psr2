@@ -183,7 +183,7 @@ class ContentsController extends Controller
         $contentName = 'Programa';
       }
 
-           //Redimensiono y Guardo las Im�genes (Si la im�gene se cargo)
+           //Redimensiono y Guardo las Im�genes (Si la im�gene se cargo)
       if($request->file('img')){
         $file = $request->file('img');
     		$name = $url.'.'.$file->getClientOriginalExtension();
@@ -383,12 +383,12 @@ class ContentsController extends Controller
     }
 
     public function addNewTag($name){
-      $url = str_replace(
-        array('á', 'é', 'í', 'ó', 'ú', ' '),
-        array('a', 'e', 'i', 'o', 'u', '-'),
-        $name
-      );
-      $url = strtolower($url);
+      // $url = str_replace(
+      //   array('á', 'é', 'í', 'ó', 'ú', ' '),
+      //   array('a', 'e', 'i', 'o', 'u', '-'),
+      //   $name
+      // );
+      // $url = strtolower($url);
 
       $tag = new Tag([
         'name' => $name,
