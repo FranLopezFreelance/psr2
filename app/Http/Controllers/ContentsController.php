@@ -229,8 +229,6 @@ class ContentsController extends Controller
 
       $content->filter_id = $request->input('filter_id');
 
-      $content->typeview_id = $content->section_id;
-
       $content->save();
 
       // dd($content);

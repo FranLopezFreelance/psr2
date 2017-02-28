@@ -33,6 +33,8 @@
                   <form class="form-horizontal" role="form" enctype='multipart/form-data' method="POST" action="/backend/contents">
                       {{ csrf_field() }}
 
+                      <input type="hidden" name="typeview_id" value="{{ $section->typeview_id }}" />
+
                       @if($section->typeview_id == 5 || $section->typeview_id == 6)
                         <div class="form-group{{ $errors->has('section_id') ? ' has-error' : '' }}">
                             <label for="section_id" class="col-md-4 control-label">Sección</label>
@@ -147,29 +149,18 @@
 
                         @endif
                       @else
-                        <div class="form-group{{ $errors->has('typeview_id') ? ' has-error' : '' }}">
-                            <label for="typeview_id" class="col-md-4 control-label">Sección</label>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Sección</label>
                             <div class="col-md-6">
-                                <select class="form-control" name="typeview_id" required>
+                                <select class="form-control">
                                   @if(isset($section))
                                     <option value="{{ $section->id }}">{{ $section->name }}</option>
                                   @else
                                     <option value="0">Elegir...</option>
-                                      @foreach($typeviews as $typeview)
-                                        @if(old('typeview') && old('typeview') == $typeview->id)
-                                          <option value="{{ $typeview->id }}" selected>{{ $typeview->name }}</option>
-                                        @else
-                                          <option value="{{ $typeview->id }}">{{ $typeview->name }}</option>
-                                        @endif
-                                      @endforeach
                                   @endif
                                 </select>
 
-                                @if ($errors->has('typeview_id'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('typeview_id') }}</strong>
-                                    </span>
-                                @endif
                             </div>
                         </div>
 
@@ -207,7 +198,7 @@
 
                               <input type="checkbox" name="dest"  /> Destacado
 
-                                @if ($errors->has('typeview_id'))
+                                @if ($errors->has('dest'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('dest') }}</strong>
                                     </span>
