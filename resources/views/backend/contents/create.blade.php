@@ -78,6 +78,30 @@
                                   @endif
                               </div>
                           </div>
+
+                          <div class="form-group{{ $errors->has('video_id') ? ' has-error' : '' }}">
+                              <label for="video_id" class="col-md-4 control-label">Video ID</label>
+                              <div class="col-md-6">
+                                  <input id="video_id" type="text" class="form-control video_id" name="video_id" value="{{ old('video_id') }}">
+                                  @if ($errors->has('video_id'))
+                                      <span class="help-block">
+                                          <strong>{{ $errors->first('video_id') }}</strong>
+                                      </span>
+                                  @endif
+                              </div>
+                          </div>
+
+                          <div class="form-group{{ $errors->has('radio_url') ? ' has-error' : '' }}">
+                              <label for="radio_url" class="col-md-4 control-label">Radio URL</label>
+                              <div class="col-md-6">
+                                  <input id="radio_url" type="text" class="form-control radio_url" name="radio_url" value="{{ old('radio_url') }}">
+                                  @if ($errors->has('radio_url'))
+                                      <span class="help-block">
+                                          <strong>{{ $errors->first('radio_url') }}</strong>
+                                      </span>
+                                  @endif
+                              </div>
+                          </div>
                         @else
                           <div class="form-group{{ $errors->has('filter_id') ? ' has-error' : '' }}">
                               <label for="filter_id" class="col-md-4 control-label">Medio</label>
