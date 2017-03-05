@@ -404,21 +404,29 @@ class ContentsController extends Controller
       $typeView = $content->typeview->name;
       $subSection = $content->section;
       $content->delete();
+
       $menuSections = Section::where('level', 1)
                               ->where('topnav_back', 1)
                               ->where('active', 1)->get();
 
-      if($subSection->level == 2){
-        $section = $subSection->parent;
-      }elseif($subSection->level == 3){
-        $section = $subSection->parent->parent;
-      }
+      $menuLeftSections = Section::where('level', 1)
+                            ->where('active', 1)->get();
 
-      $contents = Content::where('section_id', $subSection->id)->orderBy('date', 'desc')->paginate(15);
+      $sections = Section::all();
 
-      $message = 'El '.$typeView.' ha sido eliminada.';
+      $principalSections = $sections->where('level', 1)
+                                    ->where('topnav_back', 1)
+                                    ->where('active', 1);//->get();
 
-      return view('backend.contents.index', compact('section', 'subSection', 'contents', 'menuSections', 'message'));
+
+      $section = $sections->where('level', 1)->first();
+      $subSections = $sections->where('level', 2);
+      $subSection = $sections->where('level', 2)->first();
+      $contents = Content::where('section_id', $subSection->id)->paginate(15);
+
+      $message = 'El contenido ha sido eliminado.';
+
+      return view('backend.contents.index', compact('sections', 'section', 'subSection', 'contents', 'message', 'menuSections', 'menuLeftSections'));
     }
 
     public function addNewTag($name){

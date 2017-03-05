@@ -23,7 +23,15 @@
                         @if($principalSection->childrens()->count() > 0)
                           <li><a href="/backend/contents/section/{{ $principalSection->id }}">{{ $principalSection->name }} ({{ $principalSection->childrens()->count() }})</a></li>
                         @else
-                          <li><a href="">{{ $principalSection->name }} ({{ $principalSection->childrens()->count() }})</a></li>
+                          @if($principalSection->contents()->count() > 0)
+                            <li><a href="/backend/contents/section/{{ $principalSection->id }}">{{ $principalSection->name }} ({{ $principalSection->contents()->count() }})</a></li>
+                          @else
+                            @if($principalSection->id == 9)
+                              <li><a href="/backend/contents/section/{{ $principalSection->id }}">{{ $principalSection->name }} ({{ $principalSection->contents()->count() }})</a></li>
+                            @else
+                              <li><a href="">{{ $principalSection->name }} ({{ $principalSection->childrens()->count() }})</a></li>
+                            @endif
+                          @endif
                         @endif
                           @if($principalSection->id == $section->id)
                             <ul>
