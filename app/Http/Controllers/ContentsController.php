@@ -196,7 +196,11 @@ class ContentsController extends Controller
       }elseif($request->input('typeview_id') == 6){
         $path = 'img/medios/';
         $contentName = 'Medios';
+      }elseif($request->input('typeview_id') == 9){
+        $path = 'img/libros/';
+        $contentName = 'Libro';
       }
+
 
       //Redimensiono y Guardo las Imágenes (Si la imágene se cargo)
       if($request->file('img')){
@@ -445,12 +449,15 @@ class ContentsController extends Controller
         $path = 'img/articulos/';
       }elseif($content->typeview_id == 4){
         $path = 'img/programas/';
-      }elseif($request->input('typeview_id') == 5){
+      }elseif($content->typeview_id == 5){
         $path = 'img/radio/';
         $contentName = 'Radio';
-      }elseif($request->input('typeview_id') == 6){
+      }elseif($content->typeview_id == 6){
         $path = 'img/medios/';
         $contentName = 'Medios';
+      }elseif($content->typeview_id == 9){
+        $path = 'img/libros/';
+        $contentName = 'Libro';
       }
 
       $file = $request->file('file');

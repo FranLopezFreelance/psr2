@@ -83,7 +83,7 @@
                           </div>
                       </div>
 
-                      @if($section->id != 4 && $section->id != 5 && $section->id != 6)
+                      @if($section->id != 4 && $section->id != 5 && $section->id != 6 && $section->id != 9)
                       <div class="form-group{{ $errors->has('section_id') ? ' has-error' : '' }}">
                           <label for="section_id" class="col-md-4 control-label">Sub Sección</label>
                           <div class="col-md-6">
@@ -368,7 +368,7 @@
                           </div>
                       </div>
 
-                      @if($section->id == 3)
+                      @if($section->id == 3 || $section->id == 9)
                         <div class="form-group{{ $errors->has('author_id') ? ' has-error' : '' }}">
                             <label for="author_id" class="col-md-4 control-label">Autor</label>
                             <div class="col-md-6">
