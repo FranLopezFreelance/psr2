@@ -78,6 +78,12 @@ class Content extends Model
         return '/img/articulos/standard/'.$this->img_url;
       }elseif($tipeView == 4){
         return '/img/programas/standard/'.$this->img_url;
+      }elseif($tipeView == 5){
+        return '/img/radio/standard/'.$this->img_url;
+      }elseif($tipeView == 6){
+        return '/img/medios/standard/'.$this->img_url;
+      }elseif($tipeView == 9){
+        return '/img/libros/standard/'.$this->img_url;
       }
     }
 
@@ -86,6 +92,12 @@ class Content extends Model
         return '/img/articulos/medium/'.$this->img_url;
       }elseif($tipeView == 4){
         return '/img/programas/medium/'.$this->img_url;
+      }elseif($tipeView == 5){
+        return '/img/radio/medium/'.$this->img_url;
+      }elseif($tipeView == 6){
+        return '/img/medios/medium/'.$this->img_url;
+      }elseif($tipeView == 9){
+        return '/img/libros/medium/'.$this->img_url;
       }
     }
 
@@ -94,6 +106,12 @@ class Content extends Model
         return '/img/articulos/small/'.$this->img_url;
       }elseif($tipeView == 4){
         return '/img/programas/small/'.$this->img_url;
+      }elseif($tipeView == 5){
+        return '/img/radio/small/'.$this->img_url;
+      }elseif($tipeView == 6){
+        return '/img/medios/small/'.$this->img_url;
+      }elseif($tipeView == 9){
+        return '/img/libros/small/'.$this->img_url;
       }
     }
 
