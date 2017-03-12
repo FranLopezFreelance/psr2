@@ -164,25 +164,6 @@
 
                         @endif
                       @else
-                      <div class="form-group{{ $errors->has('section_id') ? ' has-error' : '' }}">
-                          <label for="section_id" class="col-md-4 control-label">Sección</label>
-                          <div class="col-md-6">
-                            <select class="form-control" name="section_id" required>
-                                  @foreach($sections as $otherSubSection)
-                                    @if($section->id == $otherSubSection->id)
-                                      <option value="{{ $otherSubSection->id }}" selected>{{ $otherSubSection->name }}</option>
-                                      use App\Section;
-                                    @endif
-                                  @endforeach
-                            </select>
-
-                              @if ($errors->has('section_id'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('section_id') }}</strong>
-                                  </span>
-                              @endif
-                          </div>
-                      </div>
 
                         <div class="form-group">
                             <label class="col-md-4 control-label">Sección</label>
@@ -198,31 +179,38 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('section_id') ? ' has-error' : '' }}">
-                            <label for="section_id" class="col-md-4 control-label">Sub Sección</label>
-                            <div class="col-md-6">
-                              <select class="form-control" name="section_id" required>
-                                @if(isset($subSection))
-                                  <option value="{{ $subSection->id }}">{{ $subSection->name }}</option>
-                                @else
-                                  <option value="0">Elegir...</option>
-                                    @foreach($subSections as $otherSubSection)
-                                      @if(old('section_id') && old('section_id') == $otherSubSection->id)
-                                        <option value="{{ $otherSubSection->id }}" selected>{{ $otherSubSection->name }}</option>
-                                      @else
-                                        <option value="{{ $otherSubSection->id }}">{{ $otherSubSection->name }}</option>
-                                      @endif
-                                    @endforeach
-                                @endif
-                              </select>
+                        @if($section->typeview_id == 9)
+                          <input type="hidden" name="section_id" value="{{ $section->id }}" />
+                          <input type="hidden" name="typeview_id" value="{{ $section->typeview_id }}" />
+                        @else
 
-                                @if ($errors->has('section_id'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('section_id') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                          <div class="form-group{{ $errors->has('section_id') ? ' has-error' : '' }}">
+                              <label for="section_id" class="col-md-4 control-label">Sub Sección</label>
+                              <div class="col-md-6">
+                                <select class="form-control" name="section_id" required>
+                                  @if(isset($subSection))
+                                    <option value="{{ $subSection->id }}">{{ $subSection->name }}</option>
+                                  @else
+                                    <option value="0">Elegir...</option>
+                                      @foreach($subSections as $otherSubSection)
+                                        @if(old('section_id') && old('section_id') == $otherSubSection->id)
+                                          <option value="{{ $otherSubSection->id }}" selected>{{ $otherSubSection->name }}</option>
+                                        @else
+                                          <option value="{{ $otherSubSection->id }}">{{ $otherSubSection->name }}</option>
+                                        @endif
+                                      @endforeach
+                                  @endif
+                                </select>
+
+                                  @if ($errors->has('section_id'))
+                                      <span class="help-block">
+                                          <strong>{{ $errors->first('section_id') }}</strong>
+                                      </span>
+                                  @endif
+                              </div>
+                          </div>
+
+                        @endif
                       @endif
 
 
@@ -410,7 +398,7 @@
                           </div>
                       </div>
 
-                      @if($section->id == 3)
+                      @if($section->id == 3 || $section->id == 9)
                         <div class="form-group{{ $errors->has('author_id') ? ' has-error' : '' }}">
                             <label for="author_id" class="col-md-4 control-label">Autor</label>
                             <div class="col-md-6">
