@@ -60,11 +60,11 @@ class FrontController extends Controller
     $segundo = $videos->items()[1];
     $videos->offsetUnset(1);
     if($primero->date == $segundo->date){
-      if($primero->tags()->contains('id', 1)){
+      if($primero->tags->contains('id', 1)){
         $nacional = $primero;
         $internacional = $segundo;
       }
-      else if($segundo->tags()->contains('id', 1)){
+      else if($segundo->tags->contains('id', 1)){
         $nacional = $segundo;
         $internacional = $primero;
       }
