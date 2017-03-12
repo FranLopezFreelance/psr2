@@ -10,14 +10,11 @@
         src="http://www.youtube.com/embed/TM93e9K01hc" frameborder="0"></iframe>
       </div>
   </div>
-<!--
+
   @include('front.prensa.assets.carousel',['type'=>'Videos','contenidos'=>$videos,'class'=>'videos'])
   @include('front.prensa.assets.carousel',['type'=>'Artículos','contenidos'=>$articulos,'class'=>'articulos'])
   @include('front.prensa.assets.carousel',['type'=>'Radio','contenidos'=>$radio,'class'=>'radio'])
--->
-<div class="row">
-  <img src="/img/test/prensa.jpg" style="width:100%" alt="">
-</div>
+
 
 
 </div>
