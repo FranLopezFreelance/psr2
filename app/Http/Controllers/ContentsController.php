@@ -196,11 +196,7 @@ class ContentsController extends Controller
       }elseif($request->input('typeview_id') == 6){
         $path = 'img/medios/';
         $contentName = 'Medios';
-      }elseif($request->input('typeview_id') == 9){
-        $path = 'img/libros/';
-        $contentName = 'Libro';
       }
-
 
       //Redimensiono y Guardo las Imágenes (Si la imágene se cargo)
       if($request->file('img')){
@@ -243,7 +239,7 @@ class ContentsController extends Controller
       //Cargando los datos de la vista
       $menuSections = Section::where('level', 1)->where('topnav_back', 1)->where('active', 1)->get();
 
-      // dd($content->section_id);
+       //dd($content->section);
 
       if($content->section->level == 2){
         $subSection = $content->section;
@@ -404,29 +400,21 @@ class ContentsController extends Controller
       $typeView = $content->typeview->name;
       $subSection = $content->section;
       $content->delete();
-
       $menuSections = Section::where('level', 1)
                               ->where('topnav_back', 1)
                               ->where('active', 1)->get();
 
-      $menuLeftSections = Section::where('level', 1)
-                            ->where('active', 1)->get();
+      if($subSection->level == 2){
+        $section = $subSection->parent;
+      }elseif($subSection->level == 3){
+        $section = $subSection->parent->parent;
+      }
 
-      $sections = Section::all();
+      $contents = Content::where('section_id', $subSection->id)->orderBy('date', 'desc')->paginate(15);
 
-      $principalSections = $sections->where('level', 1)
-                                    ->where('topnav_back', 1)
-                                    ->where('active', 1);//->get();
+      $message = 'El '.$typeView.' ha sido eliminada.';
 
-
-      $section = $sections->where('level', 1)->first();
-      $subSections = $sections->where('level', 2);
-      $subSection = $sections->where('level', 2)->first();
-      $contents = Content::where('section_id', $subSection->id)->paginate(15);
-
-      $message = 'El contenido ha sido eliminado.';
-
-      return view('backend.contents.index', compact('sections', 'section', 'subSection', 'contents', 'message', 'menuSections', 'menuLeftSections'));
+      return view('backend.contents.index', compact('section', 'subSection', 'contents', 'menuSections', 'message'));
     }
 
     public function addNewTag($name){
@@ -457,15 +445,12 @@ class ContentsController extends Controller
         $path = 'img/articulos/';
       }elseif($content->typeview_id == 4){
         $path = 'img/programas/';
-      }elseif($content->typeview_id == 5){
+      }elseif($request->input('typeview_id') == 5){
         $path = 'img/radio/';
         $contentName = 'Radio';
-      }elseif($content->typeview_id == 6){
+      }elseif($request->input('typeview_id') == 6){
         $path = 'img/medios/';
         $contentName = 'Medios';
-      }elseif($content->typeview_id == 9){
-        $path = 'img/libros/';
-        $contentName = 'Libro';
       }
 
       $file = $request->file('file');

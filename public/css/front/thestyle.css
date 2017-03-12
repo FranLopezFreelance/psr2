@@ -1953,3 +1953,127 @@ div.section div.content div.tags a.tag {
   width: 100%;
   height: 100%;
 }
+div.prensa div.content-of-prensa-list {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.2s ease-out;
+}
+div.prensa div.content-of-prensa-list:hover {
+  transition: all 0.2s ease-out;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.25), 0 2px 2px rgba(0, 0, 0, 0.22);
+}
+div.prensa div.reel {
+  margin-bottom: 50px;
+}
+div.prensa div.pimagen {
+  margin-bottom: 10px;
+}
+div.prensa div.pimagen img {
+  width: 100%;
+}
+div.prensa .title {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+div.prensa div.extra-slider {
+  padding: 20px 100px;
+}
+div.prensa div.extra-slider i.material-icons {
+  color: black;
+}
+div.prensa div.pcontent {
+  margin-bottom: 20px;
+  min-height: 70px;
+}
+div.prensa div.pcontent > a {
+  float: left;
+  width: 30%;
+}
+div.prensa div.pcontent > a img {
+  padding-left: 15px;
+}
+div.prensa div.pcontent div.title {
+  float: left;
+  text-align: left;
+  padding-left: 20px;
+  padding-right: 10px;
+  width: 70%;
+}
+div.prensa div.pcontent div.title a {
+  word-wrap: break-word;
+}
+.about .intro span {
+  font-size: 25px;
+}
+.about .intro p {
+  font-size: 20px;
+}
+div.integrante {
+  padding-top: 50px;
+}
+div.integrante:first-child {
+  padding-top: 20px;
+}
+div.integrante .img {
+  border-bottom: solid 1px black;
+  text-align: center;
+}
+div.integrante .img img {
+  width: 100%;
+  max-width: 284px;
+  margin-top: 20px;
+}
+div.integrante span {
+  font-size: 20px;
+  color: #6f6f6f;
+  text-align: center;
+  display: block;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.4);
+  padding: 5px;
+}
+div.integrante .texto .img {
+  text-align: center;
+}
+div.integrante .texto h2 {
+  font-weight: 800;
+  text-align: center;
+}
+div.integrante .texto p {
+  padding-top: 20px;
+  font-size: 18px;
+  font-weight: 300;
+}
+div.end {
+  border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+  min-height: 10px;
+}
+@media (min-width: 768px) {
+  .about {
+    padding-top: 30px;
+    padding-bottom: 100px;
+  }
+  .texto p {
+    padding-right: 20px;
+  }
+  .texto h2 {
+    text-align: left!important;
+  }
+}
+@media (min-width: 1200px) {
+  .integrante {
+    padding-right: 100px;
+  }
+  .about {
+    padding-top: 30px;
+    padding-bottom: 100px;
+  }
+  .about .intro {
+    padding-left: 100px;
+  }
+  .texto {
+    padding-left: 100px;
+  }
+  .texto p {
+    padding-right: 50px;
+  }
+}
