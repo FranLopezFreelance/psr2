@@ -94,6 +94,8 @@
                               </div>
                           </div>
                         @else
+                          <input type="hidden" name="section_id" value="{{ $section->id }}" />
+
                           <div class="form-group{{ $errors->has('filter_id') ? ' has-error' : '' }}">
                               <label for="filter_id" class="col-md-4 control-label">Medio</label>
                               <div class="col-md-6">
