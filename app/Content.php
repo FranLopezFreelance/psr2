@@ -127,6 +127,7 @@ class Content extends Model
         case 3:$folder='articulos'; break;
         case 4:$folder='programas'; break;
         case 5:$folder='radio'; break;
+        case 9:$folder='libros'; break;
       }
       return '/img/'.$folder.'/'.$subfolder.'/'.$this->img_url;
     }

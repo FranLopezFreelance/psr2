@@ -31,6 +31,8 @@ Route::get('/moreHomeVideos', 'FrontController@getMoreHomeVideos');
 Route::get('/search/{query}', 'FrontController@getContentsBySearch');
 Route::get('/temas/{tag}', 'FrontController@getContentsByTag');
 Route::get('/psr-en-los-medios', 'FrontController@getContentsofPrensa');
+Route::get('/libros', 'FrontController@getContentsOfLibros');
+Route::get('/libros/{content}', 'FrontController@getContent2');
 Route::get('/psr-en-los-medios/{medio}', 'FrontController@getContentsByMedio');
 Route::get('/{section}', 'FrontController@getSection');
 Route::get('/{section}/{subSection}', 'FrontController@getSubSection');

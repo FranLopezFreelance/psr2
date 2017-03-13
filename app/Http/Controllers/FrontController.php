@@ -84,6 +84,7 @@ class FrontController extends Controller
       $sql = 'section_id in (SELECT id from sections WHERE section_id = '.$section->id.')';
       $contents = Content::whereRaw($sql)->paginate(12);
       $target = $section;
+    //  dd($contents);
 
       return view($section->typeView->index_view, compact('target','contents'));
     }else{
@@ -235,6 +236,29 @@ class FrontController extends Controller
 
       return view($section->typeView->index_view, compact('target','videos','articulos','radio'));
 
+  }
+
+  public function getContentsOfLibros(Request $request){
+
+      $sql = 'section_id = 9';
+      $libros = Content::whereRaw($sql)->get();
+      $section = Section::where('url', 'libros')->first();
+      $target = $section;
+
+      return view($section->typeView->index_view, compact('target','libros'));
+
+  }
+
+  public function getContent2($content){
+    if($content = Content::where('url', $content)->first()){
+      // !!!!! FALTA IF SUBSECTION Y SECCION
+      $target = $content;
+      $content->addView();
+
+      return view($content->typeView->show_view, compact('target','content'));
+    }else{
+      return view('errors.404');
+    }
   }
 
 }
