@@ -107,6 +107,50 @@
                           </div>
                       </div>
                       @elseif($section->id == 6)
+                      <div class="form-group{{ $errors->has('filter_id') ? ' has-error' : '' }}">
+                          <label for="filter_id" class="col-md-4 control-label">Medio</label>
+                          <div class="col-md-6">
+                            <select class="form-control" name="filter_id" required>
+                                <option value="0">Elegir...</option>
+                                  @foreach($medios as $medio)
+                                    @if($content->filter_id == $medio->id)
+                                      <option value="{{ $medio->id }}" selected>{{ $medio->name }}</option>
+                                    @else
+                                      <option value="{{ $medio->id }}">{{ $medio->name }}</option>
+                                    @endif
+                                  @endforeach
+                            </select>
+
+                              @if ($errors->has('section_id'))
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('section_id') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                      </div>
+
+                      <div class="form-group{{ $errors->has('mediatype_id') ? ' has-error' : '' }}">
+                          <label for="mediatype_id" class="col-md-4 control-label">Tipo de Medio</label>
+                          <div class="col-md-6">
+                            <select class="form-control" name="mediatype_id" required>
+                                <option value="0">Elegir...</option>
+                                  @foreach($mediaTypes as $mediatype)
+                                    @if($content->mediatype_id == $mediatype->id)
+                                      <option value="{{ $mediatype->id }}" selected>{{ $mediatype->name }}</option>
+                                    @else
+                                      <option value="{{ $mediatype->id }}">{{ $mediatype->name }}</option>
+                                    @endif
+                                  @endforeach
+                            </select>
+
+                              @if ($errors->has('section_id'))
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('section_id') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                      </div>
+
                       <div class="form-group{{ $errors->has('video_id') ? ' has-error' : '' }}">
                           <label for="video_id" class="col-md-4 control-label">Video ID</label>
                           <div class="col-md-6">
@@ -116,7 +160,7 @@
                                 @else
                                   value="{{ $content->video_id }}"
                                 @endif
-                              required>
+                              >
                               @if ($errors->has('video_id'))
                                   <span class="help-block">
                                       <strong>{{ $errors->first('video_id') }}</strong>
@@ -134,7 +178,7 @@
                                 @else
                                   value="{{ $content->radio_url }}"
                                 @endif
-                              required>
+                              >
                               @if ($errors->has('radio_url'))
                                   <span class="help-block">
                                       <strong>{{ $errors->first('radio_url') }}</strong>

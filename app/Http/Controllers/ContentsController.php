@@ -324,11 +324,12 @@ class ContentsController extends Controller
       $videoTypes = Videotype::all();
       $typeviews = Typeview::all();
       $authors = Author::all();
+      $medios = Medio::all();
       $tags = Tag::all();
       $radios = Radio::all();
       $mediaTypes = Mediatype::all();
 
-      return view('backend.contents.edit', compact('section', 'subSection', 'subSubSection', 'content', 'sections', 'subSections',
+      return view('backend.contents.edit', compact('section', 'subSection', 'mediaTypes', 'medios', 'subSubSection', 'content', 'sections', 'subSections',
       'typeviews', 'authors', 'menuSections', 'tags', 'subSubSections', 'videoTypes'));
     }
 
@@ -387,9 +388,11 @@ class ContentsController extends Controller
         $videoTypes = Videotype::all();
         $typeviews = Typeview::all();
         $authors = Author::all();
+        $medios = Medio::all();
         $tags = Tag::all();
+
         $message = "El ".$content->typeview->name." se ha modificado correctamente.";
-        return view('backend.contents.edit', compact('section', 'subSection', 'subSubSection', 'content', 'sections', 'subSections',
+        return view('backend.contents.edit', compact('section', 'subSection', 'medios', 'subSubSection', 'content', 'sections', 'subSections',
         'typeviews', 'authors', 'menuSections', 'tags', 'videoTypes', 'subSubSections', 'message'));
     }
 
