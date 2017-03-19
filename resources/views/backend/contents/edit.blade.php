@@ -322,6 +322,26 @@
                           </div>
                       </div>
 
+                      <div class="form-group{{ $errors->has('canonical') ? ' has-error' : '' }}">
+                          <label for="canonical" class="col-md-4 control-label">canonical</label>
+
+                          <div class="col-md-6">
+                              <input id="canonical" type="text" class="form-control" name="canonical"
+                                @if(old('title'))
+                                  value="{{ old('canonical') }}"
+                                @else
+                                  value="{{ $content->canonical }}"
+                                @endif
+                              required>
+
+                              @if ($errors->has('canonical'))
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('canonical') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                      </div>
+
                       <div class="form-group{{ $errors->has('social_desc') ? ' has-error' : '' }}">
                           <label for="social_desc" class="col-md-4 control-label">Desc. Social</label>
 

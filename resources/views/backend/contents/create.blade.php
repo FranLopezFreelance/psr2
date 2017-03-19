@@ -276,6 +276,7 @@
                                 @endif
                             </div>
                         </div>
+
                       @endif
 
                       <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
@@ -311,6 +312,20 @@
                               @if ($errors->has('url'))
                                   <span class="help-block">
                                       <strong>{{ $errors->first('url') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                      </div>
+
+                      <div class="form-group{{ $errors->has('canonical') ? ' has-error' : '' }}">
+                          <label for="canonical" class="col-md-4 control-label">Canonical</label>
+
+                          <div class="col-md-6">
+                              <input id="canonical" type="text" class="form-control" name="canonical" value="{{ old('canonical') }}" required>
+
+                              @if ($errors->has('canonical'))
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('canonical') }}</strong>
                                   </span>
                               @endif
                           </div>

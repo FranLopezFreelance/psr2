@@ -275,8 +275,14 @@ class ContentsController extends Controller
                               ->where('topnav_back', 1)
                               ->where('active', 1)->get();
 
-      $subSection = $content->section;
-      $section = $subSection->parent;
+      if( $content->section->level == 2){
+        $subSection = $content->section;
+        $section = $subSection->parent;
+      }else{
+        $subSection = null;
+        $section = $content->section;
+      }
+
       $sections = $section->getSubSections();
       return view('backend.contents.show', compact('content', 'sections', 'section', 'subSection', 'menuSections'));
     }
@@ -390,10 +396,11 @@ class ContentsController extends Controller
         $authors = Author::all();
         $medios = Medio::all();
         $tags = Tag::all();
+        $mediaTypes = Mediatype::all();
 
         $message = "El ".$content->typeview->name." se ha modificado correctamente.";
         return view('backend.contents.edit', compact('section', 'subSection', 'medios', 'subSubSection', 'content', 'sections', 'subSections',
-        'typeviews', 'authors', 'menuSections', 'tags', 'videoTypes', 'subSubSections', 'message'));
+        'typeviews', 'authors', 'menuSections', 'tags', 'videoTypes', 'subSubSections', 'mediaTypes', 'message'));
     }
 
     /**
