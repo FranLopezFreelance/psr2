@@ -216,9 +216,15 @@ p {
   font-family: 'Lato', sans-serif;
   color: black;
 }
-html,
+/*
+html,body{
+	background-color: #f2f2f2;
+}
+*/
 body {
-  background-color: #f2f2f2;
+  background-image: url('/img/blue-sky.jpg');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 .container-fluid {
   margin-right: auto;
@@ -499,6 +505,9 @@ nav.main-menu li.dropdown a:link {
   background: transparent!important;
   color: black!important;
 }
+nav.main-menu li.dropdown > ul.dropdown-menu > li.active > a {
+  color: white!important;
+}
 nav.main-menu li.dropdown > ul.dropdown-menu > li > a {
   color: #282828!important;
   padding: 10px 30px 10px 10px!important;
@@ -584,12 +593,15 @@ nav.main-menu ul.nav li a {
   font-size: 14px;
 }
 @media (min-width: 768px) {
-  nav.main-menu ul.nav li:hover {
+  nav.main-menu ul.nav li:hover,
+  nav.main-menu ul.nav li.active {
     transition: all 0.2s ease-out;
     background-color: #032c51;
   }
-  nav.main-menu ul.nav li:hover a {
-    color: white;
+  nav.main-menu ul.nav li:hover a,
+  nav.main-menu ul.nav li.active a {
+    color: white!important;
+    background-color: transparent;
   }
 }
 nav.main-menu ul.nav li:select {
@@ -1682,7 +1694,18 @@ div.home-contacto div.center {
 }
 div.home-contacto div.center p {
   font-size: 26px;
-  font-weight: 700;
+}
+div.home-contacto div.center p.oposicion {
+  font-size: 20px;
+  color: white;
+  font-weight: 300;
+  margin: 0;
+}
+div.home-contacto div.center p.resistencia {
+  font-size: 40px;
+  color: #10beff;
+  letter-spacing: 5px;
+  margin-bottom: 30px;
 }
 div.home-contacto img {
   max-width: 390px;
@@ -1952,6 +1975,9 @@ div.section div.content div.tags a.tag {
   left: 0;
   width: 100%;
   height: 100%;
+}
+div.prensa li.item {
+  width: 100%;
 }
 div.prensa div.content-of-prensa-list {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);

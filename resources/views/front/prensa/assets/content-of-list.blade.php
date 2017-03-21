@@ -3,12 +3,12 @@
 
 <div class="content-of-prensa-list">
   <div class="pimagen">
-    <a href=""><img data-original="{{$content->getImageByType(2)}}" alt=""></a>
+    <a href="{{$content->getFullUrl()}}"><img data-original="{{$content->getImageByType(2)}}" alt=""></a>
   </div>
   <div class="pcontent">
-    <a href="#"><img data-original="/img/medios/canal26.jpg" alt=""></a>
+    <a href="#"><img data-original="{{$content->getMedioImg()}}" alt=""></a>
     <div class="title">
-      <a class="title" href="">{{$content->title}}</a>
+      <a class="title" href="{{$content->getFullUrl()}}">{{$content->title}}</a>
       @include('front.assets.stats',$content)
     </div>
 

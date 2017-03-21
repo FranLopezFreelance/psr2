@@ -31,7 +31,8 @@
       </form>
       <div class="clearfix"></div>
       <div class="center">
-        <p>NO SOMOS LA OPOSICION</p>
+        <p class="oposicion">NO SOMOS LA OPOSICIÓN</p>
+        <p class="resistencia">SOMOS LA RESISTENCIA</p>
         <img class="lazy" data-original="/img/contacto.png" alt="">
       </div>
 
@@ -43,7 +44,7 @@
 <div id="form-result" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      
+
       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
       <div class="top">

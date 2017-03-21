@@ -12,7 +12,7 @@ class Section extends Model
     ];
 
     public function childrens(){
-      return $this->hasMany('App\Section', 'section_id');
+      return $this->hasMany('App\Section', 'section_id')->where('sections.active',1);
     }
 
     public function parent(){

@@ -127,6 +127,7 @@ class Content extends Model
         case 3:$folder='articulos'; break;
         case 4:$folder='programas'; break;
         case 5:$folder='radio'; break;
+        case 6:$folder='medios'; break;
         case 9:$folder='libros'; break;
       }
       return '/img/'.$folder.'/'.$subfolder.'/'.$this->img_url;
@@ -143,5 +144,23 @@ class Content extends Model
         if(in_array($value->id,$tags))return $value;
       }
       return new Tag();
+    }
+
+    public function getMedioImg(){
+      switch ($this->filter_id) {
+        case 1:$folder='canal-26'; break;
+        case 2:$folder='cronica-tv'; break;
+        case 3:$folder='russia-today'; break;
+        case 4:$folder='annurtv'; break;
+        case 5:$folder='hispantv'; break;
+        case 6:$folder='presstv'; break;
+        case 6:$folder='telesur'; break;
+        case 6:$folder='actualidadrt'; break;
+        case 9:$folder='redvoltaire'; break;
+        case 10:$folder='newdownmagazine'; break;
+        case 11:$folder='ntn24'; break;
+        default: $folder = "default";break;
+      }
+      return '/img/medios/'.$folder.'.jpg';
     }
 }

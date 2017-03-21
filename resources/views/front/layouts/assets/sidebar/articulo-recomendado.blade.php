@@ -6,10 +6,14 @@
 
 
     <div class="imagen">
-      <a href="{{$content->getFullUrl()}}"><img class="full-width lazy" data-original="{{$content->getImageByType(3)}}" alt=""></a>
+      @if($content->typeview_id == 2)<a href="{{$content->section->getFullUrl()}}"><img class="full-width lazy" data-original="{{$content->getImageByType(3)}}" alt=""></a>
+      @else <a href="{{$content->getFullUrl()}}"><img class="full-width lazy" data-original="{{$content->getImageByType(3)}}" alt=""></a>
+      @endif
     </div>
     <div class="link">
-        <a href="{{$content->getFullUrl()}}">{{str_limit($content->title,80)}}</a>
+        @if($content->typeview_id == 2)<a href="{{$content->section->getFullUrl()}}">{{str_limit($content->title,80)}}</a>
+        @else<a href="{{$content->getFullUrl()}}">{{str_limit($content->title,80)}}</a>
+        @endif
       </div>
 
 <div class="clearfix"></div>

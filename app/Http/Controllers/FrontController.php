@@ -222,13 +222,13 @@ class FrontController extends Controller
 
   public function getContentsOfPrensa(Request $request){
 
-      $sql = 'section_id = 25';
+      $sql = 'mediatype_id = 1 AND typeview_id = 6';
       $videos = Content::whereRaw($sql)->get();
 
-      $sql = 'section_id = 20';
+      $sql = 'mediatype_id = 3 AND typeview_id = 6';
       $articulos = Content::whereRaw($sql)->get();
 
-      $sql = 'section_id = 30';
+      $sql = 'mediatype_id = 2 AND typeview_id = 6';
       $radio = Content::whereRaw($sql)->get();
 
       $section = Section::where('url', 'PSR-en-los-medios')->first();
