@@ -72,6 +72,13 @@ class SectionsController extends Controller
                               ->where('active', 1)->get();
 
       $section = new Section($request->all());
+
+      if($request->input('topnav')){
+        $content->topnav = 1;
+      }else{
+        $content->topnav = 0;
+      }
+
       $section->save();
       $message = 'La Sección ha sido creada.';
       return view('backend.sections.show', compact('section', 'message', 'menuSections'));

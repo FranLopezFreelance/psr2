@@ -5,7 +5,9 @@
       <!--<li class="item pilar proyecto">-->
       <li class="item pilar">
         <img src="/img/home/cabildo-abierto-20170331.jpg" alt="">
+
       </li>
+
       <li class="item pilar">
         <img class="lazypilar"  src="/img/pilares/proyecto-segunda-republica.jpg" alt="">
       </li>

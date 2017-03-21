@@ -7,19 +7,31 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4>
-                <a href="/backend/contents/subSection/{{ $subSection->id }}">Contenidos</a>
-                <!-- <a class="btn btn-success article-create" href="/backend/contents/{{ $section->id }}/createBySection">Crear</a> -->
-
+                @if(isset($subSection))
+                  <a href="/backend/contents/subSection/{{ $subSection->id }}">Contenidos</a>
+                  <!-- <a class="btn btn-success article-create" href="/backend/contents/{{ $section->id }}/createBySection">Crear</a> -->
+                @else
+                  <a href="/backend/contents/section/{{ $section->id }}">Contenidos</a>
+                  <!-- <a class="btn btn-success article-create" href="/backend/contents/{{ $section->id }}/createBySection">Crear</a> -->
+                @endif
             </h4>
           </div>
         </div>
       </div>
       <div class="col-md-3">
           <div class="panel panel-default">
-            <div class="panel-heading"><h3>{{ $section->name }} <a class="btn btn-success article-create" href="/backend/contents/createBySection/{{ $section->id }}/{{ $subSection->id }}">Crear</a></h3>
+            @if(isset($subSection))
+              <div class="panel-heading"><h3>{{ $section->name }}</h3>
+                <a class="btn btn-success" href="/backend/contents/createBySection/{{ $section->id }}/{{ $subSection->id }}">Crear</a>
+              </div>
+            @else
+            <div class="panel-heading"><h3>{{ $section->name }}</h3>
+              <a class="btn btn-success" href="/backend/contents/createBySection/{{ $section->id }}">Crear</a></h3>
             </div>
+            @endif
               <div class="panel-body">
                   <ul>
+                    @if($sections)
                       @forelse($sections->where('active', 1) as $section)
                         @if($section->id == $subSection->id)
                           <li><a href="/backend/contents/{{ $section->contents()->first()->id }}">{{ $subSection->name }} ({{ $section->contents()->count() }})</a></li>
@@ -39,6 +51,7 @@
                         @endif
                       @empty
                       @endforelse
+                    @endif
                   </ul>
               </div>
           </div>
@@ -47,7 +60,7 @@
           <div class="panel panel-default">
               <div class="panel-heading">
                 <h4>{{ $content->title }}
-                    <a class="btn btn-success article-create" href="/backend/contents/{{ $content->id }}/edit">Editar</a>
+                    <a class="btn btn-primary article-create" href="/backend/contents/{{ $content->id }}/edit">Editar</a>
                     <a class="btn btn-default btn-xs pull-right" href="{{ $content->getFullUrl() }}" target="_blank">Ver Online</a>
                 </h4>
               </div>
@@ -116,6 +129,7 @@
 
                 <p><b>Título HTML: </b> {{ $content->html_title }}</p>
                 <p><b>URL: </b> {{ $content->url }}</p>
+                <p><b>Canonical: </b> {{ $content->canonical }}</p>
                 <p><b>Descripción: </b> {!! $content->text !!}</p>
                 <p><b>Desc. Social: </b> {{ $content->social_desc }}</p>
                 <p><b>Tags: </b>

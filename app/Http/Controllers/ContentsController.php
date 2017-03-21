@@ -275,8 +275,14 @@ class ContentsController extends Controller
                               ->where('topnav_back', 1)
                               ->where('active', 1)->get();
 
-      $subSection = $content->section;
-      $section = $subSection->parent;
+      if( $content->section->level == 2){
+        $subSection = $content->section;
+        $section = $subSection->parent;
+      }else{
+        $subSection = null;
+        $section = $content->section;
+      }
+
       $sections = $section->getSubSections();
       return view('backend.contents.show', compact('content', 'sections', 'section', 'subSection', 'menuSections'));
     }
@@ -324,11 +330,12 @@ class ContentsController extends Controller
       $videoTypes = Videotype::all();
       $typeviews = Typeview::all();
       $authors = Author::all();
+      $medios = Medio::all();
       $tags = Tag::all();
       $radios = Radio::all();
       $mediaTypes = Mediatype::all();
 
-      return view('backend.contents.edit', compact('section', 'subSection', 'subSubSection', 'content', 'sections', 'subSections',
+      return view('backend.contents.edit', compact('section', 'subSection', 'mediaTypes', 'medios', 'subSubSection', 'content', 'sections', 'subSections',
       'typeviews', 'authors', 'menuSections', 'tags', 'subSubSections', 'videoTypes'));
     }
 
@@ -387,10 +394,13 @@ class ContentsController extends Controller
         $videoTypes = Videotype::all();
         $typeviews = Typeview::all();
         $authors = Author::all();
+        $medios = Medio::all();
         $tags = Tag::all();
+        $mediaTypes = Mediatype::all();
+
         $message = "El ".$content->typeview->name." se ha modificado correctamente.";
-        return view('backend.contents.edit', compact('section', 'subSection', 'subSubSection', 'content', 'sections', 'subSections',
-        'typeviews', 'authors', 'menuSections', 'tags', 'videoTypes', 'subSubSections', 'message'));
+        return view('backend.contents.edit', compact('section', 'subSection', 'medios', 'subSubSection', 'content', 'sections', 'subSections',
+        'typeviews', 'authors', 'menuSections', 'tags', 'videoTypes', 'subSubSections', 'mediaTypes', 'message'));
     }
 
     /**
