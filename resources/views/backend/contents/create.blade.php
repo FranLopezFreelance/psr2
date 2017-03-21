@@ -321,7 +321,7 @@
                           <label for="canonical" class="col-md-4 control-label">Canonical</label>
 
                           <div class="col-md-6">
-                              <input id="canonical" type="text" class="form-control" name="canonical" value="{{ old('canonical') }}" required>
+                              <input id="canonical" type="text" class="form-control" name="canonical" value="{{ old('canonical') }}">
 
                               @if ($errors->has('canonical'))
                                   <span class="help-block">
