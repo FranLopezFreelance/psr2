@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row {{$class}}">
 
   <h2 class="title">{{$type}}</h2>
   @if(count($contenidos)>3)
@@ -6,7 +6,7 @@
     <div class="wrapper ">
       <ul>
         @foreach ($contenidos->chunk(3) as $thecontents)
-        
+
         <li class="item">
           @foreach ($thecontents as $content)
             @include('front.prensa.assets.content-of-list',$content)

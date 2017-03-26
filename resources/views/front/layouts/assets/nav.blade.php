@@ -22,11 +22,11 @@
         @foreach($sections as $section)
             @if($section->topnav != 1)@continue
             @elseif($section->getSubSections())
-            <li class="dropdown hidden-xs {{ $target->parent && $target->parent->url === $section->url ? "active" : "" }}" >
+            <li class="dropdown hidden-xs {{ !is_null($target) && $target->parent && $target->parent->url === $section->url ? "active" : "" }}" >
               <a href="#" class="dropdown-toggle"  role="button" aria-haspopup="true" aria-expanded="false">{{$section->name}} <span class="caret"></span></a>
               <ul class="dropdown-menu" >
                 @foreach($section->getSubSections() as $subsection)
-                  @if($subsection->topnav != 0)<li class="{{ $target->url === $subsection->url ? "active" : "" }}"><a href="{{$subsection->getFullUrl()}}">{{$subsection->name}}</a></li>@endif
+                  @if($subsection->topnav != 0)<li class="{{ !is_null($target) && $target->url === $subsection->url ? "active" : "" }}"><a href="{{$subsection->getFullUrl()}}">{{$subsection->name}}</a></li>@endif
                 @endforeach
               </ul>
             </li>
@@ -39,7 +39,7 @@
               </ul>
             </li>
           @else
-          <li class="{{ $target->url === $section->url ? "active" : "" }}"><a href="/{{$section->url}}" >{{$section->name}}</a></li>
+          <li class="{{ !is_null($target) && $target->url === $section->url ? "active" : "" }}"><a href="/{{$section->url}}" >{{$section->name}}</a></li>
           @endif
 
         @endforeach

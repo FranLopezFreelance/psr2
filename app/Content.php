@@ -153,13 +153,13 @@ class Content extends Model
         case 3:$folder='russia-today'; break;
         case 4:$folder='annurtv'; break;
         case 5:$folder='hispantv'; break;
-        case 6:$folder='presstv'; break;
+        case 6:$folder='c5n'; break;
         case 6:$folder='telesur'; break;
         case 6:$folder='actualidadrt'; break;
         case 9:$folder='redvoltaire'; break;
         case 10:$folder='newdownmagazine'; break;
         case 11:$folder='ntn24'; break;
-        default: $folder = "default";break;
+        default: return "";
       }
       return '/img/medios/'.$folder.'.jpg';
     }

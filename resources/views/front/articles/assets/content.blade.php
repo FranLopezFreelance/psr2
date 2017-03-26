@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <h1>{{$content->title}}</h1>
+    <h1>{{$content->title}}{{$content->id}}</h1>
     <div class="bottom-line col-xs-12"></div>
 
 

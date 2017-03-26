@@ -1,6 +1,8 @@
+
 <li class="item articulo-carousel">
   <div class="tags">
     @foreach($articulo->tags as $tag)
+
     <a href="{{$tag->getFullUrl()}}" class="tag">{{$tag->name}}</a>
     @endforeach
   </div>

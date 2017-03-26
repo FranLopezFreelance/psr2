@@ -27,6 +27,7 @@ Route::post('backend/contents/editImage/{content}', 'ContentsController@editImag
 
 /* FRONT CONTROLLERS */
 Route::get('/', 'FrontController@getIndex');
+Route::get('/plataformapsr', 'FrontController@getIndexPlataforma');
 Route::get('/moreHomeVideos', 'FrontController@getMoreHomeVideos');
 Route::get('/search/{query}', 'FrontController@getContentsBySearch');
 Route::get('/temas/{tag}', 'FrontController@getContentsByTag');

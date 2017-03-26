@@ -1,6 +1,7 @@
 <div class="extra-slider slider-articulos container-fluid">
   <div class="wrapper ">
     <ul>
+      
       @foreach($articulos as $articulo)
       @include('front.home.assets.articulo-home-carousel',$articulo)
       @endforeach

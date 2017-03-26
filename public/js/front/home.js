@@ -137,6 +137,20 @@ function verMasVideos(){
   }
 }
 
+function verMasVideosPlataforma(){
+  var page = $('.videos-content-plataforma').data('next-page');
+  if(page !== null && page !== undefined && page !== '') {
+    $('.spinner-wrapper.plataforma').addClass('show');
+    $.get({url:'/plataformapsr?page='+page,cache:false}, function(data){
+        $('.spinner-wrapper.plataforma').removeClass('show');
+        $('.videos-content-plataforma').append(data.videos);
+      if(data.next_page!=null)  $('.videos-content-plataforma').data('next-page', ++page);
+      else $('.verMasVideos-plataforma').remove();
+      loadImages();
+    });
+  }
+}
+
 function showVideo($url){
   //console.log($url);
   var video='<iframe id="ytplayer" type="text/html" width="100%" height="360"';

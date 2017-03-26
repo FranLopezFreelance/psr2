@@ -1,12 +1,4 @@
   <link rel="icon" type="image/png" href="/favicon.png">
-  <!--
-https://moz.com/blog/meta-data-templates-123
-https://searchenginewatch.com/2016/05/16/how-to-write-meta-title-tags-for-seo-with-good-and-bad-examples/
-https://searchenginewatch.com/2016/01/21/seo-basics-22-essentials-you-need-for-optimizing-your-site/
-http://ogp.me/
-http://secretsaucehq.com/blog/social-media/the-ultimate-guide-to-social-media-meta-tags/
--->
-<!--<html itemscope itemtype="http://schema.org/Article">-->
 
 <!-- Place this data between the <head> tags of your website -->
 <title>{{$target->html_title}}</title>

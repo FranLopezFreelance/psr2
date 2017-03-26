@@ -8,16 +8,19 @@
 
         <div class="col-md-6 col-sm-12">
           <h3>Recomendados</h3>
-          <?php $articulo = $articulos[0];?>
+          <?php $articulo = $recomendados[0];?>
             @include('front.home.assets.articulo-recomendado',$articulo)
-            <?php $articulo = $articulos[1];?>
+            <?php $articulo = $recomendados[1];?>
             @include('front.home.assets.articulo-recomendado',$articulo)
         </div>
         <div class="col-md-6 col-sm-12">
-          <h3>Los más vistos</h3>
-          @foreach($masvistos as $articulo)
-          @include('front.home.assets.articulo-masvistos',$articulo)
-          @endforeach
+          <h3>Los más leídos</h3>
+          <div class="leidos-wrapper">
+            @foreach($masvistos as $articulo)
+            @include('front.home.assets.articulo-masvistos',$articulo)
+            @endforeach
+          </div>
+
 
         </div>
 

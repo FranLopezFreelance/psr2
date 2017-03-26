@@ -8,7 +8,7 @@
     @if( $theTag== 1)<div class="tag programa blue-bloque">Nacional</div>
     @elseif($theTag == 2) <div class="tag programa red-bloque">Internacional</div>
     @elseif($theTag == 3) <div class="tag programa especial-bloque">Especiales</div>
-    @elseif($theTag == 50) <div class="tag programa doctrina-bloque">Doctrina</div>
+    @elseif($theTag == 50) <div class="tag programa doctrina-bloque">Plataforma PSR</div>
     @endif
 
     <a class="vlink" href="{{$content->getFullUrl()}}"><p class="title">{{str_limit($title,60)}}</p></a>

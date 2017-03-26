@@ -7,13 +7,13 @@
 
     <div class="video-container">
         <iframe id="ytplayer" type="text/html" width="100%" height="360"
-        src="http://www.youtube.com/embed/rATGuiHFN6M" frameborder="0"></iframe>
+        src="http://www.youtube.com/embed/w0XG_PAoBN0" frameborder="0"></iframe>
       </div>
   </div>
 
-  @include('front.prensa.assets.carousel',['type'=>'Videos','contenidos'=>$videos,'class'=>'videos'])
-  @include('front.prensa.assets.carousel',['type'=>'Artículos','contenidos'=>$articulos,'class'=>'articulos'])
-  @include('front.prensa.assets.carousel',['type'=>'Radio','contenidos'=>$radio,'class'=>'radio'])
+  @include('front.prensa.assets.carousel',['type'=>'PSR en TV','contenidos'=>$videos,'class'=>'videos'])
+  @include('front.prensa.assets.carousel',['type'=>'PSR en Radio','contenidos'=>$radio,'class'=>'radio'])
+  @include('front.prensa.assets.carousel',['type'=>'Notas y Entevistas escritas','contenidos'=>$articulos,'class'=>'articulos'])
 
 
 

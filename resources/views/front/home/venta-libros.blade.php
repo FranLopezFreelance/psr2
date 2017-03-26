@@ -4,19 +4,17 @@
     <ul>
 
       <li class="item">
-        <a target="_blank" href="http://articulo.mercadolibre.com.ar/MLA-604952279-colonialismo-financiero-mundial-adrian-salbuchi-_JM">
+        <a target="_blank" href="/libros/colonialismo-financiero-mundial-vampiros-y-buitres">
           <img  src="/img/libros/colonialismo-financiero-mundial-vampiros-y-buitres.jpg" alt="">
         </a>
       </li>
       <li class="item">
-        <img  data-original="/img/libros/la-guerra-invisible-accion-psicologica-y-revolucion-cultural.jpg" alt="">
+        <a target="_blank" href="/libros/la-guerra-invisible-accion-psicologica-y-revolucion-cultural">
+          <img  src="/img/libros/la-guerra-invisible-accion-psicologica-y-revolucion-cultural.jpg" alt="">
+        </a>
+
       </li>
-      <li class="item">
-        <img  data-original="/img/test/libros/colonialismo.jpg" alt="">
-      </li>
-      <li class="item">
-        <img  data-original="/img/test/libros/colonialismo.jpg" alt="">
-      </li>
+
     </ul>
   </div>
   <div class="navigation">

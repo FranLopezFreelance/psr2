@@ -1,4 +1,4 @@
-<div class="col-xs-12">
+
   <div class="articulo-masvisto">
     <!--
     <div class="tags">
@@ -11,4 +11,3 @@
     <a href="{{$articulo->getFullUrl()}}" class="title">{{$articulo->title}}</a>
     <span class="stats">{{$articulo->getDate()}}<span class="views"><i class="material-icons eye">remove_red_eye</i>{{$articulo->views}}</span></span>
   </div>
-</div>

@@ -10,5 +10,5 @@
 
   <a href="{{$articulo->getFullUrl()}}" class="title">{{$articulo->title}}</a>
   <span class="stats">{{$articulo->getDate()}}<span class="views"><i class="material-icons eye">remove_red_eye</i>{{$articulo->views}}</span></span>
-
+<a class="vermas" href="{{$articulo->getFullUrl()}}">Leer Más...</a>
 </div>

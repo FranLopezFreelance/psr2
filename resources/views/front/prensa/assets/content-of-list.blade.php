@@ -5,8 +5,8 @@
   <div class="pimagen">
     <a href="{{$content->getFullUrl()}}"><img data-original="{{$content->getImageByType(2)}}" alt=""></a>
   </div>
-  <div class="pcontent">
-    <a href="#"><img data-original="{{$content->getMedioImg()}}" alt=""></a>
+  <div class="pcontent {{($content->getMedioImg() != "")? 'true-image':''}}">
+    @if($content->getMedioImg() != "")<a href="#"><img data-original="{{$content->getMedioImg()}}" alt=""></a>@endif
     <div class="title">
       <a class="title" href="{{$content->getFullUrl()}}">{{$content->title}}</a>
       @include('front.assets.stats',$content)

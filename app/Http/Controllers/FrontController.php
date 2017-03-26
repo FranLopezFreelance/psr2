@@ -73,10 +73,25 @@ class FrontController extends Controller
       $internacional = $segundo;
     }
 
-    $articulos = Content::where([['typeview_id','=',3],['dest','=',1]])->orderBy('date','desc')->get();
-    $masvistos = Content::where([['typeview_id','=',3]])->orderBy('views','desc')->take(5)->get();
+    $videosplataforma = Content::select('contents.*')->join('tagscontents','contents.id','=','tagscontents.content_id')
+    ->where([['tagscontents.tag_id',50],['contents.typeview_id',4]])
+    ->orderBy('date','desc')
+    ->paginate(5);
+    //dd($videosplataforma);
+    $plataforma = $videosplataforma->items()[0];
+    $videosplataforma->offsetUnset(0);
+    //dd($plataforma);
 
-    return view('front.index', compact('target','nacional','internacional','videos','articulos','masvistos'));
+    $articulos = [
+      Content::where('id',279)->first(),
+      Content::where('id',112)->first(),
+      Content::where('id',368)->first(),
+      Content::where('id',1)->first()//481
+    ];
+    $recomendados = [Content::where('id',1)->first(),Content::where('id',228)->first()];//475
+    $masvistos = Content::where([['typeview_id','=',3]])->orderBy('views','desc')->take(7)->get();
+
+    return view('front.index', compact('target','nacional','internacional','videos','articulos','masvistos','recomendados','plataforma','videosplataforma'));
   }
 
   public function getSection($section, Request $request){
@@ -222,13 +237,13 @@ class FrontController extends Controller
 
   public function getContentsOfPrensa(Request $request){
 
-      $sql = 'mediatype_id = 1 AND typeview_id = 6';
+      $sql = 'mediatype_id = 1 AND typeview_id = 6 ORDER BY date DESC';
       $videos = Content::whereRaw($sql)->get();
 
-      $sql = 'mediatype_id = 3 AND typeview_id = 6';
+      $sql = 'mediatype_id = 3 AND typeview_id = 6 ORDER BY date DESC';
       $articulos = Content::whereRaw($sql)->get();
 
-      $sql = 'mediatype_id = 2 AND typeview_id = 6';
+      $sql = 'mediatype_id = 2 AND typeview_id = 6 ORDER BY date DESC';
       $radio = Content::whereRaw($sql)->get();
 
       $section = Section::where('url', 'PSR-en-los-medios')->first();
@@ -258,6 +273,25 @@ class FrontController extends Controller
       return view($content->typeView->show_view, compact('target','content'));
     }else{
       return view('errors.404');
+    }
+  }
+
+  public function getIndexPlataforma(Request $request){
+    if($request->ajax()) {
+
+      $page = Paginator::resolveCurrentPage();
+        $perPage=12;
+        $contents = new Paginator(Content::select('contents.*')->join('tagscontents','contents.id','=','tagscontents.content_id')
+        ->where([['tagscontents.tag_id',50],['contents.typeview_id',4]])
+        ->orderBy('date','desc')
+        ->skip((($page - 1) * $perPage)+5)->take($perPage + 1)->get(), $perPage, $page);
+//dd($contents);
+      $colsm = 3;
+      $colmd = 3;
+        return [
+            'videos' => view('front.home.assets.ajax-video-render')->with(compact('contents','colsm','colmd'))->render(),
+            'next_page' => $contents->nextPageUrl()
+        ];
     }
   }
 
