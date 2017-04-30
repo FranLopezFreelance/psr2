@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Section;
 use App\Contact;
+use App\Response;
 
 use Illuminate\Http\Request;
 
@@ -23,8 +24,9 @@ class ContactsController extends Controller
         $menuLeftSections = Section::where('level', 1)
                               ->where('active', 1)->get();
 
-        $contacts = Contact::all();
-        return view('backend.contacts.index', compact('contacts', 'menuSections', 'menuLeftSections'));
+        $contacts = Contact::orderBy('id', 'desc')->get();
+        $not_responded = Contact::where('contacted', 0)->get()->count();
+        return view('backend.contacts.index', compact('contacts', 'not_responded', 'menuSections', 'menuLeftSections'));
     }
 
     /**
@@ -57,8 +59,32 @@ class ContactsController extends Controller
                               ->where('topnav_back', 1)
                               ->where('active', 1)->get();
 
-        $contacts = Contact::all();
-        return view('backend.contacts.show', compact('contacts', 'contact', 'menuSections'));
+        $contacts = Contact::orderBy('id', 'desc')->get();
+        $not_responded = Contact::where('contacted', 0)->get()->count();
+        return view('backend.contacts.show', compact('contacts', 'not_responded','section', 'contact', 'menuSections'));
+    }
+
+    public function response(Request $request, Contact $contact)
+    {
+      // Mail::send(['text' => 'mail'], $request, function($message){
+      //         $message->to($contact->emal, $contact->name)->subject('Respuesta Contacto PSR');
+      //         $message->from('no_responder@psr.com.ar', 'PSR');
+      //       });
+
+        $contact->contacted = 1;
+        $contact->save();
+
+        $response = new Response($request->all());
+
+        $response->save();
+
+        $menuSections = Section::where('level', 1)
+                              ->where('topnav_back', 1)
+                              ->where('active', 1)->get();
+
+        $contacts = Contact::orderBy('id', 'desc')->get();
+        $not_responded = Contact::where('contacted', 0)->get()->count();
+        return view('backend.contacts.show', compact('contacts', 'not_responded','section', 'contact', 'menuSections'));
     }
 
     /**
@@ -98,8 +124,9 @@ class ContactsController extends Controller
                               ->where('topnav_back', 1)
                               ->where('active', 1)->get();
 
-        $contacts = Contact::all()->paginate(20);
+        $contacts = Contact::orderBy('id', 'desc')->get();
         $message = 'El contacto ha sido eliminado.';
-        return view('backend.contacts.index', compact('contacts', 'menuSections', 'message'));
+        $not_responded = Contact::where('contacted', 0)->get()->count();
+        return view('backend.contacts.index', compact('contacts', 'not_responded', 'menuSections', 'message'));
     }
 }

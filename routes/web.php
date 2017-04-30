@@ -19,11 +19,13 @@ Route::get('backend', 'BackendController@index');
 Route::resource('backend/sections', 'SectionsController');
 Route::resource('backend/contents', 'ContentsController');
 Route::resource('backend/contacts', 'ContactsController');
+Route::resource('backend/polls', 'PollsController');
 Route::get('backend/contents/createBySection/{section}', 'ContentsController@createBySection');
 Route::get('backend/contents/createBySection/{section}/{subSection}', 'ContentsController@createBySubSection');
 Route::get('backend/contents/getBySection/{subSection}', 'ContentsController@getContentBySubSection');
 Route::get('backend/tags/create/{tag}', 'ContentsController@addNewTag');
 Route::post('backend/contents/editImage/{content}', 'ContentsController@editImage');
+Route::post('backend/response/{contact}', 'ContactsController@response');
 
 /* FRONT CONTROLLERS */
 Route::get('/', 'FrontController@getIndex');

@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h4><a href="/backend/sections">Secciones</a> / {{ $section->name }} <a class="btn btn-default btn-xs pull-right" href="/articulos" target="_blank">Web</a></h4>
+                  <h4>{{ $contact->name }}</h4>
                 </div>
                 <div class="panel-body">
                   @if(isset($message))
@@ -14,21 +14,57 @@
                           <h5>{{ $message }}</h5>
                       </div>
                   @endif
-                  <a class="btn btn-primary" href="/backend/sections/{{ $section->id }}/edit">Editar</a>
 
-                  {!! Form::open(['method' => 'DELETE','route' => ['sections.destroy', $section->id],'style'=>'display:inline']) !!}
+                  <h4><b>E-mail:</b> <a href="mailto:{{ $contact->email }}">{{ $contact->email }}</a></h4>
+                  <h4><b>Tema:</b> {{ $contact->subject }}</h4>
+                  <h4><b>Mensaje:</b> </h4>
+                    <p class="mensaje">{{ $contact->message }}</p>
+
+                  <br />
+
+                  <a href="/backend/contacts" class="btn btn-primary">Volver</a>
+
+                  {!! Form::open(['method' => 'DELETE','route' => ['contacts.destroy', $contact->id],'style'=>'display:inline']) !!}
                   {!! Form::submit('Eliminar', ['class' => 'btn btn-danger pull-right']) !!}
                   {!! Form::close() !!}
 
                   <hr />
 
-                  <p><b>Nivel:</b> {{ $section->level }}</p>
-                  @if($section->level == 2)
-                    <p><b>Sección Principal:</b> {{ $section->parent->name }}</p>
+                  @if($contact->response()->count() > 0)
+                  <h4><b>Respuesta:</b> </h4>
+                    <p class="mensaje">{{ $contact->response()->first()->text }}</p>
+                    <hr />
+                    <p class="mensaje"><b>Fecha: </b>{{ date("d-m-Y" , strtotime($contact->response()->first()->created_at)) }}</p>
+                    <p class="mensaje"><b>Usuario: </b>{{ $contact->response()->first()->user->name }}</p>
+                  @else
+                    <form class="form-horizontal" role="form" method="POST" action="/backend/response/{{ $contact->id }}">
+                      {{ csrf_field() }}
+
+                      <div class="form-group{{ $errors->has('text') ? ' has-error' : '' }}">
+                          <label for="text" class="col-md-1 control-label">Respuesta</label>
+
+                          <div class="col-md-11">
+                              <textarea rows="4" id="text" class="form-control" name="text" required/>{{ old('text') }}</textarea>
+                              @if ($errors->has('text'))
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('text') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <div class="col-md-11 col-md-offset-1">
+                              <button type="submit" class="btn btn-success">
+                                  Enviar
+                              </button>
+                          </div>
+                      </div>
+                      <input type="hidden" name="user_id" value="{{ Auth::user()->id }}" />
+                      <input type="hidden" name="contact_id" value="{{ $contact->id }}" />
+                    </form>
                   @endif
-                  <p><b>URL:</b> {{ $section->url }}</p>
-                  <p><b>Descripción:</b> {{ $section->description }}</p>
-                  <p><b>Estado:</b> {{ $section->active }}</p>
+
                 </div>
             </div>
         </div>

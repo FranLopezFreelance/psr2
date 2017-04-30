@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Author;
 use App\Content;
+use App\Contact;
 use App\Medio;
 use App\Mediatype;
 use App\Radio;
@@ -47,7 +48,8 @@ class ContentsController extends Controller
         $subSections = $sections->where('level', 2);
         $subSection = $sections->where('level', 2)->first();
         $contents = Content::where('section_id', $subSection->id)->paginate(15);
-        return view('backend.contents.index', compact('sections', 'section', 'subSection', 'contents', 'menuSections', 'menuLeftSections'));
+        $not_responded = Contact::where('contacted', 0)->get()->count();
+        return view('backend.contents.index', compact('sections', 'not_responded' , 'section', 'subSection', 'contents', 'menuSections', 'menuLeftSections'));
     }
 
     public function getBySection(Section $section)
@@ -66,8 +68,8 @@ class ContentsController extends Controller
           $subSection = null;
           $contents = $section->contents()->paginate(15);
         }
-
-        return view('backend.contents.index', compact('section', 'subSection', 'contents', 'menuSections', 'menuLeftSections'));
+        $not_responded = Contact::where('contacted', 0)->get()->count();
+        return view('backend.contents.index', compact('section', 'subSection', 'not_responded' , 'contents', 'menuSections', 'menuLeftSections'));
     }
 
     public function getBySubSection(Section $subSection)
@@ -84,9 +86,9 @@ class ContentsController extends Controller
         }elseif($subSection->level == 3){
           $section = $subSection->parent->parent;
         }
-
+        $not_responded = Contact::where('contacted', 0)->get()->count();
         $contents = Content::where('section_id', $subSection->id)->orderBy('date', 'desc')->paginate(15);
-        return view('backend.contents.index', compact('section', 'subSection', 'contents', 'menuSections', 'menuLeftSections'));
+        return view('backend.contents.index', compact('section', 'subSection', 'not_responded' , 'contents', 'menuSections', 'menuLeftSections'));
     }
 
     /**
@@ -128,7 +130,8 @@ class ContentsController extends Controller
           $subSections = null;
         }
 
-        return view('backend.contents.create', compact('section', 'sections', 'subSections',
+        $not_responded = Contact::where('contacted', 0)->get()->count();
+        return view('backend.contents.create', compact('section', 'not_responded' , 'sections', 'subSections',
         'typeviews', 'authors', 'menuSections', 'tags', 'videoTypes', 'menuLeftSections', 'medios', 'radios', 'mediaTypes'));
 
     }
@@ -158,7 +161,8 @@ class ContentsController extends Controller
         $radios = Radio::all();
         $mediaTypes = Mediatype::all();
 
-        return view('backend.contents.create', compact('section', 'subSection', 'sections', 'subSections', 'radios',
+        $not_responded = Contact::where('contacted', 0)->get()->count();
+        return view('backend.contents.create', compact('section', 'not_responded' , 'subSection', 'sections', 'subSections', 'radios',
         'typeviews', 'authors', 'menuSections', 'tags', 'videoTypes', 'subSubSection', 'subSubSections', 'medios', 'mediaTypes'));
 
     }
@@ -257,6 +261,8 @@ class ContentsController extends Controller
 
       }
 
+      $not_responded = Contact::where('contacted', 0)->get()->count();
+
       //Mensaje
       $message = 'El contenido se ha sido creado correctamente!.';
       return redirect($redirect)->with('message', $message);
@@ -284,7 +290,9 @@ class ContentsController extends Controller
       }
 
       $sections = $section->getSubSections();
-      return view('backend.contents.show', compact('content', 'sections', 'section', 'subSection', 'menuSections'));
+      $not_responded = Contact::where('contacted', 0)->get()->count();
+
+      return view('backend.contents.show', compact('content', 'not_responded' , 'not_responded', 'sections', 'section', 'subSection', 'menuSections'));
     }
 
     public function getContentBySubSection(Section $subSection){
@@ -295,7 +303,9 @@ class ContentsController extends Controller
       $content = $subSection->contents()->first();
       $section = $subSection->parent;
       $sections = $section->getSubSections();
-      return view('backend.contents.show', compact('content', 'sections', 'section', 'subSection', 'menuSections'));
+      $not_responded = Contact::where('contacted', 0)->get()->count();
+
+      return view('backend.contents.show', compact('content', 'not_responded' , 'not_responded', 'sections', 'section', 'subSection', 'menuSections'));
     }
 
     /**
@@ -335,7 +345,9 @@ class ContentsController extends Controller
       $radios = Radio::all();
       $mediaTypes = Mediatype::all();
 
-      return view('backend.contents.edit', compact('section', 'subSection', 'mediaTypes', 'medios', 'subSubSection', 'content', 'sections', 'subSections',
+      $not_responded = Contact::where('contacted', 0)->get()->count();
+
+      return view('backend.contents.edit', compact('section', 'not_responded' , 'not_responded', 'subSection', 'mediaTypes', 'medios', 'subSubSection', 'content', 'sections', 'subSections',
       'typeviews', 'authors', 'menuSections', 'tags', 'subSubSections', 'videoTypes'));
     }
 
@@ -399,7 +411,9 @@ class ContentsController extends Controller
         $mediaTypes = Mediatype::all();
 
         $message = "El ".$content->typeview->name." se ha modificado correctamente.";
-        return view('backend.contents.edit', compact('section', 'subSection', 'medios', 'subSubSection', 'content', 'sections', 'subSections',
+        $not_responded = Contact::where('contacted', 0)->get()->count();
+
+        return view('backend.contents.edit', compact('section', 'not_responded' , 'subSection', 'not_responded', 'medios', 'subSubSection', 'content', 'sections', 'subSections',
         'typeviews', 'authors', 'menuSections', 'tags', 'videoTypes', 'subSubSections', 'mediaTypes', 'message'));
     }
 
@@ -435,8 +449,9 @@ class ContentsController extends Controller
       $contents = Content::where('section_id', $subSection->id)->paginate(15);
 
       $message = 'El contenido ha sido eliminado.';
+      $not_responded = Contact::where('contacted', 0)->get()->count();
 
-      return view('backend.contents.index', compact('sections', 'section', 'subSection', 'contents', 'message', 'menuSections', 'menuLeftSections'));
+      return view('backend.contents.index', compact('sections', 'not_responded' , 'section', 'not_responded', 'subSection', 'contents', 'message', 'menuSections', 'menuLeftSections'));
     }
 
     public function addNewTag($name){

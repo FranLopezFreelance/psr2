@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contact;
 use App\Section;
 use App\Typeview;
 use Illuminate\Http\Request;
@@ -30,7 +31,8 @@ class SectionsController extends Controller
       $sections = Section::where('level', 1)->where('active', 1)->get();
       $section = $sections->where('id', 1)->first();
       $subSections = $section->childrens;
-      return view('backend.sections.index', compact('section', 'sections', 'subSections', 'menuSections', 'menuLeftSections'));
+      $not_responded = Contact::where('contacted', 0)->get()->count();
+      return view('backend.sections.index', compact('section', 'not_responded', 'sections', 'subSections', 'menuSections', 'menuLeftSections'));
     }
 
     public function getBySection(Section $section)
@@ -40,7 +42,8 @@ class SectionsController extends Controller
 
       $sections = Section::where('level', 1)->get();
       $subSections = $section->childrens;
-      return view('backend.sections.index', compact('section', 'subSections', 'menuSections'));
+      $not_responded = Contact::where('contacted', 0)->get()->count();
+      return view('backend.sections.index', compact('section', 'not_responded', 'subSections', 'menuSections'));
     }
 
     /**
@@ -56,7 +59,8 @@ class SectionsController extends Controller
 
       $sections = Section::all();
       $typeviews = Typeview::all();
-      return view('backend.sections.create', compact('sections', 'menuSections', 'typeviews'));
+      $not_responded = Contact::where('contacted', 0)->get()->count();
+      return view('backend.sections.create', compact('sections', 'not_responded', 'menuSections', 'typeviews'));
     }
 
     /**
@@ -81,7 +85,8 @@ class SectionsController extends Controller
 
       $section->save();
       $message = 'La Sección ha sido creada.';
-      return view('backend.sections.show', compact('section', 'message', 'menuSections'));
+      $not_responded = Contact::where('contacted', 0)->get()->count();
+      return view('backend.sections.show', compact('section', 'not_responded', 'message', 'menuSections'));
     }
 
     /**
@@ -97,7 +102,8 @@ class SectionsController extends Controller
                               ->where('active', 1)->get();
 
       $typeviews = Typeview::all();
-      return view('backend.sections.show', compact('section', 'menuSections', 'typeviews'));
+      $not_responded = Contact::where('contacted', 0)->get()->count();
+      return view('backend.sections.show', compact('section', 'not_responded', 'menuSections', 'typeviews'));
     }
 
     /**
@@ -114,7 +120,8 @@ class SectionsController extends Controller
 
       $sections = Section::all();
       $typeviews = Typeview::all();
-      return view('backend.sections.edit', compact('section', 'sections', 'menuSections', 'typeviews'));
+      $not_responded = Contact::where('contacted', 0)->get()->count();
+      return view('backend.sections.edit', compact('section', 'not_responded', 'sections', 'menuSections', 'typeviews'));
     }
 
     /**
@@ -143,7 +150,8 @@ class SectionsController extends Controller
       $sections = Section::all();
       $message = 'Las modificaciones fueron guardadas.';
       $typeviews = Typeview::all();
-      return view('backend.sections.edit', compact('section', 'sections', 'message', 'menuSections', 'typeviews'));
+      $not_responded = Contact::where('contacted', 0)->get()->count();
+      return view('backend.sections.edit', compact('section', 'not_responded', 'sections', 'message', 'menuSections', 'typeviews'));
     }
 
     /**
@@ -160,6 +168,7 @@ class SectionsController extends Controller
       $section = $sections->where('id', 1)->first();
       $subSections = $section->childrens;
       $message = 'La Sección ha sido eliminada.';
-      return view('backend.sections.index', compact('section', 'sections', 'subSections', 'message', 'menuSections'));
+      $not_responded = Contact::where('contacted', 0)->get()->count();
+      return view('backend.sections.index', compact('section', 'not_responded', 'sections', 'subSections', 'message', 'menuSections'));
     }
 }

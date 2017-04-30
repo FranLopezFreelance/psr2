@@ -23,13 +23,24 @@
                 <table class="table table-hover">
                   <tr>
                     <th>Nombre</th>
+                    <th class="fecha-contacto">Fecha</th>
                     <th>Mail</th>
                     <th>Asunto</th>
                     <th></th>
                   </tr>
                   @forelse($contacts as $contact)
-                      <tr>
-                        <td><a href="/backend/contacts/{{ $contact->id }}">{{ $contact->name }}</td>
+                      <tr
+                        @if($contact->view == 1)
+                          @if($contact->response()->count() > 0)
+                            class="view-responsed"
+                          @else
+                            class="view"
+                          @endif
+                        @endif
+                      >
+                        <td>
+                          <a href="/backend/contacts/{{ $contact->id }}">{{ $contact->name }}</td>
+                        <td>{{ date("d-m-Y" , strtotime($contact->created_at)) }}</td>
                         <td>{{ $contact->email }}</td>
                         <td>{{ $contact->subject }}</td>
                         <td>

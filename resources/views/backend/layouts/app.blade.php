@@ -50,41 +50,65 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         @if (!Auth::guest())
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                Secciones <span class="caret"></span>
-                            </a>
+                          @if(Auth::user()->type_id == 1)
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    Secciones <span class="caret"></span>
+                                </a>
 
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="/backend/sections"/> Ver</a></li>
-                                <li><a href="/backend/sections/create"/> Nueva</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                Contenidos <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu" role="menu">
-                              @forelse($menuSections as $section)
-                                <li><a href="/backend/contents/section/{{ $section->id }}"/> {{ $section->name }}</a></li>
-                              @empty
-                              @endforelse
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                Contactos <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="/backend/contacts"/> Ver</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="/" target="_blank">Web</a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="/backend/contacts"/> Ver</a></li>
-                            </ul>
-                        </li>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="/backend/sections"/> Ver</a></li>
+                                    <li><a href="/backend/sections/create"/> Nueva</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    Contenidos <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                  @forelse($menuSections as $section)
+                                    <li><a href="/backend/contents/section/{{ $section->id }}"/> {{ $section->name }}</a></li>
+                                  @empty
+                                  @endforelse
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    Contactos
+                                    @if(isset($not_responded))
+                                      <span class="badge">{{ $not_responded }}</span>
+                                    @endif
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="/backend/contacts"/> Ver</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    Encuestas <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="/backend/polls"/> Ver</a></li>
+                                    <li><a href="/backend/polls/create"/> Formulario</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/" target="_blank">Web</a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="/backend/contacts"/> Ver</a></li>
+                                </ul>
+                            </li>
+                          @elseif(Auth::user()->type_id == 2)
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    Encuestas <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="/backend/polls"/> Ver</a></li>
+                                </ul>
+                            </li>
+                          @endif
                         @endif
                     </ul>
 

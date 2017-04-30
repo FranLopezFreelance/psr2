@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contact;
 use App\Section;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,7 @@ class BackendController extends Controller
 
       $muneLeftSections = Section::where('level', 1)
                               ->where('active', 1)->get();
-
-      return view('backend.index', compact('menuSections', 'muneLeftSections'));
+      $not_responded = Contact::where('contacted', 0)->get()->count();
+      return view('backend.index', compact('menuSections', 'not_responded' , 'muneLeftSections'));
     }
 }
