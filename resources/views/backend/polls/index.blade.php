@@ -31,13 +31,17 @@
                   </tr>
                   @forelse($polls as $poll)
                       <tr>
-                        <td><a href="/backend/contacts/{{ $contact->id }}">{{ $poll->name }} {{ $poll->lastname }}</td>
+                        <td><a href="/backend/polls/{{ $poll->id }}">{{ $poll->name }} {{ $poll->lastname }}</td>
                         <td>{{ $poll->city }}</td>
                         <td>{{ $poll->email }}</td>
                         <td>{{ $poll->telephone }}</td>
-                        <td>{{ $poll-contacted }}</td>
+                        @if($poll->contacted == 1)
+                          <td>Sí {{ $poll-date_contacted }}</td>
+                        @else
+                          <td>No</td>
+                        @endif
                         <td>
-                          {!! Form::open(['method' => 'DELETE','route' => ['contacts.destroy', $contact->id],'style'=>'display:inline']) !!}
+                          {!! Form::open(['method' => 'DELETE','route' => ['contacts.destroy', $poll->id],'style'=>'display:inline']) !!}
                           {!! Form::submit('Eliminar', ['class' => 'btn btn-danger btn-xs pull-right']) !!}
                           {!! Form::close() !!}
                         </td>

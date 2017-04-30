@@ -35,6 +35,38 @@
                           </div>
                       </div>
 
+                      <div class="form-group{{ $errors->has('province_id') ? ' has-error' : '' }}">
+                          <label for="province_id" class="col-md-4 control-label">Provincia</label>
+                          <div class="col-md-6">
+                              <select class="form-control" name="province_id" required>
+                                <option value="0">Elegir...</option>
+                                  @forelse($provinces as $province)
+                                    <option value="{{ $province->id }}">{{ $province->name }}</option>
+                                  @empty
+                                    <option value="0">No hay conexión a la base</option>
+                                  @endforelse
+                              </select>
+
+                              @if ($errors->has('province_id'))
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('province_id') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                      </div>
+
+                      <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
+                          <label for="city" class="col-md-4 control-label">Ciudad / Localidad / Barrio</label>
+                          <div class="col-md-6">
+                              <input id="city" type="text" class="form-control title" name="city" value="{{ old('city') }}" required autofocus>
+                              @if ($errors->has('city'))
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('city') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                      </div>
+
                       <div class="form-group{{ $errors->has('sex') ? ' has-error' : '' }}">
                           <label for="sex" class="col-md-4 control-label">Sexo</label>
                           <div class="col-md-6">
@@ -58,13 +90,13 @@
                           </div>
                       </div>
 
-                      <div class="form-group{{ $errors->has('ocupation') ? ' has-error' : '' }}">
-                          <label for="ocupation" class="col-md-4 control-label">Ocupación</label>
+                      <div class="form-group{{ $errors->has('occupation') ? ' has-error' : '' }}">
+                          <label for="occupation" class="col-md-4 control-label">Ocupación</label>
                           <div class="col-md-6">
-                              <input id="ocupation" type="text" class="form-control title" name="ocupation" value="{{ old('ocupation') }}" required autofocus>
-                              @if ($errors->has('ocupation'))
+                              <input id="occupation" type="text" class="form-control title" name="occupation" value="{{ old('occupation') }}" required autofocus>
+                              @if ($errors->has('occupation'))
                                   <span class="help-block">
-                                      <strong>{{ $errors->first('ocupation') }}</strong>
+                                      <strong>{{ $errors->first('occupation') }}</strong>
                                   </span>
                               @endif
                           </div>
@@ -77,26 +109,6 @@
                               @if ($errors->has('studies'))
                                   <span class="help-block">
                                       <strong>{{ $errors->first('studies') }}</strong>
-                                  </span>
-                              @endif
-                          </div>
-                      </div>
-
-                      <div class="form-group{{ $errors->has('province_id') ? ' has-error' : '' }}">
-                          <label for="province_id" class="col-md-4 control-label">Provincia</label>
-                          <div class="col-md-6">
-                              <select class="form-control" name="province_id" required>
-                                <option value="0">Elegir...</option>
-                                  @forelse($provinces as $province)
-                                    <option value="{{ $province->id }}">{{ $province->name }}</option>
-                                  @empty
-                                    <option value="0">No hay secciones</option>
-                                  @endforelse
-                              </select>
-
-                              @if ($errors->has('province_id'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('province_id') }}</strong>
                                   </span>
                               @endif
                           </div>
@@ -121,6 +133,19 @@
                               @if ($errors->has('telephone'))
                                   <span class="help-block">
                                       <strong>{{ $errors->first('telephone') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                      </div>
+
+                      <div class="form-group{{ $errors->has('comments') ? ' has-error' : '' }}">
+                          <label for="comments" class="col-md-4 control-label">Comentarios</label>
+
+                          <div class="col-md-6">
+                              <textarea rows="4" id="comments" class="form-control" name="comments" required/>{{ old('comments') }}</textarea>
+                              @if ($errors->has('comments'))
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('comments') }}</strong>
                                   </span>
                               @endif
                           </div>

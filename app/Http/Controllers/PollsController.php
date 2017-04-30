@@ -87,7 +87,34 @@ class PollsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+      $poll = new Poll($request->all());
+      $poll->save();
+
+      $polls = Poll::all();
+
+      $menuSections = Section::where('level', 1)
+                              ->where('topnav_back', 1)
+                              ->where('active', 1)->get();
+
+      $menuLeftSections = Section::where('level', 1)
+                            ->where('active', 1)->get();
+
+      $sections = Section::all();
+      $provinces = Province::all();
+
+      $principalSections = $sections->where('level', 1)
+                                    ->where('topnav_back', 1)
+                                    ->where('active', 1);//->get();
+
+      $section = $sections->where('level', 1)->first();
+      $subSections = $sections->where('level', 2);
+      $subSection = $sections->where('level', 2)->first();
+      $contents = Content::where('section_id', $subSection->id)->paginate(15);
+
+      $message = "La encuesta se envió correctamente";
+
+      return view('backend.polls.index', compact('polls', 'message', 'section', 'sections', 'provinces', 'subSection', 'contents', 'menuSections', 'menuLeftSections'));
     }
 
     /**
