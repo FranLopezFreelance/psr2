@@ -82,7 +82,7 @@
                   @endforelse
 
                     @if(Auth::user()->type_id == 3 or Auth::user()->type_id == 3)
-                      <form class="form-horizontal" role="form" method="POST" action="/backend/polls/{{ $poll->id }}">
+                      <form class="form-horizontal" role="form" method="POST" action="/backend/observations/{{ $poll->id }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('text') ? ' has-error' : '' }}">

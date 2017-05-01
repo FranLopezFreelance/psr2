@@ -47,7 +47,7 @@ class PollsController extends Controller
           }else{
             $polls = null;
           }
-          
+
           if(Auth::user()->countries()->count() > 0){
             $pollsForeign = Poll::where('country_id', Auth::user()->countries()->first()->id)->get();
           }else{
@@ -137,7 +137,7 @@ class PollsController extends Controller
      */
     public function show(Poll $poll)
     {
-      $polls = Poll::all();
+
       $menuSections = Section::where('level', 1)
                               ->where('topnav_back', 1)
                               ->where('active', 1)->get();
@@ -219,5 +219,26 @@ class PollsController extends Controller
         $i++;
       }
       return response()->json(['polls' => $pollsArray]);
+    }
+
+    public function newObservation(Request $request, Poll $poll){
+      $observation = new Observation($request->all());
+      $observation->save();
+
+      $poll->observations()->save($observation->id);
+      dd($poll->observations);
+
+      $menuSections = Section::where('level', 1)
+                              ->where('topnav_back', 1)
+                              ->where('active', 1)->get();
+
+      $menuLeftSections = Section::where('level', 1)
+                            ->where('active', 1)->get();
+
+      $not_responded = Contact::where('contacted', 0)->get()->count();
+
+      $observations = $poll->observations;
+
+      return view('backend.polls.show', compact('observations', 'poll', 'not_responded', 'menuSections', 'menuLeftSections'));
     }
 }

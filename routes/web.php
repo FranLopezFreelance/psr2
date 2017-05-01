@@ -28,6 +28,7 @@ Route::post('backend/contents/editImage/{content}', 'ContentsController@editImag
 Route::post('backend/response/{contact}', 'ContactsController@response');
 Route::get('/polls/selectCountry/{country}', 'PollsController@selectCountry');
 Route::get('/polls/selectProvince/{province}', 'PollsController@selectProvince');
+Route::post('/backend/observations/{poll}', 'PollsController@newObservation');
 
 /* FRONT CONTROLLERS */
 Route::get('/', 'FrontController@getIndex');
