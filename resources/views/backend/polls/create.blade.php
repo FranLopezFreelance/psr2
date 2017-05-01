@@ -35,7 +35,26 @@
                           </div>
                       </div>
 
-                      <div class="form-group{{ $errors->has('province_id') ? ' has-error' : '' }}">
+                      <div class="form-group{{ $errors->has('country_id') ? ' has-error' : '' }}">
+                          <label for="country_id" class="col-md-4 control-label">País</label>
+                          <div class="col-md-6">
+                              <select class="form-control sel-countries" name="country_id" required>
+                                  @forelse($countries as $country)
+                                    <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                  @empty
+                                    <option value="0">No hay conexión a la base</option>
+                                  @endforelse
+                              </select>
+
+                              @if ($errors->has('country_id'))
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('country_id') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                      </div>
+
+                      <div class="form-group{{ $errors->has('province_id') ? ' has-error' : '' }}  sel-provinces">
                           <label for="province_id" class="col-md-4 control-label">Provincia</label>
                           <div class="col-md-6">
                               <select class="form-control" name="province_id" required>
@@ -93,7 +112,7 @@
                       <div class="form-group{{ $errors->has('occupation') ? ' has-error' : '' }}">
                           <label for="occupation" class="col-md-4 control-label">Ocupación</label>
                           <div class="col-md-6">
-                              <input id="occupation" type="text" class="form-control title" name="occupation" value="{{ old('occupation') }}" required autofocus>
+                              <input id="occupation" type="text" class="form-control" name="occupation" value="{{ old('occupation') }}" required autofocus>
                               @if ($errors->has('occupation'))
                                   <span class="help-block">
                                       <strong>{{ $errors->first('occupation') }}</strong>

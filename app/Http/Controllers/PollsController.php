@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Author;
+use App\Contact;
 use App\Content;
+use App\Country;
 use App\Medio;
 use App\Mediatype;
 use App\Radio;
 use App\Poll;
+use App\Observation;
 use App\Section ;
 use App\Province;
 use App\Tag;
@@ -20,6 +23,12 @@ use Illuminate\Http\Request;
 
 class PollsController extends Controller
 {
+
+      public function __construct()
+      {
+        $this->middleware('auth');
+      }
+
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +36,11 @@ class PollsController extends Controller
      */
     public function index()
     {
-        $polls = Poll::all();
+        $polls = Poll::where('country_id', 1)->where('province_id', 1);
+        $pollsForeign = Poll::where('country_id', 2)->where('');
+        $countries = Country::all();
+        $provinces = Province::orderBy('name', 'ASC')->get();
+
         $menuSections = Section::where('level', 1)
                                 ->where('topnav_back', 1)
                                 ->where('active', 1)->get();
@@ -35,18 +48,9 @@ class PollsController extends Controller
         $menuLeftSections = Section::where('level', 1)
                               ->where('active', 1)->get();
 
-        $sections = Section::all();
+        $not_responded = Contact::where('contacted', 0)->get()->count();
 
-        $principalSections = $sections->where('level', 1)
-                                      ->where('topnav_back', 1)
-                                      ->where('active', 1);//->get();
-
-        $section = $sections->where('level', 1)->first();
-        $subSections = $sections->where('level', 2);
-        $subSection = $sections->where('level', 2)->first();
-        $contents = Content::where('section_id', $subSection->id)->paginate(15);
-
-        return view('backend.polls.index', compact('polls', 'section', 'subSection', 'contents', 'menuSections', 'menuLeftSections'));
+        return view('backend.polls.index', compact('polls', 'pollsForeign', 'countries', 'provinces', 'not_responded', 'section', 'menuSections', 'menuLeftSections'));
     }
 
     /**
@@ -64,19 +68,12 @@ class PollsController extends Controller
       $menuLeftSections = Section::where('level', 1)
                             ->where('active', 1)->get();
 
-      $sections = Section::all();
-      $provinces = Province::all();
+      $countries = Country::orderBy('name', 'ASC')->get();
+      $provinces = Province::orderBy('name', 'ASC')->get();
 
-      $principalSections = $sections->where('level', 1)
-                                    ->where('topnav_back', 1)
-                                    ->where('active', 1);//->get();
+      $not_responded = Contact::where('contacted', 0)->get()->count();
 
-      $section = $sections->where('level', 1)->first();
-      $subSections = $sections->where('level', 2);
-      $subSection = $sections->where('level', 2)->first();
-      $contents = Content::where('section_id', $subSection->id)->paginate(15);
-
-      return view('backend.polls.create', compact('polls', 'section', 'sections', 'provinces', 'subSection', 'contents', 'menuSections', 'menuLeftSections'));
+      return view('backend.polls.create', compact('polls', 'not_responded', 'countries', 'provinces', 'menuSections', 'menuLeftSections'));
     }
 
     /**
@@ -100,21 +97,13 @@ class PollsController extends Controller
       $menuLeftSections = Section::where('level', 1)
                             ->where('active', 1)->get();
 
-      $sections = Section::all();
       $provinces = Province::all();
-
-      $principalSections = $sections->where('level', 1)
-                                    ->where('topnav_back', 1)
-                                    ->where('active', 1);//->get();
-
-      $section = $sections->where('level', 1)->first();
-      $subSections = $sections->where('level', 2);
-      $subSection = $sections->where('level', 2)->first();
-      $contents = Content::where('section_id', $subSection->id)->paginate(15);
 
       $message = "La encuesta se envió correctamente";
 
-      return view('backend.polls.index', compact('polls', 'message', 'section', 'sections', 'provinces', 'subSection', 'contents', 'menuSections', 'menuLeftSections'));
+      $not_responded = Contact::where('contacted', 0)->get()->count();
+
+      return view('backend.polls.index', compact('polls', 'not_responded', 'provinces', 'menuSections', 'menuLeftSections'));
     }
 
     /**
@@ -123,9 +112,23 @@ class PollsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Poll $poll)
     {
-        //
+      $polls = Poll::all();
+      $menuSections = Section::where('level', 1)
+                              ->where('topnav_back', 1)
+                              ->where('active', 1)->get();
+
+      $menuLeftSections = Section::where('level', 1)
+                            ->where('active', 1)->get();
+
+      $provinces = Province::all();
+
+      $not_responded = Contact::where('contacted', 0)->get()->count();
+
+      $observations = $poll->observations;
+
+      return view('backend.polls.show', compact('polls', 'observations', 'poll', 'not_responded', 'provinces', 'menuSections', 'menuLeftSections'));
     }
 
     /**
@@ -160,5 +163,38 @@ class PollsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function selectCountry(Country $country){
+      $pollsArray = $country->polls->toArray();
+      $polls = $country->polls;
+      $i = 0;
+      foreach($polls as $poll){
+        $pollsArray[$i]['country'] = $poll->country->name;
+        $pollsArray[$i]['date'] = date("d-m-Y" , strtotime($poll->created_at));
+        if($poll->contacted == 1){
+          $pollsArray[$i]['contacted'] = "Si - ".date("d-m-Y" , strtotime($poll->date_contacted));
+        }else{
+          $pollsArray[$i]['contacted'] = "No";
+        }
+        $i++;
+      }
+      return response()->json(['polls' => $pollsArray]);
+    }
+
+    public function selectProvince(Province $province){
+      $pollsArray = $province->polls->toArray();
+      $polls = $province->polls;
+      $i = 0;
+      foreach($polls as $poll){
+        $pollsArray[$i]['date'] = date("d-m-Y" , strtotime($poll->created_at));
+        if($poll->contacted == 1){
+          $pollsArray[$i]['contacted'] = "Si - ".date("d-m-Y" , strtotime($poll->date_contacted));
+        }else{
+          $pollsArray[$i]['contacted'] = "No";
+        }
+        $i++;
+      }
+      return response()->json(['polls' => $pollsArray]);
     }
 }

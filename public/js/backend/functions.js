@@ -1,5 +1,89 @@
 $( document ).ready(function() {
 
+  $('.sel-countries').change(function() {
+    if($(this).val() != 1){
+      $('.sel-provinces').hide();
+    }else{
+      $('.sel-provinces').show();
+    }
+  });
+
+  $('.select-provinces').change(function() { //use on if jQuery 1.7+
+
+      var id = $(this).val();
+      var url = "/polls/selectProvince/" + id;
+      var oldPollsAr = $('.old-polls-ar');
+      oldPollsAr.hide();
+      var data = "id=" + id;
+
+      $.get({
+        type: "GET",
+        url: url,
+        success: function(data){
+            var polls = data.polls;
+            var row;
+            var tableAr = $('.table-ar');
+            if(polls.length > 0){
+              $.each(polls, function(index, poll){
+                row = "<tr class='old-polls-ar'>";
+                  row += "<td><a href='/backend/polls/" + poll.id + "'>" + poll.name + " " + poll.lastname + "</a></td>";
+                  row += "<td>" + poll.city + "</td>";
+                  row += "<td>" + poll.email + "</td>";
+                  row += "<td>" + poll.telephone + "</td>";
+                  row += "<td>" + poll.date + "</td>";
+                  row += "<td>" + poll.contacted + "</td>";
+                row += "</tr>";
+                tableAr.append(row);
+              });
+            }else{
+              row = "<tr class='old-polls-ar'><td colspan='6'><h4> No hay contactos</h4></td></tr>";
+              tableAr.append(row);
+            }
+        }
+      });
+    });
+
+    $('.select-countries').change(function() { //use on if jQuery 1.7+
+
+        var id = $(this).val();
+        var url = "/polls/selectCountry/" + id;
+        var oldPollsEx = $('.old-polls-ex');
+        oldPollsEx.hide();
+        var data = "id=" + id;
+
+        $.get({
+          type: "GET",
+          url: url,
+          success: function(data){
+              var polls = data.polls;
+              var row;
+              var tableEx = $('.table-ex');
+              if(polls.length > 0){
+                $.each(polls, function(index, poll){
+                  row = "<tr class='old-polls-ex'>";
+                    row += "<td><a href='/backend/polls/" + poll.id + "'>" + poll.name + " " + poll.lastname + "</a></td>";
+                    row += "<td>" + poll.country + "</td>";
+                    row += "<td>" + poll.email + "</td>";
+                    row += "<td>" + poll.telephone + "</td>";
+                    row += "<td>" + poll.date + "</td>";
+                    row += "<td>" + poll.contacted + "</td>";
+                  row += "</tr>";
+                  tableEx.append(row);
+                });
+              }else{
+                row = "<tr class='old-polls-ar'><td colspan='6'><h4> No hay contactos</h4></td></tr>";
+                tableEx.append(row);
+              }
+          }
+        });
+      });
+
+
+  $('#myTabs a').click(function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+  });
+
   //JS para Tags
   $(".tags").select2();
 

@@ -47,7 +47,7 @@ class ContentsController extends Controller
         $section = $sections->where('level', 1)->first();
         $subSections = $sections->where('level', 2);
         $subSection = $sections->where('level', 2)->first();
-        $contents = Content::where('section_id', $subSection->id)->paginate(15);
+        $contents = Content::where('section_id', $subSection->id)->orderBy('id', 'DES')->paginate(15);
         $not_responded = Contact::where('contacted', 0)->get()->count();
         return view('backend.contents.index', compact('sections', 'not_responded' , 'section', 'subSection', 'contents', 'menuSections', 'menuLeftSections'));
     }
@@ -63,7 +63,7 @@ class ContentsController extends Controller
 
         if($subSection = $section->childrens()->first()){
           $contents = $subSection->contents;
-          $contents = Content::where('section_id', $subSection->id)->paginate(15);
+          $contents = Content::where('section_id', $subSection->id)->orderBy('id', 'DES')->paginate(15);;
         }else{
           $subSection = null;
           $contents = $section->contents()->paginate(15);

@@ -26,6 +26,8 @@ Route::get('backend/contents/getBySection/{subSection}', 'ContentsController@get
 Route::get('backend/tags/create/{tag}', 'ContentsController@addNewTag');
 Route::post('backend/contents/editImage/{content}', 'ContentsController@editImage');
 Route::post('backend/response/{contact}', 'ContactsController@response');
+Route::get('/polls/selectCountry/{country}', 'PollsController@selectCountry');
+Route::get('/polls/selectProvince/{province}', 'PollsController@selectProvince');
 
 /* FRONT CONTROLLERS */
 Route::get('/', 'FrontController@getIndex');
