@@ -37,6 +37,30 @@
 
                   <hr />
 
+                  <h4><b>Fecha Encuesta:</b> {{ date("d-m-Y" , strtotime($poll->created_at)) }}</h4>
+
+                  @if(Auth::user()->type_id == 2)
+                    @if($poll->country_id == 1)
+                      <h4><b>Responsable:</b>
+                        @if($poll->province->users()->count() > 0)
+                          {{ $poll->province->users()->first()->name }}
+                        @else
+                          No hay asignados
+                        @endif
+                      </h4>
+                    @else
+                      <h4><b>Responsable:</b>
+                        @if($poll->province_id == 0 && $poll->country->users()->count() > 0)
+                          {{ $poll->country->users()->first()->name }}
+                        @else
+                          No hay asignado
+                        @endif
+                      </h4>
+                    @endif
+                  @endif
+
+                  <hr />
+
                   <a href="/backend/polls" class="btn btn-primary">Volver</a>
 
                   {!! Form::open(['method' => 'DELETE','route' => ['polls.destroy', $poll->id],'style'=>'display:inline']) !!}
@@ -57,7 +81,7 @@
                     <hr />
                   @endforelse
 
-                    @if(Auth::user()->tepe_id == 2)
+                    @if(Auth::user()->type_id == 3 or Auth::user()->type_id == 3)
                       <form class="form-horizontal" role="form" method="POST" action="/backend/polls/{{ $poll->id }}">
                         {{ csrf_field() }}
 

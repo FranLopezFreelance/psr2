@@ -99,7 +99,7 @@
                                     <li><a href="/backend/contacts"/> Ver</a></li>
                                 </ul>
                             </li>
-                          @elseif(Auth::user()->type_id == 2)
+                          @elseif(Auth::user()->type_id == 2 or Auth::user()->type_id == 3)
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     Encuestas <span class="caret"></span>

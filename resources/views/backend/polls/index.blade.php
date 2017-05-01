@@ -26,7 +26,9 @@
                   <!-- Nav tabs -->
                   <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Argentina</a></li>
-                    <li role="presentation"><a href="#extranjero" aria-controls="profile" role="tab" data-toggle="tab">Extranjero</a></li>
+                    @if(Auth::user()->type_id == 2 or Auth::user()->type_id == 4)
+                      <li role="presentation"><a href="#extranjero" aria-controls="profile" role="tab" data-toggle="tab">Extranjero</a></li>
+                    @endif
                   </ul>
 
                   <!-- Tab panes -->
@@ -38,7 +40,7 @@
                           <div class="col-md-3">
                               <select class="form-control select-provinces" name="province_id" required>
                                   @forelse($provinces as $province)
-                                    <option value="{{ $province->id }}">{{ $province->name }}</option>
+                                    <option value="{{ $province->id }}">{{ $province->name }} ({{ $province->polls()->count() }})</option>
                                   @empty
                                     <option value="0">No hay conexión a la base</option>
                                   @endforelse
@@ -57,13 +59,7 @@
                       <table class="table table-hover polls-table table-ar">
                         <tr>
                           <th>Nombre y Apellido</th>
-
-                          @if(Auth::user()->type_id == 2)
-                            <th>Ciudad</th>
-                          @else
-                            <th>Provincia</th>
-                          @endif
-
+                          <th>Ciudad/Barrio</th>
                           <th>E-Mail</th>
                           <th>Teléfono</th>
                           <th>Fecha</th>
@@ -111,72 +107,75 @@
                         @endforelse
                       </table>
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="extranjero">
 
-                      <div class="form-group{{ $errors->has('country_id') ? ' has-error' : '' }}">
-                          <label for="country_id" class="col-md-1 control-label">País</label>
-                          <div class="col-md-3">
-                              <select class="form-control select-countries" name="country_id" required>
-                                  @forelse($countries as $country)
-                                    @if($country->id > 1)
-                                      <option value="{{ $country->id }}">{{ $country->name }}</option>
-                                    @endif
-                                  @empty
-                                    <option value="0">No hay conexión a la base</option>
-                                  @endforelse
-                              </select>
+                    @if(Auth::user()->type_id == 2 or Auth::user()->type_id == 4)
+                      <div role="tabpanel" class="tab-pane" id="extranjero">
 
-                              @if ($errors->has('country_id'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('country_id') }}</strong>
-                                  </span>
-                              @endif
-                          </div>
-                      </div>
+                        <div class="form-group{{ $errors->has('country_id') ? ' has-error' : '' }}">
+                            <label for="country_id" class="col-md-1 control-label">País</label>
+                            <div class="col-md-3">
+                                <select class="form-control select-countries" name="country_id" required>
+                                    @forelse($countries as $country)
+                                      @if($country->id > 1)
+                                        <option value="{{ $country->id }}">{{ $country->name }} ({{ $country->polls()->count() }})</option>
+                                      @endif
+                                    @empty
+                                      <option value="0">No hay conexión a la base</option>
+                                    @endforelse
+                                </select>
 
-                      <br />
+                                @if ($errors->has('country_id'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('country_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
-                      <table class="table table-hover polls-table table-ex">
-                        <tr>
-                          <th>Nombre y Apellido</th>
-                          <th>País</th>
-                          <th>E-Mail</th>
-                          <th>Teléfono</th>
-                          <th>Fecha</th>
-                          <th>Contactado</th>
-                          <th></th>
-                        </tr>
-                        @forelse($pollsForeign as $poll)
+                        <br />
+
+                        <table class="table table-hover polls-table table-ex">
+                          <tr>
+                            <th>Nombre y Apellido</th>
+                            <th>Ciudad</th>
+                            <th>E-Mail</th>
+                            <th>Teléfono</th>
+                            <th>Fecha</th>
+                            <th>Contactado</th>
+                            <th></th>
+                          </tr>
+                          @forelse($pollsForeign as $poll)
+                              <tr class="old-polls-ex">
+                                <td><a href="/backend/polls/{{ $poll->id }}">{{ $poll->name }} {{ $poll->lastname }}</td>
+                                <td>{{ $poll->city->name }}</td>
+                                <td>{{ $poll->email }}</td>
+                                <td>{{ $poll->telephone }}</td>
+                                <td>{{ date("d-m-Y" , strtotime($poll->created_at)) }}</td>
+                                @if($poll->contacted == 1)
+                                  <td>Sí {{ $poll-date_contacted }}</td>
+                                @else
+                                  <td>No</td>
+                                @endif
+                                <td>
+                                  {!! Form::open(['method' => 'DELETE','route' => ['contacts.destroy', $poll->id],'style'=>'display:inline']) !!}
+                                  {!! Form::submit('Eliminar', ['class' => 'btn btn-danger btn-xs pull-right']) !!}
+                                  {!! Form::close() !!}
+                                </td>
+                              </tr>
+                          @empty
                             <tr class="old-polls-ex">
-                              <td><a href="/backend/polls/{{ $poll->id }}">{{ $poll->name }} {{ $poll->lastname }}</td>
-                              <td>{{ $poll->country->name }}</td>
-                              <td>{{ $poll->email }}</td>
-                              <td>{{ $poll->telephone }}</td>
-                              <td>{{ date("d-m-Y" , strtotime($poll->created_at)) }}</td>
-                              @if($poll->contacted == 1)
-                                <td>Sí {{ $poll-date_contacted }}</td>
-                              @else
-                                <td>No</td>
-                              @endif
-                              <td>
-                                {!! Form::open(['method' => 'DELETE','route' => ['contacts.destroy', $poll->id],'style'=>'display:inline']) !!}
-                                {!! Form::submit('Eliminar', ['class' => 'btn btn-danger btn-xs pull-right']) !!}
-                                {!! Form::close() !!}
+                              <td colspan="6">
+                                @if(isset(Auth::user()->province->id))
+                                  <h4> No hay contactos por {{ Auth::user()->province->name }} </h4>
+                                @else
+                                  <h4> No hay contactos</h4>
+                                @endif
                               </td>
                             </tr>
-                        @empty
-                          <tr class="old-polls-ex">
-                            <td colspan="6">
-                              @if(isset(Auth::user()->province->id))
-                                <h4> No hay contactos por {{ Auth::user()->province->name }} </h4>
-                              @else
-                                <h4> No hay contactos</h4>
-                              @endif
-                            </td>
-                          </tr>
-                        @endforelse
-                      </table>
-                    </div>
+                          @endforelse
+                        </table>
+                      </div>
+                    @endif
                   </div>
 
                 </div>

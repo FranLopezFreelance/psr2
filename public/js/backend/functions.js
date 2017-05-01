@@ -62,7 +62,7 @@ $( document ).ready(function() {
                 $.each(polls, function(index, poll){
                   row = "<tr class='old-polls-ex'>";
                     row += "<td><a href='/backend/polls/" + poll.id + "'>" + poll.name + " " + poll.lastname + "</a></td>";
-                    row += "<td>" + poll.country + "</td>";
+                    row += "<td>" + poll.city + "</td>";
                     row += "<td>" + poll.email + "</td>";
                     row += "<td>" + poll.telephone + "</td>";
                     row += "<td>" + poll.date + "</td>";
@@ -71,7 +71,7 @@ $( document ).ready(function() {
                   tableEx.append(row);
                 });
               }else{
-                row = "<tr class='old-polls-ar'><td colspan='6'><h4> No hay contactos</h4></td></tr>";
+                row = "<tr class='old-polls-ex'><td colspan='6'><h4> No hay contactos</h4></td></tr>";
                 tableEx.append(row);
               }
           }

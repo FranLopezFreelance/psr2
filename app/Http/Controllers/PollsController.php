@@ -36,10 +36,31 @@ class PollsController extends Controller
      */
     public function index()
     {
-        $polls = Poll::where('country_id', 1)->where('province_id', 1);
-        $pollsForeign = Poll::where('country_id', 2)->where('');
-        $countries = Country::all();
-        $provinces = Province::orderBy('name', 'ASC')->get();
+
+
+        if(Auth::user()->type_id == 3){
+          $provinces = Auth::user()->provinces;
+          $countries = Auth::user()->countries;
+
+          if(Auth::user()->provinces()->count() > 0){
+            $polls = Poll::where('province_id', Auth::user()->provinces()->first()->id)->get();
+          }else{
+            $polls = null;
+          }
+          
+          if(Auth::user()->countries()->count() > 0){
+            $pollsForeign = Poll::where('country_id', Auth::user()->countries()->first()->id)->get();
+          }else{
+            $pollsForeign = null;
+          }
+
+        }else{
+          $provinces = Province::orderBy('name', 'ASC')->get();
+          $polls = Poll::where('country_id', 1)->where('province_id', 1);
+          $pollsForeign = Poll::where('country_id', 2)->where('');
+          $countries = Country::all();
+        }
+
 
         $menuSections = Section::where('level', 1)
                                 ->where('topnav_back', 1)
@@ -88,7 +109,8 @@ class PollsController extends Controller
       $poll = new Poll($request->all());
       $poll->save();
 
-      $polls = Poll::all();
+      $polls = Poll::where('country_id', 1)->where('province_id', 1);
+      $pollsForeign = Poll::where('country_id', 2)->where('');
 
       $menuSections = Section::where('level', 1)
                               ->where('topnav_back', 1)
@@ -97,13 +119,14 @@ class PollsController extends Controller
       $menuLeftSections = Section::where('level', 1)
                             ->where('active', 1)->get();
 
+      $countries = Country::all();
       $provinces = Province::all();
 
       $message = "La encuesta se envió correctamente";
 
       $not_responded = Contact::where('contacted', 0)->get()->count();
 
-      return view('backend.polls.index', compact('polls', 'not_responded', 'provinces', 'menuSections', 'menuLeftSections'));
+      return view('backend.polls.index', compact('polls', 'not_responded', 'provinces', 'countries', 'menuSections', 'menuLeftSections'));
     }
 
     /**
@@ -170,7 +193,7 @@ class PollsController extends Controller
       $polls = $country->polls;
       $i = 0;
       foreach($polls as $poll){
-        $pollsArray[$i]['country'] = $poll->country->name;
+        $pollsArray[$i]['city'] = $poll->city;
         $pollsArray[$i]['date'] = date("d-m-Y" , strtotime($poll->created_at));
         if($poll->contacted == 1){
           $pollsArray[$i]['contacted'] = "Si - ".date("d-m-Y" , strtotime($poll->date_contacted));
