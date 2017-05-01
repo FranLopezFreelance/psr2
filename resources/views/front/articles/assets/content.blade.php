@@ -14,7 +14,9 @@
     @include('front.assets.stats')
   </div>
   <div class="col-xs-12">
-    @if ($video)
+    @if ($content->video_id == 'pendiente')
+    <img class="main-image" src="{{$content->getImageByType(1)}}" alt="">
+    @elseif ($video)
   <div class="video-container">
       <iframe id="ytplayer" type="text/html" width="100%" height="360"
       src="http://www.youtube.com/embed/{{$content->video_id}}/?autoplay=0&playlist=lUsc5Bl_F8s,FSxdRJVqFq4,YI1WwxMsB1w,PGY5AS3uIcM"
