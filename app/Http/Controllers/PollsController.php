@@ -203,7 +203,7 @@ class PollsController extends Controller
         $pollsArray[$i]['city'] = $poll->city;
         $pollsArray[$i]['date'] = date("d-m-Y" , strtotime($poll->created_at));
         if($poll->contacted == 1){
-          $pollsArray[$i]['contacted'] = "Si - ".date("d-m-Y" , strtotime($poll->date_contacted));
+          $pollsArray[$i]['contacted'] = "Si";
         }else{
           $pollsArray[$i]['contacted'] = "No";
         }
@@ -219,7 +219,7 @@ class PollsController extends Controller
       foreach($polls as $poll){
         $pollsArray[$i]['date'] = date("d-m-Y" , strtotime($poll->created_at));
         if($poll->contacted == 1){
-          $pollsArray[$i]['contacted'] = "Si - ".date("d-m-Y" , strtotime($poll->date_contacted));
+          $pollsArray[$i]['contacted'] = "Si";
         }else{
           $pollsArray[$i]['contacted'] = "No";
         }

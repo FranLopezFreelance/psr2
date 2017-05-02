@@ -22,19 +22,20 @@
                       @endif
                       <h4><b>Ciudad:</b> {{ $poll->city }}</a></h4>
                       <h4><b>Edad:</b> {{ $poll->age }}</a></h4>
+                      <h4><b>Estudios:</b> {{ $poll->studies }}</a></h4>
                     </div>
 
                     <div class="col-md-6">
                       <h4><b>Ocupación:</b> {{ $poll->occupation }}</a></h4>
                       <h4><b>E-mail:</b> {{ $poll->email }}</a></h4>
                       <h4><b>Teléfono:</b> {{ $poll->telephone }}</a></h4>
-
+                      <h4><b>Comentarios:</b> {{ $poll->comments }}</h4>
                     </div>
                     <hr />
                   </div>
 
                   <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                       <h4><b>Ofecimiento:</b></h4>
                       <ul>
                         @forelse($poll->helps as $help)
@@ -44,22 +45,25 @@
                         @endforelse
                       </ul>
                     </div>
-                    <div class="col-md-6">
-                      <h4><b>Comentarios:</b> {{ $poll->comments }}</h4>
-                    </div>
                   </div>
 
                   <hr />
 
-                  <h4><b>Fecha Encuesta:</b> {{ date("d-m-Y" , strtotime($poll->created_at)) }}</h4>
+                  <h4><b>Fecha Encuesta:</b> {{ date("d-m-Y" , strtotime($poll->created_at)) }}
+                    @if($poll->contacted == 1)
+                      / Contactado <img width="15px" src="/img/icons/success.png" />
+                    @else
+                      / No contactado
+                    @endif
+                  </h4>
 
-                  @if(Auth::user()->type_id == 2)
+                  @if(Auth::user()->type_id == 1 or Auth::user()->type_id == 2)
                     @if($poll->country_id == 1)
                       <h4><b>Responsable:</b>
                         @if($poll->province->users()->count() > 0)
                           {{ $poll->province->users()->first()->name }}
                         @else
-                          No hay asignados
+                          No hay asignado
                         @endif
                       </h4>
                     @else

@@ -88,7 +88,7 @@
                               <td>{{ $poll->telephone }}</td>
                               <td>{{ date("d-m-Y" , strtotime($poll->created_at)) }}</td>
                               @if($poll->contacted == 1)
-                                <td>Sí {{ $poll-date_contacted }}</td>
+                                <td>Sí</td>
                               @else
                                 <td>No</td>
                               @endif
