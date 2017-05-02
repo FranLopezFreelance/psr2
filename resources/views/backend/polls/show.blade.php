@@ -33,7 +33,21 @@
                     <hr />
                   </div>
 
-                  <h4><b>Comentarios:</b> {{ $poll->comments }}</h4>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <h4><b>Ofecimiento:</b></h4>
+                      <ul>
+                        @forelse($poll->helps as $help)
+                          <li>{{ $help->name }}</li>
+                        @empty
+                          <li>No detalla</li>
+                        @endforelse
+                      </ul>
+                    </div>
+                    <div class="col-md-6">
+                      <h4><b>Comentarios:</b> {{ $poll->comments }}</h4>
+                    </div>
+                  </div>
 
                   <hr />
 
@@ -73,7 +87,6 @@
 
                   @forelse($observations as $observation)
                     <p class="mensaje">{{ $observation->text }}</p>
-                    <hr />
                     <p class="mensaje"><b>Fecha: </b>{{ date("d-m-Y" , strtotime($observation->created_at)) }}</p>
                     <hr />
                   @empty

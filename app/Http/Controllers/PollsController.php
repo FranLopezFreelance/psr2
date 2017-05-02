@@ -6,6 +6,7 @@ use App\Author;
 use App\Contact;
 use App\Content;
 use App\Country;
+use App\Help;
 use App\Medio;
 use App\Mediatype;
 use App\Radio;
@@ -91,10 +92,11 @@ class PollsController extends Controller
 
       $countries = Country::orderBy('name', 'ASC')->get();
       $provinces = Province::orderBy('name', 'ASC')->get();
+      $helps = Help::all();
 
       $not_responded = Contact::where('contacted', 0)->get()->count();
 
-      return view('backend.polls.create', compact('polls', 'not_responded', 'countries', 'provinces', 'menuSections', 'menuLeftSections'));
+      return view('backend.polls.create', compact('polls', 'not_responded', 'helps', 'countries', 'provinces', 'menuSections', 'menuLeftSections'));
     }
 
     /**
@@ -106,8 +108,12 @@ class PollsController extends Controller
     public function store(Request $request)
     {
 
+      $request->input('helps');
+
       $poll = new Poll($request->all());
       $poll->save();
+
+      $poll->helps()->sync($request->input('helps'), false);
 
       $polls = Poll::where('country_id', 1)->where('province_id', 1);
       $pollsForeign = Poll::where('country_id', 2)->where('');
@@ -121,12 +127,13 @@ class PollsController extends Controller
 
       $countries = Country::all();
       $provinces = Province::all();
+      $helps = Help::all();
 
       $message = "La encuesta se envió correctamente";
 
       $not_responded = Contact::where('contacted', 0)->get()->count();
 
-      return view('backend.polls.index', compact('polls', 'not_responded', 'provinces', 'countries', 'menuSections', 'menuLeftSections'));
+      return view('backend.polls.index', compact('polls', 'helps', 'not_responded', 'provinces', 'countries', 'menuSections', 'menuLeftSections'));
     }
 
     /**
@@ -223,10 +230,9 @@ class PollsController extends Controller
 
     public function newObservation(Request $request, Poll $poll){
       $observation = new Observation($request->all());
-      $observation->save();
-
-      $poll->observations()->save($observation->id);
-      dd($poll->observations);
+      $poll->observations()->save($observation);
+      $poll->contacted = 1;
+      $poll->save();
 
       $menuSections = Section::where('level', 1)
                               ->where('topnav_back', 1)
@@ -239,6 +245,6 @@ class PollsController extends Controller
 
       $observations = $poll->observations;
 
-      return view('backend.polls.show', compact('observations', 'poll', 'not_responded', 'menuSections', 'menuLeftSections'));
+      return redirect()->back();
     }
 }

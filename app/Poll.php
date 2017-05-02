@@ -18,6 +18,10 @@ class Poll extends Model
       return $this->belongsTo('App\Province');
   }
 
+  public function helps(){
+      return $this->belongsToMany('App\Help', 'polls_helps', 'poll_id', 'help_id');
+  }
+
   public function observations(){
       return $this->belongsToMany('App\Observation', 'polls_observations', 'poll_id', 'observation_id');
   }

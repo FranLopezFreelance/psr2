@@ -67,7 +67,11 @@
                           <th></th>
                         </tr>
                         @forelse($polls as $poll)
-                            <tr class="old-polls-ar">
+                            <tr class="old-polls-ar
+                              @if($poll->contacted == 1)
+                                contacted
+                              @endif
+                            ">
                               <td><a href="/backend/polls/{{ $poll->id }}">{{ $poll->name }} {{ $poll->lastname }}</td>
 
                               @if(Auth::user()->type_id == 2)

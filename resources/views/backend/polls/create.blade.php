@@ -157,6 +157,26 @@
                           </div>
                       </div>
 
+                      <div class="form-group{{ $errors->has('telephone') ? ' has-error' : '' }}">
+                          <label for="helps[]" class="col-md-4 col-md-offset-2 control-label">¿Qué tipo de colaboración podés brindar?</label>
+                      </div>
+
+
+                      <div class="col-md-9  col-md-offset-3">
+                        @foreach($helps as $help)
+                          <div class="col-md-4">
+                            <input type="checkbox" name="helps[]" value="{{ $help->id }}" /> {{ $help->name }}
+                              @if ($errors->has('helps[]'))
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('helps[]') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                        @endforeach
+                      </div>
+
+                      <hr />
+
                       <div class="form-group{{ $errors->has('comments') ? ' has-error' : '' }}">
                           <label for="comments" class="col-md-4 control-label">Comentarios</label>
 
