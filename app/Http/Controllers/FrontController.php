@@ -41,7 +41,7 @@ class FrontController extends Controller
 
       $page = Paginator::resolveCurrentPage();
         $perPage=12;
-        $contents = new Paginator(Content::where('typeview_id','=',4)->orderBy('date','desc')->skip((($page - 1) * $perPage)+6)->take($perPage + 1)->get(), $perPage, $page);
+        $contents = new Paginator(Content::where([['typeview_id','=',4],['active','=',1]])->orderBy('date','desc')->skip((($page - 1) * $perPage)+6)->take($perPage + 1)->get(), $perPage, $page);
 //dd($contents);
       $colsm = 3;
       $colmd = 3;
@@ -54,7 +54,7 @@ class FrontController extends Controller
     $target = Section::where('id', 1)->first();
     //$sql = "SELECT * FROM contents INNER JOIN tagscontents ON contents.id = tagscontents.content_id WHERE tagscontents.tag_id = 1 AND contents.typeview_id = 4 ORDER BY contents.date DESC";
 
-    $videos = Content::where('typeview_id','=',4)->orderBy('date','desc')->paginate(6);
+    $videos = Content::where([['typeview_id','=',4],['active','=',1]])->orderBy('date','desc')->paginate(6);
     $primero = $videos->items()[0];
     $videos->offsetUnset(0);
     $segundo = $videos->items()[1];
