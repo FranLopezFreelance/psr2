@@ -1964,6 +1964,13 @@ div.programas-section div.section-intro div.border-bottom-hard {
 div.programas-section div.list-content div.col.col-lg-3 {
   padding: 0 10px;
 }
+div.section div.content a.descargar {
+  color: white!important;
+  background-color: #0063a4;
+  padding: 10px 30px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
 div.section div.content h1 {
   text-transform: uppercase;
   font-weight: 800;
@@ -2065,6 +2072,15 @@ div.section div.content div.tags a.tag {
   left: 0;
   width: 100%;
   height: 100%;
+}
+div.custom-patagonia {
+  text-align: center;
+}
+div.custom-patagonia img.infografia {
+  width: 100%;
+}
+div.custom-patagonia a.descargar {
+  margin-top: 50px;
 }
 div.prensa li.item {
   width: 100%;

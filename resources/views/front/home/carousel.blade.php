@@ -2,14 +2,9 @@
 <div class="extra-slider slider-home container-fluid">
   <div class="wrapper ">
     <ul>
-      <!--<li class="item pilar proyecto">-->
+    
       <li class="item pilar">
-        <img src="/img/home/cabildo-abierto-20170331.jpg" alt="">
-
-      </li>
-
-      <li class="item pilar">
-        <img class="lazypilar"  src="/img/pilares/proyecto-segunda-republica.jpg" alt="">
+        <img class=""  src="/img/pilares/proyecto-segunda-republica.jpg" alt="">
       </li>
       <li class="item pilar primero">
         <img class="lazypilar"  data-original="/img/pilares/proyecto-segunda-republica-1er-pilar.jpg" width="1440px" height="598px" alt="">

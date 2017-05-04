@@ -31,6 +31,9 @@ Route::get('/polls/selectProvince/{province}', 'PollsController@selectProvince')
 Route::post('/backend/observations/{poll}', 'PollsController@newObservation');
 
 /* FRONT CONTROLLERS */
+
+Route::get('/encuesta-psr', 'FrontController@encuestaPsr');
+
 Route::get('/', 'FrontController@getIndex');
 Route::get('/plataformapsr', 'FrontController@getIndexPlataforma');
 Route::get('/moreHomeVideos', 'FrontController@getMoreHomeVideos');
@@ -45,6 +48,7 @@ Route::get('/{section}', 'FrontController@getSection');
 Route::get('/{section}/{subSection}', 'FrontController@getSubSection');
 Route::get('/{section}/{subSection}/{content}', 'FrontController@getContent');
 Route::post('storeContact', 'FrontController@storeContact');
+
 
 // /* OTHERS BACKEND CONTROLLERS */
 Route::get('backend/sections/{section}', 'SectionsController@getBySection');

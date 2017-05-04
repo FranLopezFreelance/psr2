@@ -37,3 +37,11 @@
 
   </div>
   </div>
+
+<div class="container-fluid">
+  <div class="row">
+
+      <a href="/articulos/geopolitica/patagonia-12-ejes-de-conflicto"><img class="lazypilar"  data-original="/img/home/patagonia-12-ejes-de-conflicto.jpg" alt=""></a>
+
+  </div>
+    </div>

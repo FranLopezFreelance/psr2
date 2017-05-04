@@ -30,6 +30,16 @@
   </div>
 </div>
 
+<div class="col-xs-12 col-sm-6 col-md-12">
+  <div class="sidebar-item">
+
+      <div class="imagen">
+        <a href="/articulos/geopolitica/patagonia-12-ejes-de-conflicto"><img class="full-width lazy" data-original="/img/sidebar/patagonia-12-ejes-de-conflicto.jpg" alt=""></a>
+      </div>
+    </div>
+  
+</div>
+
 <div class="col-xs-12 col-sm-6 hidden-sm col-md-12">
   <div class="fb-page  sidebar-item" data-href="https://www.facebook.com/ProyectoSegundaRepublica/"
    data-small-header="false" data-adapt-container-width="true"
