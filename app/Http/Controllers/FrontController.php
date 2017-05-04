@@ -12,6 +12,10 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 use DB;
 
+use App\Province;
+use App\Poll;
+use App\Country;
+
 class FrontController extends Controller
 {
   private $sections;
@@ -142,7 +146,12 @@ class FrontController extends Controller
       $target = $content;
       $content->addView();
 
-      return view($content->typeView->show_view, compact('target','content'));
+      switch($content->url){
+        case 'patagonia-12-ejes-de-conflicto': $view = 'front.custom.patagonia.show';break;
+        default:  $view = $content->typeView->show_view;break;
+      }
+
+      return view($view, compact('target','content'));
     }else{
       return view('errors.404');
     }
@@ -294,5 +303,16 @@ class FrontController extends Controller
         ];
     }
   }
+
+  public function encuestaPsr(){
+    $provinces = Province::orderBy('name', 'ASC')->get();
+    $polls = Poll::where('country_id', 1)->where('province_id', 1);
+    $pollsForeign = Poll::where('country_id', 2)->where('');
+    $countries = Country::all();
+    $target = Content::where('url', 'encuesta-psr')->first();
+
+      return view('front.custom.encuesta.show', compact('polls', 'pollsForeign', 'countries', 'provinces','target'));
+  }
+
 
 }
