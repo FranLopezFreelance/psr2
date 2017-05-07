@@ -6,7 +6,7 @@
 
   <div class="row">
 
-    <img class="infografia" src="/img/pilares/infografias/estado-nacional-soberano.jpg" alt="">
+    <img class="infografia" src="/img/custom/patagonia/patagonia-12-ejes-de-conflicto.jpg" alt="">
 
     <div class="content">
 

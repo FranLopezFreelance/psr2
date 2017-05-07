@@ -46,6 +46,18 @@ gulp.task('styles', function() {
         .pipe(browserSync.reload({stream:true}));
 })
 
+gulp.task('encuesta-styles', function() {
+    gulp.src(['resources/assets/less/front/encuesta.less'])
+        .pipe(less())
+        .pipe(autoprefixer('last 1 version'))
+        .pipe(concat('encuesta.css'))
+        .pipe(gulp.dest('./public/css/front/'))
+        .pipe(minifyCSS())
+        .pipe(rename("encuesta.min.css"))
+        .pipe(gulp.dest('./public/css/front'))
+        .pipe(browserSync.reload({stream:true}));
+})
+
 gulp.task('browser-sync', function(){
     browserSync({
          proxy: "http://localhost:8000",
@@ -61,7 +73,7 @@ gulp.task('default', ['browser-sync'], function () {
     //gulp.run('html');
 
 
-    gulp.watch('resources/assets/less/front/*.less',['styles']);
+    gulp.watch('resources/assets/less/front/*.less',['styles','encuesta-styles']);
     gulp.watch('resources/views/**/*.php',['bs-reload']);
     //gulp.watch('site/scripts/**/*.js',['scripts','bs-reload']);
 });

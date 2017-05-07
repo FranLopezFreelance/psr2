@@ -247,4 +247,19 @@ class PollsController extends Controller
 
       return redirect()->back();
     }
+
+    public function storeFromFront(Request $request)
+    {
+
+      $request->input('helps');
+
+      $poll = new Poll($request->all());
+      $poll->save();
+
+      $poll->helps()->sync($request->input('helps'), false);
+
+
+      return view('front.custom.encuesta.gracias', compact('poll'));
+    }
+
 }

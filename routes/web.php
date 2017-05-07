@@ -33,6 +33,7 @@ Route::post('/backend/observations/{poll}', 'PollsController@newObservation');
 /* FRONT CONTROLLERS */
 
 Route::get('/encuesta-psr', 'FrontController@encuestaPsr');
+Route::post('/encuesta-psr', 'PollsController@storeFromFront');
 
 Route::get('/', 'FrontController@getIndex');
 Route::get('/plataformapsr', 'FrontController@getIndexPlataforma');

@@ -15,6 +15,7 @@ use DB;
 use App\Province;
 use App\Poll;
 use App\Country;
+use App\Help;
 
 class FrontController extends Controller
 {
@@ -305,13 +306,12 @@ class FrontController extends Controller
   }
 
   public function encuestaPsr(){
-    $provinces = Province::orderBy('name', 'ASC')->get();
-    $polls = Poll::where('country_id', 1)->where('province_id', 1);
-    $pollsForeign = Poll::where('country_id', 2)->where('');
+    $provinces = Province::orderBy('name', 'ASC')->get();    
+    $helps = Help::all();
     $countries = Country::all();
     $target = Content::where('url', 'encuesta-psr')->first();
 
-      return view('front.custom.encuesta.show', compact('polls', 'pollsForeign', 'countries', 'provinces','target'));
+      return view('front.custom.encuesta.show', compact('countries', 'provinces','helps','target'));
   }
 
 
