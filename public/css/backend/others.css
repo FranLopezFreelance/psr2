@@ -13,6 +13,10 @@
   margin-left: 15px;
 }
 
+.box-zones {
+  display: none;
+}
+
 .contacted {
   background-color: #E0F8E0;
 }

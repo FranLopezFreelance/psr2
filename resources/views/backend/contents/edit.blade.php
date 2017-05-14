@@ -265,6 +265,24 @@
                         </div>
                       @endif
 
+                      <div class="form-group{{ $errors->has('video_id') ? ' has-error' : '' }}">
+                          <label for="video_id" class="col-md-4 control-label">Video ID</label>
+                          <div class="col-md-6">
+                              <input id="video_id" type="text" class="form-control video_id" name="video_id"
+                                @if(old('video_id'))
+                                  value="{{ old('video_id') }}"
+                                @else
+                                  value="{{ $content->video_id }}"
+                                @endif
+                              >
+                              @if ($errors->has('video_id'))
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('video_id') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                      </div>
+
                       <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                           <label for="title" class="col-md-4 control-label">Título</label>
                           <div class="col-md-6">

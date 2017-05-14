@@ -8,6 +8,14 @@ $( document ).ready(function() {
     }
   });
 
+  $('.select-types').change(function() {
+    if($(this).val() == 3){
+      $('.box-zones').show();
+    }else{
+      $('.box-zones').hide();
+    }
+  });
+
   $('.select-provinces').change(function() { //use on if jQuery 1.7+
 
       var id = $(this).val();
@@ -86,6 +94,7 @@ $( document ).ready(function() {
 
   //JS para Tags
   $(".tags").select2();
+  $(".zones").select2();
 
   //JS para Text Editor
   tinymce.init({
