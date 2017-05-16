@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Section;
 use App\Contact;
+use App\Province;
 use App\Response;
 
 use Illuminate\Http\Request;
@@ -61,7 +62,8 @@ class ContactsController extends Controller
 
         $contacts = Contact::orderBy('id', 'desc')->get();
         $not_responded = Contact::where('contacted', 0)->get()->count();
-        return view('backend.contacts.show', compact('contacts', 'not_responded','section', 'contact', 'menuSections'));
+        $provinces = Province::orderBy('name', 'asc')->get();
+        return view('backend.contacts.show', compact('contacts', 'not_responded','section', 'contact', 'menuSections', 'provinces'));
     }
 
     public function response(Request $request, Contact $contact)

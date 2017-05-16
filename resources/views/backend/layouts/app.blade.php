@@ -74,6 +74,15 @@
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    Usuarios
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="/backend/users"/> Ver</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     Contactos
                                     @if(isset($not_responded))
                                       <span class="badge">{{ $not_responded }}</span>
@@ -122,12 +131,15 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    <li><a href="/backend/users/{{ Auth::user()->id }}/edit">Editar mis Datos</a></li>
                                     <li>
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
+
+
 
                                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
@@ -155,6 +167,10 @@
       //JS para Tags
       @if(isset($content))
         $(".tags").select2().val({!! json_encode($content->tags()->getRelatedIds()) !!}).trigger('change');
+      @endif
+      @if(isset($user))
+        $(".provinces").select2().val({!! json_encode($user->provinces()->getRelatedIds()) !!}).trigger('change');
+        $(".countries").select2().val({!! json_encode($user->countries()->getRelatedIds()) !!}).trigger('change');
       @endif
     </script>
 </body>
