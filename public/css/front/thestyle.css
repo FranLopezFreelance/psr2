@@ -1408,6 +1408,9 @@ div.home-videos-plataforma {
   background-color: #1e1e1e;
   padding-bottom: 30px;
 }
+div.home-videos-plataforma div.video-plataforma {
+  min-height: 410px;
+}
 div.home-videos-plataforma div.content-mini a.vlink p {
   color: white;
 }
@@ -2288,4 +2291,33 @@ div.content.book .main-image {
 }
 div.content.book .text {
   margin-bottom: 50px;
+}
+.descarga-patagonia {
+  background-color: #b43337;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 10px 30px;
+  margin-top: 40px;
+  display: inline-block;
+}
+.descarga-patagonia-icon {
+  display: block;
+  margin-top: 40px;
+}
+.descarga-kruz {
+  background-color: #406de1;
+  color: white!important;
+  width: 100%;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 10px 30px;
+  margin-top: 40px;
+  display: inline-block;
+  text-align: center;
+}
+.descarga-kruz-icon {
+  display: block;
+  margin-top: 40px;
+  text-align: center;
 }

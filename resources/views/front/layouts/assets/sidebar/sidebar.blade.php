@@ -34,10 +34,10 @@
   <div class="sidebar-item">
 
       <div class="imagen">
-        <a href="/articulos/geopolitica/patagonia-12-ejes-de-conflicto"><img class="full-width lazy" data-original="/img/sidebar/patagonia-12-ejes-de-conflicto.jpg" alt=""></a>
+        <a href="/articulos/politica/los-mega-robos-kirchneristas-fuimos-los-primeros-en-denunciarlos"><img class="full-width lazy" data-original="/img/sidebar/los-fondos-de-santa-cruz-lo-denunciamos-en-2004.jpg" alt="Los Fondos de Santa Cruz"></a>
       </div>
     </div>
-  
+
 </div>
 
 <div class="col-xs-12 col-sm-6 hidden-sm col-md-12">

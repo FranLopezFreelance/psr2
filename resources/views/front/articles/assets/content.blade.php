@@ -19,7 +19,7 @@
     @elseif ($video)
   <div class="video-container">
       <iframe id="ytplayer" type="text/html" width="100%" height="360"
-      src="http://www.youtube.com/embed/{{$content->video_id}}/?autoplay=0&playlist=lUsc5Bl_F8s,FSxdRJVqFq4,YI1WwxMsB1w,PGY5AS3uIcM"
+      src="http://www.youtube.com/embed/{{$content->video_id}}/?autoplay=0&playlist=tLKtSw8JYPI,qWUAoVcanp8"
       frameborder="0"></iframe>
     </div>
     @include('front.assets.addthis')
