@@ -84,8 +84,11 @@ $( document ).ready(function() {
     $(this).tab('show')
   });
 
-  //JS para Tags
+  //JS para Tipo Tags
   $(".tags").select2();
+  $(".zones").select2();
+  $(".provinces").select2();
+  $(".countries").select2();
 
   //JS para Text Editor
   tinymce.init({

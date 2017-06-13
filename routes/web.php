@@ -20,6 +20,7 @@ Route::resource('backend/sections', 'SectionsController');
 Route::resource('backend/contents', 'ContentsController');
 Route::resource('backend/contacts', 'ContactsController');
 Route::resource('backend/polls', 'PollsController');
+Route::resource('backend/users', 'UsersController');
 Route::get('backend/contents/createBySection/{section}', 'ContentsController@createBySection');
 Route::get('backend/contents/createBySection/{section}/{subSection}', 'ContentsController@createBySubSection');
 Route::get('backend/contents/getBySection/{subSection}', 'ContentsController@getContentBySubSection');

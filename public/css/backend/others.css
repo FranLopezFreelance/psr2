@@ -13,6 +13,21 @@
   margin-left: 15px;
 }
 
+.coordinadores {
+  background-color: #E0F2F7;
+  padding-top: 15px;
+  border-radius: 5px;
+  right: 8px;
+}
+
+.box-zones {
+  display: none;
+}
+
+.telephone {
+  display: none;
+}
+
 .contacted {
   background-color: #E0F8E0;
 }
