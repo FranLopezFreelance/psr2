@@ -10,5 +10,5 @@
 
     @include('front.layouts.assets.nav')
     @yield('content')
-    @include('front.layouts.assets.footer')
+    
     @include('front.layouts.assets.closer')

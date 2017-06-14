@@ -212,6 +212,7 @@ ul.nav.nav-tabs.inner-menu{
   ul.dropdown-menu{
     padding: 0!important;
     width: 100%;
+    z-index: 500;
     .drop-shadow(0);
     li{
       margin: 0!important;
@@ -378,6 +379,8 @@ nav.main-menu{
 	}
 }
 
+
+
 .navbar-brand{
 	margin: 0;
   padding: 0px;
@@ -392,13 +395,42 @@ nav.main-menu{
 }
 }
 
+nav.subnav.main-menu{
+  background-color: @blue;
+  border: none;
+  div.container-fluid{
+    background-color: @blue;
+  }
+  ul.nav{
+    padding-right: 32px;
+  }
+  ul.nav li a{
+    //font-size: 11px!important;
+    color:white!important;
+    padding: 2px 20px!important;
+    span.caret{color:white;}
+  }
+  li{padding: 0px 0px!important;}
+}
+
 body.site.fixed{
   div.site-content{
-    padding-top: 130px;
+    padding-top: 170px;
+  }
+  nav.subnav.main-menu{
+    top:56px;
+    .q(@xl,{
+      top:61px;
+      });
+    z-index: 20;
+
+    ul.nav li a{
+      padding: 6px 20px!important;
+    }
   }
   nav.main-menu{
     position: fixed;
-    z-index: 1000;
+    z-index: 999;
     width: 100%;
     max-width: 100%;
     border-bottom: none;
@@ -407,6 +439,10 @@ body.site.fixed{
     i{
       padding-top: 15px;
     }
+
+    /*li.dropdown>ul.dropdown-menu{
+      z-index: 5000;
+    }*/
 
 
 .q(@sm,{

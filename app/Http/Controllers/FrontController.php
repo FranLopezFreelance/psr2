@@ -22,7 +22,7 @@ class FrontController extends Controller
   private $sections;
   public function __construct() {
       $allSections = Section::all();
-      $this->sections = Section::where([['level','=', 1],['active','=',1]])->get();//¨POR FOOTERNO PUEDO USAR ALLSECTIONS
+      $this->sections = Section::where([['level','=', 1],['active','=',1]])->orderBy('order','asc')->get();//¨POR FOOTERNO PUEDO USAR ALLSECTIONS
       //$recomendados = Content::where('dest','=',1)->take(5)->get();
       $recomendados = Content::take(5)->get();
       //$sql ="SELECT *, tags.id as tid, count(*) as cant FROM tags INNER JOIN tagscontents ON tags.id = tagscontents.tag_id GROUP BY tid order by cant DESC limit 5";
@@ -306,7 +306,7 @@ class FrontController extends Controller
   }
 
   public function encuestaPsr(){
-    $provinces = Province::orderBy('name', 'ASC')->get();    
+    $provinces = Province::orderBy('name', 'ASC')->get();
     $helps = Help::all();
     $countries = Country::all();
     $target = Content::where('url', 'encuesta-psr')->first();
