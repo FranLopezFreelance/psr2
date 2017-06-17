@@ -5,7 +5,6 @@
     <h1>{{$content->title}}</h1>
     <div class="bottom-line col-xs-12"></div>
 
-
     <div class="breadcumb">
     @foreach($target->getBreadcrumb() as $link)
         <a href="/{{$link['url']}}">{{$link['name']}}</a> <span class="b-separator">>></span>
@@ -16,7 +15,7 @@
   <div class="col-xs-12">
     @if ($content->video_id == 'pendiente')
     <img class="main-image" src="{{$content->getImageByType(1)}}" alt="">
-    @elseif ($video)
+    @elseif ($video || $content->video_id != '')
   <div class="video-container">
       <iframe id="ytplayer" type="text/html" width="100%" height="360"
       src="http://www.youtube.com/embed/{{$content->video_id}}/?autoplay=0&playlist=tLKtSw8JYPI,qWUAoVcanp8"

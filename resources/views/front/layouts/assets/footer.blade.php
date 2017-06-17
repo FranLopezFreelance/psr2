@@ -49,12 +49,16 @@
   </div>
 
   <div class="col-xs-6 col-sm-3 col-md-3">
+    @if($sections[1]->getSubSections())
     <span>{{$sections[1]->name}}</span>
     <ul class="list-unstyled">
       @foreach($sections[1]->getSubSections() as $subsection)
       <li><a href="{{$subsection->getFullUrl()}}">{{$subsection->name}}</a></li>
       @endforeach
     </ul>
+    @else
+    <a class="link" href="{{$sections[2]->getFullUrl()}}">{{$sections[1]->name}}</a>
+    @endif
   </div>
 
   <div class="col-xs-6 col-sm-3 col-md-2">

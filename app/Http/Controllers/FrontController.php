@@ -22,7 +22,8 @@ class FrontController extends Controller
   private $sections;
   public function __construct() {
       $allSections = Section::all();
-      $this->sections = Section::where([['level','=', 1],['active','=',1]])->orderBy('order','asc')->get();//¨POR FOOTERNO PUEDO USAR ALLSECTIONS
+      $this->sections = Section::where([['level','=', 1],['active','=',1]])->get();//¨POR FOOTERNO PUEDO USAR ALLSECTIONS
+      //$this->sections = Section::where([['level','=', 1],['active','=',1]])->orderBy('order','asc')->get();//¨POR FOOTERNO PUEDO USAR ALLSECTIONS
       //$recomendados = Content::where('dest','=',1)->take(5)->get();
       $recomendados = Content::take(5)->get();
       //$sql ="SELECT *, tags.id as tid, count(*) as cant FROM tags INNER JOIN tagscontents ON tags.id = tagscontents.tag_id GROUP BY tid order by cant DESC limit 5";
@@ -146,16 +147,22 @@ class FrontController extends Controller
       // !!!!! FALTA IF SUBSECTION Y SECCION
       $target = $content;
       $content->addView();
-
-      switch($content->url){
-        case 'patagonia-12-ejes-de-conflicto': $view = 'front.custom.patagonia.show';break;
-        default:  $view = $content->typeView->show_view;break;
-      }
+      $view = $this->getView($content);
 
       return view($view, compact('target','content'));
     }else{
       return view('errors.404');
     }
+  }
+
+  private function getView($content){
+    switch($content->url){
+      case 'patagonia-12-ejes-de-conflicto': $view = 'front.custom.patagonia.show';break;
+      case 'patria-grande': $view = 'front.custom.patriagrande.show';break;
+      case 'richard-wagner-mitos-y-arquetipos': $view = 'front.eventos.wagner';break;
+      default:  $view = $content->typeView->show_view;break;
+    }
+    return $view;
   }
 
   private function renderAjax($request,$section,$contents){
@@ -279,8 +286,9 @@ class FrontController extends Controller
       // !!!!! FALTA IF SUBSECTION Y SECCION
       $target = $content;
       $content->addView();
+      $view = $this->getView($content);
 
-      return view($content->typeView->show_view, compact('target','content'));
+      return view($view, compact('target','content'));
     }else{
       return view('errors.404');
     }
