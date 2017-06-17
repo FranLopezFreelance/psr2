@@ -22,8 +22,8 @@ class FrontController extends Controller
   private $sections;
   public function __construct() {
       $allSections = Section::all();
-      $this->sections = Section::where([['level','=', 1],['active','=',1]])->get();//¨POR FOOTERNO PUEDO USAR ALLSECTIONS
-      //$this->sections = Section::where([['level','=', 1],['active','=',1]])->orderBy('order','asc')->get();//¨POR FOOTERNO PUEDO USAR ALLSECTIONS
+      //$this->sections = Section::where([['level','=', 1],['active','=',1]])->get();//¨POR FOOTERNO PUEDO USAR ALLSECTIONS
+      $this->sections = Section::where([['level','=', 1],['active','=',1]])->orderBy('order','asc')->get();//¨POR FOOTERNO PUEDO USAR ALLSECTIONS
       //$recomendados = Content::where('dest','=',1)->take(5)->get();
       $recomendados = Content::take(5)->get();
       //$sql ="SELECT *, tags.id as tid, count(*) as cant FROM tags INNER JOIN tagscontents ON tags.id = tagscontents.tag_id GROUP BY tid order by cant DESC limit 5";
@@ -101,9 +101,26 @@ class FrontController extends Controller
   }
 
   public function getSection($section, Request $request){
-    if($section = Section::where('url', $section)->first()){
+    $sinSubseccion = array("eventos");
+
+  if (in_array($section, $sinSubseccion)){
+    return $this->getContentOfSection($section);
+  }
+  else  if($section = Section::where('url', $section)->first()){
       $sql = 'section_id in (SELECT id from sections WHERE section_id = '.$section->id.')';
       $contents = Content::whereRaw($sql)->paginate(12);
+      $target = $section;
+    //  dd($contents);
+
+      return view($section->typeView->index_view, compact('target','contents'));
+    }else{
+      return view('errors.404');
+    }
+  }
+
+  public function getContentOfSection($section){
+    if($section = Section::where('url', $section)->first()){
+      $contents = Content::where('section_id',$section->id)->paginate(12);
       $target = $section;
     //  dd($contents);
 

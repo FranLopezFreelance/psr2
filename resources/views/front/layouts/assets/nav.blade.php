@@ -78,8 +78,13 @@
     @else
     <li class="{{ !is_null($target) && $target->url === $section->url ? "active" : "" }}"><a href="/{{$section->url}}" >{{$section->name}}</a></li>
     @endif
-
   @endforeach
+
+  <li class="nav-socialicon"><a href="https://www.facebook.com/ProyectoSegundaRepublica/" target="_blank"><img src="/img/social/facebook_25.jpg" alt=""></a></li>
+  <li class="nav-socialicon"><a href="https://twitter.com/psr_argentina" target="_blank"><img src="/img/social/twiter_25.jpg" alt=""></a></li>
+  <li class="nav-socialicon"><a href="https://www.youtube.com/channel/UCavo9XFsHVXtp00jxJVZjLQ" target="_blank"><img src="/img/social/youtube_25.jpg" alt=""></a></li>
+  <li class="nav-socialicon"><a href="https://www.youtube.com/channel/UCgF9ahMxHViwYu-wF8OD0Dw" target="_blank"><img src="/img/social/youtube_25.jpg" alt=""></a></li>
+
 </ul>
 </div><!-- /.navbar-collapse -->
 </div><!-- /.container-fluid -->

@@ -24,7 +24,7 @@ class CreateSectionsTable extends Migration
             $table->integer('typeview_id');
             $table->string('social_img')->default('default.jpg');
             $table->string('url');
-            $table->string('order')->default(1);
+            $table->tinyint('order')->default(1);
             $table->integer('topnav')->default(1);
             $table->integer('topnav_back')->default(0);
             $table->integer('active')->default(1);

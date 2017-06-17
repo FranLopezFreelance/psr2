@@ -53,7 +53,6 @@ a.vermas{
     background-color: #282828;
     color:white;
     padding: 4px 10px;
-
 }
 
 span.stats{
@@ -270,6 +269,7 @@ nav.main-menu{
   }
   min-height: 30px;
   text-align: center;
+
   li.dropdown a:visited,li.dropdown a:link{
     background: transparent!important;
     color:black!important;
@@ -395,6 +395,8 @@ nav.main-menu{
 }
 }
 
+nav.main-menu.navbar-default{border:none;}
+
 nav.subnav.main-menu{
   background-color: @blue;
   border: none;
@@ -407,10 +409,33 @@ nav.subnav.main-menu{
   ul.nav li a{
     //font-size: 11px!important;
     color:white!important;
-    padding: 2px 20px!important;
+    padding: 8px 20px!important;
     span.caret{color:white;}
   }
-  li{padding: 0px 0px!important;}
+  ul.nav li.nav-socialicon a{
+    padding: 5px 5px 6px 5px!important;
+  }
+  ul.nav li{
+    padding: 0px 0px!important;
+    .q(@sm,{
+      &:hover,&.active{
+  			.transition();
+  			background-color: @blue-dark;
+  			a{color:white!important;background-color: transparent;}
+  		}
+      &.dropdown>ul.dropdown-menu>li>a{
+        color:#282828!important;
+      }
+      &.dropdown>ul.dropdown-menu>li.active>a{
+        color:white!important;
+      }
+      &.dropdown:hover>a,&.dropdown>ul>li:hover>a{
+        color:white!important;
+      }
+
+      });
+  }
+
 }
 
 body.site.fixed{
@@ -418,14 +443,17 @@ body.site.fixed{
     padding-top: 170px;
   }
   nav.subnav.main-menu{
-    top:56px;
+    top:55px;
     .q(@xl,{
-      top:61px;
+      top:60px;
       });
     z-index: 20;
 
     ul.nav li a{
-      padding: 6px 20px!important;
+      padding: 6px 20px 7px 20px!important;
+    }
+    ul.nav li.nav-socialicon a{
+      padding: 4px 5px!important;
     }
   }
   nav.main-menu{
