@@ -306,7 +306,7 @@ class FrontController extends Controller
   }
 
   public function encuestaPsr(){
-    $provinces = Province::orderBy('name', 'ASC')->get();    
+    $provinces = Province::orderBy('name', 'ASC')->get();
     $helps = Help::all();
     $countries = Country::all();
     $target = Content::where('url', 'encuesta-psr')->first();
@@ -314,5 +314,12 @@ class FrontController extends Controller
       return view('front.custom.encuesta.show', compact('countries', 'provinces','helps','target'));
   }
 
+  public function adhesiones(){
+    return view('front.custom.adhesiones.show');
+  }
+
+  public function storeAdhesiones(Request $request){
+    dd($request);
+  }
 
 }

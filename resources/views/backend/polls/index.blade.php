@@ -28,7 +28,9 @@
                     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Argentina</a></li>
                     @if(Auth::user()->type_id == 2 or Auth::user()->type_id == 4)
                       <li role="presentation"><a href="#extranjero" aria-controls="profile" role="tab" data-toggle="tab">Extranjero</a></li>
+                      <li role="presentation"><a href="#sinCoordinador" aria-controls="profile" role="tab" data-toggle="tab">Contactos sin Coordinador ({{ $noCoordinators->count() }})</a></li>
                     @endif
+                    <li role="presentation"><a href="#contactosWeb" aria-controls="contactosWeb" role="tab" data-toggle="tab">Contactos Web ({{Auth::user()->contacts()->where('no_coordinator', 0)->count()}})</a></li>
                   </ul>
 
                   <!-- Tab panes -->
@@ -128,7 +130,7 @@
                                     @endforelse
                                 </select>
 
-                                @if ($errors->has('country_id'))
+                                @if($errors->has('country_id'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('country_id') }}</strong>
                                     </span>
@@ -179,12 +181,69 @@
                           @endforelse
                         </table>
                       </div>
+
+                      <div role="tabpanel" class="tab-pane" id="sinCoordinador">
+                        <table class="table table-hover polls-table table-ex">
+                          <tr>
+                            <th>Nombre y Apellido</th>
+                            <th>Provincia</th>
+                            <th>E-Mail</th>
+                            <th>Fecha</th>
+                            <th></th>
+                          </tr>
+                          @forelse($noCoordinators as $contact)
+                              <tr>
+                                <td><a href="/backend/contacts/userContact/{{ $contact->id }}">{{ $contact->name }}</td>
+                                <td>{{ $contact->province }}</td>
+                                <td>{{ $contact->email }}</td>
+                                <td>{{ date("d-m-Y" , strtotime($contact->created_at)) }}</td>
+                                <td>
+                                  {!! Form::open(['method' => 'DELETE','route' => ['contacts.destroy', $contact->id],'style'=>'display:inline']) !!}
+                                  {!! Form::submit('Eliminar', ['class' => 'btn btn-danger btn-xs pull-right']) !!}
+                                  {!! Form::close() !!}
+                                </td>
+                              </tr>
+                          @empty
+                            <tr>
+                              <td colspan="5">
+                                  <h4> No hay contactos asignados</h4>
+                              </td>
+                            </tr>
+                          @endforelse
+                        </table>
+                      </div>
                     @endif
+
+                    <div role="tabpanel" class="tab-pane" id="contactosWeb">
+                      <table class="table table-hover polls-table table-ex">
+                        <tr>
+                          <th>Nombre y Apellido</th>
+                          <th>E-Mail</th>
+                          <th>Fecha</th>
+                          <th></th>
+                        </tr>
+                        @forelse(Auth::user()->contacts()->where('no_coordinator', 0)->get() as $contact)
+                            <tr>
+                              <td><a href="/backend/contacts/userContact/{{ $contact->id }}">{{ $contact->name }}</td>
+                              <td>{{ $contact->email }}</td>
+                              <td>{{ date("d-m-Y" , strtotime($contact->created_at)) }}</td>
+                              <td>
+                                {!! Form::open(['method' => 'DELETE','route' => ['contacts.destroy', $contact->id],'style'=>'display:inline']) !!}
+                                {!! Form::submit('Eliminar', ['class' => 'btn btn-danger btn-xs pull-right']) !!}
+                                {!! Form::close() !!}
+                              </td>
+                            </tr>
+                        @empty
+                          <tr>
+                            <td colspan="4">
+                                <h4> No hay contactos asignados</h4>
+                            </td>
+                          </tr>
+                        @endforelse
+                      </table>
+                    </div>
                   </div>
-
                 </div>
-
-
               </div>
           </div>
       </div>

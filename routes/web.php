@@ -21,6 +21,9 @@ Route::resource('backend/contents', 'ContentsController');
 Route::resource('backend/contacts', 'ContactsController');
 Route::resource('backend/polls', 'PollsController');
 Route::resource('backend/users', 'UsersController');
+
+Route::post('backend/contacts/addUser/{contact}', 'ContactsController@addUser');
+Route::get('backend/contacts/userContact/{contact}', 'ContactsController@userContact');
 Route::get('backend/contents/createBySection/{section}', 'ContentsController@createBySection');
 Route::get('backend/contents/createBySection/{section}/{subSection}', 'ContentsController@createBySubSection');
 Route::get('backend/contents/getBySection/{subSection}', 'ContentsController@getContentBySubSection');
@@ -35,6 +38,8 @@ Route::post('/backend/observations/{poll}', 'PollsController@newObservation');
 
 Route::get('/encuesta-psr', 'FrontController@encuestaPsr');
 Route::post('/encuesta-psr', 'PollsController@storeFromFront');
+Route::get('/adhesiones', 'FrontController@adhesiones');
+Route::post('/adhesiones', 'FrontController@storeAdhesiones');
 
 Route::get('/', 'FrontController@getIndex');
 Route::get('/plataformapsr', 'FrontController@getIndexPlataforma');

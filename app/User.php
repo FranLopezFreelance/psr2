@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'telephone', 'type_id', 'provinces', 'countries'
+        'name', 'email', 'password', 'telephone', 'type_id', 'provinces', 'countries' , 'img'
     ];
 
     /**
@@ -37,5 +37,9 @@ class User extends Authenticatable
 
     public function countries(){
         return $this->belongsToMany('App\Country', 'users_countries', 'user_id', 'country_id');
+    }
+
+    public function contacts(){
+        return $this->hasMany('App\Contact', 'user_id');
     }
 }

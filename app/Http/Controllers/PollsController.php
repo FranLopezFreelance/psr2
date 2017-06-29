@@ -71,8 +71,9 @@ class PollsController extends Controller
                               ->where('active', 1)->get();
 
         $not_responded = Contact::where('contacted', 0)->get()->count();
+        $noCoordinators = Contact::where('no_coordinator', 1)->get();
 
-        return view('backend.polls.index', compact('polls', 'pollsForeign', 'countries', 'provinces', 'not_responded', 'section', 'menuSections', 'menuLeftSections'));
+        return view('backend.polls.index', compact('polls', 'pollsForeign', 'noCoordinators', 'countries', 'provinces', 'not_responded', 'section', 'menuSections', 'menuLeftSections'));
     }
 
     /**

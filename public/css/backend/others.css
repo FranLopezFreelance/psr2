@@ -13,6 +13,16 @@
   margin-left: 15px;
 }
 
+.userView {
+  margin-left: 10px;
+}
+
+.img-user-layout {
+  width: 30px;
+  margin-right: 10px!important;
+  border-radius: 50%;
+}
+
 .coordinadores {
   background-color: #E0F2F7;
   padding-top: 15px;

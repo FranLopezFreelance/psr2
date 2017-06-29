@@ -6,11 +6,17 @@ use App\Section;
 use App\Contact;
 use App\Province;
 use App\Response;
+use App\User;
 
 use Illuminate\Http\Request;
 
 class ContactsController extends Controller
 {
+    public function __construct()
+    {
+      $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +33,9 @@ class ContactsController extends Controller
 
         $contacts = Contact::orderBy('id', 'desc')->get();
         $not_responded = Contact::where('contacted', 0)->get()->count();
-        return view('backend.contacts.index', compact('contacts', 'not_responded', 'menuSections', 'menuLeftSections'));
+        $noCoordinators = Contact::where('no_coordinator', 1)->get();
+
+        return view('backend.contacts.index', compact('contacts', 'noCoordinators', 'not_responded', 'menuSections', 'menuLeftSections'));
     }
 
     /**
@@ -63,7 +71,17 @@ class ContactsController extends Controller
         $contacts = Contact::orderBy('id', 'desc')->get();
         $not_responded = Contact::where('contacted', 0)->get()->count();
         $provinces = Province::orderBy('name', 'asc')->get();
-        return view('backend.contacts.show', compact('contacts', 'not_responded','section', 'contact', 'menuSections', 'provinces'));
+        $users = User::where('type_id', 3)->get();
+        $admins = User::where('type_id', 2)->get();
+        $noCoordinators = Contact::where('no_coordinator', 1)->get();
+        return view('backend.contacts.show', compact('contacts', 'noCoordinators', 'admins', 'users', 'not_responded','section', 'contact', 'menuSections', 'provinces'));
+    }
+
+    public function userContact(Contact $contact){
+        $contact->userView = 1;
+        $contact->save();
+        $admins = User::where('type_id', 2)->get();
+        return view('backend.contacts.userView', compact('contact', 'admins'));
     }
 
     public function response(Request $request, Contact $contact)
@@ -86,7 +104,27 @@ class ContactsController extends Controller
 
         $contacts = Contact::orderBy('id', 'desc')->get();
         $not_responded = Contact::where('contacted', 0)->get()->count();
-        return view('backend.contacts.show', compact('contacts', 'not_responded','section', 'contact', 'menuSections'));
+        $users = User::where('type_id', 3)->get();
+        $provinces = Province::orderBy('name', 'asc')->get();
+
+        return view('backend.contacts.show', compact('contacts', 'provinces', 'users', 'not_responded','section', 'contact', 'menuSections'));
+    }
+
+    public function addUser(Request $request, Contact $contact){
+      $contact->update($request->all());
+      $contact->save();
+
+      $menuSections = Section::where('level', 1)
+                            ->where('topnav_back', 1)
+                            ->where('active', 1)->get();
+
+      $contacts = Contact::orderBy('id', 'desc')->get();
+      $not_responded = Contact::where('contacted', 0)->get()->count();
+      $users = User::where('type_id', 3)->get();
+      $provinces = Province::orderBy('name', 'asc')->get();
+      $admins = User::where('type_id', 2)->get();
+
+      return view('backend.contacts.show', compact('contacts', 'admins', 'users', 'not_responded','section', 'contact', 'menuSections', 'provinces'));
     }
 
     /**

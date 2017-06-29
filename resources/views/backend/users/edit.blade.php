@@ -13,7 +13,7 @@
                   @endif
                 </div>
                 <div class="panel-body">
-                  
+
                   @if(isset($message))
                     <div class="col-md-10 col-md-offset-1">
                         <div class="alert alert-success message">
@@ -22,12 +22,24 @@
                     </div>
                   @endif
 
-                  <form class="form-horizontal" role="form" method="POST" action="/backend/users/{{ $user->id }}">
+                  <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" action="/backend/users/{{ $user->id }}">
 
                       {{ csrf_field() }}
                       {{ method_field('PUT') }}
 
-                      <input name="_method" type="hidden" value="PUT">
+                      <img src="/{{ $user->img }}" height="150px" />
+
+                      <div class="form-group{{ $errors->has('img') ? ' has-error' : '' }}">
+                          <label for="img" class="col-md-4 control-label">Foto</label>
+                          <div class="col-md-6">
+                              <input id="img" type="file" class="form-control" name="img" value="{{ old('img') }}" >
+                              @if ($errors->has('img'))
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('img') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                      </div>
 
                       <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                           <label for="name" class="col-md-4 control-label">Nombre</label>

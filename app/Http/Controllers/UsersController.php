@@ -11,6 +11,7 @@ use App\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Intervention\Image\Facades\Image;
 
 class UsersController extends Controller
 {
@@ -149,7 +150,17 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
-      $user->update($request->except('provinces', 'countries'));
+      $user->update($request->except('provinces', 'countries', 'img'));
+
+      if($request->file('img')){
+        $path = 'img/users/';
+        $file = $request->file('img');
+    		$name = $path.'user-image-'.$user->id.'.'.$file->getClientOriginalExtension();
+        $imageFile = Image::make($request->file('img'));
+        $imageFile->save($name);
+        $user->img = $name;
+        $user->save();
+      }
 
       if($request->input('provinces')){
         $user->provinces()->sync($request->input('provinces'));

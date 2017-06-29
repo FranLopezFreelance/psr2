@@ -77,11 +77,11 @@ class SectionsController extends Controller
 
       $section = new Section($request->all());
 
-      if($request->input('topnav')){
-        $content->topnav = 1;
-      }else{
-        $content->topnav = 0;
-      }
+      // if($request->input('topnav')){
+      //   $content->topnav = 1;
+      // }else{
+      //   $content->topnav = 0;
+      // }
 
       $section->save();
       $message = 'La Sección ha sido creada.';
