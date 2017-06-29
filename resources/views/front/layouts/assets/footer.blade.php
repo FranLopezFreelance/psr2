@@ -35,6 +35,24 @@
     <a class="link" href="{{$sections[3]->getFullUrl()}}">{{$sections[3]->name}}</a>
     @endif
 
+    @if(count($sections) > 9)
+    @if($sections[9]->getSubSections())
+    <span>{{$sections[9]->name}}</span>
+    <ul class="list-unstyled">
+      @foreach($sections[9]->getSubSections() as $subsection)
+      <li><a href="{{$subsection->getFullUrl()}}">{{$subsection->name}}</a></li>
+      @endforeach
+    </ul>
+    @else
+    <a class="link" href="{{$sections[9]->getFullUrl()}}">{{$sections[9]->name}}</a>
+    @endif
+    @endif
+
+
+
+  </div>
+
+  <div class="col-xs-6 col-sm-3 col-md-3">
     @if($sections[2]->getSubSections())
     <span>{{$sections[2]->name}}</span>
     <ul class="list-unstyled">
@@ -46,15 +64,16 @@
     <a class="link" href="{{$sections[2]->getFullUrl()}}">{{$sections[2]->name}}</a>
     @endif
 
-  </div>
-
-  <div class="col-xs-6 col-sm-3 col-md-3">
+    @if($sections[1]->getSubSections())
     <span>{{$sections[1]->name}}</span>
     <ul class="list-unstyled">
       @foreach($sections[1]->getSubSections() as $subsection)
       <li><a href="{{$subsection->getFullUrl()}}">{{$subsection->name}}</a></li>
       @endforeach
     </ul>
+    @else
+    <a class="link" href="{{$sections[2]->getFullUrl()}}">{{$sections[1]->name}}</a>
+    @endif
   </div>
 
   <div class="col-xs-6 col-sm-3 col-md-2">
@@ -124,18 +143,6 @@
     @endif
     @endif
 
-    @if(count($sections) > 9)
-    @if($sections[9]->getSubSections())
-    <span>{{$sections[9]->name}}</span>
-    <ul class="list-unstyled">
-      @foreach($sections[9]->getSubSections() as $subsection)
-      <li><a href="{{$subsection->getFullUrl()}}">{{$subsection->name}}</a></li>
-      @endforeach
-    </ul>
-    @else
-    <a class="link" href="{{$sections[9]->getFullUrl()}}">{{$sections[9]->name}}</a>
-    @endif
-    @endif
 
     @if(count($sections)>10)
     @if($sections[10]->getSubSections())

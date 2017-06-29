@@ -154,7 +154,7 @@ function verMasVideosPlataforma(){
 function showVideo($url){
   //console.log($url);
   var video='<iframe id="ytplayer" type="text/html" width="100%" height="360"';
-  video+='  src="http://www.youtube.com/embed/'+$url+'/?autoplay=1&playlist=lUsc5Bl_F8s,FSxdRJVqFq4,YI1WwxMsB1w,PGY5AS3uIcM"';
+  video+='  src="http://www.youtube.com/embed/'+$url+'/?autoplay=1&playlist=tLKtSw8JYPI,qWUAoVcanp8"';
   video+='frameborder="0"></iframe>';
   $('.video-container').append(video);
   $('.video-container').removeClass('hidden');

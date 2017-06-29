@@ -13,7 +13,8 @@
 	<h4 class="title title2" >{{$plataforma->title}}</h4>
       <div class="plataforma">
         <?php $text = preg_replace("/<img[^>]+\>/i", " ", $plataforma->text); ?>
-	       {!!$text!!}
+	       {!!str_limit($text,800)!!}
+
       </div>
     </div>
   </div>
@@ -41,7 +42,7 @@
 <div class="container-fluid">
   <div class="row">
 
-      <a href="/articulos/geopolitica/patagonia-12-ejes-de-conflicto"><img class="lazypilar"  data-original="/img/home/patagonia-12-ejes-de-conflicto.jpg" alt=""></a>
+      <a href="/articulos/politica/los-mega-robos-kirchneristas-fuimos-los-primeros-en-denunciarlos"><img class="lazypilar full-width"  data-original="/img/home/los-fondos-de-santa-cruz-lo-denunciamos-en-2004.jpg" alt="Los Fondos de Santa Cruz"></a>
 
   </div>
     </div>

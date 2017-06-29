@@ -31,7 +31,7 @@ class Section extends Model
     }
 
     public function contents(){
-      return $this->hasMany('App\Content')->orderBy('date','desc');
+      return $this->hasMany('App\Content')->where('active',1)->orderBy('date','desc');
     }
 
     public function getLink(){

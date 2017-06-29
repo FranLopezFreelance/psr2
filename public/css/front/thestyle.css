@@ -448,6 +448,7 @@ ul.nav.nav-tabs.inner-menu li:hover > ul {
 ul.nav.nav-tabs.inner-menu ul.dropdown-menu {
   padding: 0!important;
   width: 100%;
+  z-index: 500;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 ul.nav.nav-tabs.inner-menu ul.dropdown-menu li {
@@ -651,16 +652,82 @@ nav.main-menu .navbar-brand img {
     margin-left: 50px;
   }
 }
+nav.main-menu.navbar-default {
+  border: none;
+}
+nav.subnav.main-menu {
+  background-color: #0063a4;
+  border: none;
+}
+nav.subnav.main-menu div.container-fluid {
+  background-color: #0063a4;
+}
+nav.subnav.main-menu ul.nav {
+  padding-right: 32px;
+}
+nav.subnav.main-menu ul.nav li a {
+  color: white!important;
+  padding: 8px 20px!important;
+}
+nav.subnav.main-menu ul.nav li a span.caret {
+  color: white;
+}
+nav.subnav.main-menu ul.nav li.nav-socialicon a {
+  padding: 5px 5px 6px 5px!important;
+}
+nav.subnav.main-menu ul.nav li {
+  padding: 0px 0px!important;
+}
+@media (min-width: 768px) {
+  nav.subnav.main-menu ul.nav li:hover,
+  nav.subnav.main-menu ul.nav li.active {
+    transition: all 0.2s ease-out;
+    background-color: #032c51;
+  }
+  nav.subnav.main-menu ul.nav li:hover a,
+  nav.subnav.main-menu ul.nav li.active a {
+    color: white!important;
+    background-color: transparent;
+  }
+  nav.subnav.main-menu ul.nav li.dropdown > ul.dropdown-menu > li > a {
+    color: #282828!important;
+  }
+  nav.subnav.main-menu ul.nav li.dropdown > ul.dropdown-menu > li.active > a {
+    color: white!important;
+  }
+  nav.subnav.main-menu ul.nav li.dropdown:hover > a,
+  nav.subnav.main-menu ul.nav li.dropdown > ul > li:hover > a {
+    color: white!important;
+  }
+}
 body.site.fixed div.site-content {
-  padding-top: 130px;
+  padding-top: 170px;
+}
+body.site.fixed nav.subnav.main-menu {
+  top: 55px;
+  z-index: 20;
+}
+@media (min-width: 1200px) {
+  body.site.fixed nav.subnav.main-menu {
+    top: 60px;
+  }
+}
+body.site.fixed nav.subnav.main-menu ul.nav li a {
+  padding: 6px 20px 7px 20px!important;
+}
+body.site.fixed nav.subnav.main-menu ul.nav li.nav-socialicon a {
+  padding: 4px 5px!important;
 }
 body.site.fixed nav.main-menu {
   position: fixed;
-  z-index: 1000;
+  z-index: 999;
   width: 100%;
   max-width: 100%;
   border-bottom: none;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  /*li.dropdown>ul.dropdown-menu{
+      z-index: 5000;
+    }*/
 }
 body.site.fixed nav.main-menu i {
   padding-top: 15px;
@@ -1407,6 +1474,9 @@ div.home-videos div.video span {
 div.home-videos-plataforma {
   background-color: #1e1e1e;
   padding-bottom: 30px;
+}
+div.home-videos-plataforma div.video-plataforma {
+  min-height: 410px;
 }
 div.home-videos-plataforma div.content-mini a.vlink p {
   color: white;
@@ -2288,4 +2358,33 @@ div.content.book .main-image {
 }
 div.content.book .text {
   margin-bottom: 50px;
+}
+.descarga-patagonia {
+  background-color: #b43337;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 10px 30px;
+  margin-top: 40px;
+  display: inline-block;
+}
+.descarga-patagonia-icon {
+  display: block;
+  margin-top: 40px;
+}
+.descarga-kruz {
+  background-color: #406de1;
+  color: white!important;
+  width: 100%;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 10px 30px;
+  margin-top: 40px;
+  display: inline-block;
+  text-align: center;
+}
+.descarga-kruz-icon {
+  display: block;
+  margin-top: 40px;
+  text-align: center;
 }
