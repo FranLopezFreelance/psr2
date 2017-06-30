@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Accession;
 use App\Content;
 use App\Section;
 use App\Tag;
@@ -340,11 +341,16 @@ class FrontController extends Controller
   }
 
   public function adhesiones(){
-    return view('front.custom.adhesiones.show');
+    $target = Content::where('url', 'adhesiones')->first();
+    return view('front.custom.adhesiones.show', compact('provinces','target'));
   }
 
   public function storeAdhesiones(Request $request){
-    dd($request);
+    $target = Content::where('url', 'adhesiones')->first();
+    $accesion = New Accession($request->all());
+    $accesion->save();
+    $message = 'Tus datos han sido registrados correctamente';
+    return view('front.custom.adhesiones.show', compact('provinces', 'target', 'message'));
   }
 
 }
