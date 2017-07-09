@@ -1,18 +1,5 @@
 div.prensa{
-  li.item{
-    width: 100%;
-  }
 
-  div.videos
-  {
-    background-color: #1e1e1e;
-    h2,a.next i,a.prev i{color: white;}
-  }
-  div.articulos h2{
-    background-color: #1e1e1e;
-    color: white;
-    padding: 10px 0;
-  }
   div.content-of-prensa-list{
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     .transition();
@@ -20,7 +7,6 @@ div.prensa{
       .transition();
       box-shadow: 0 8px 8px rgba(0,0,0,0.25), 0 2px 2px rgba(0,0,0,0.22);
     }
-    background-color: white;
   }
 
   div.reel{
@@ -46,13 +32,9 @@ div.prensa{
   div.pcontent{
     margin-bottom: 20px;
     min-height: 70px;
-    &.true-image{
-      >a{width: 30%;}
-      div.title{width: 70%;}
-    }
     >a{
       float: left;
-
+      width: 30%;
       img{padding-left: 15px;}
     }
     div.title{
@@ -61,7 +43,7 @@ div.prensa{
       padding-left: 20px;
       padding-right: 10px;
       //padding-top: 10px;
-
+      width: 70%;
       a{
         word-wrap: break-word;
 

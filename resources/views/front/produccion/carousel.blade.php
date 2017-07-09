@@ -1,23 +1,23 @@
+<div class="main-video-container container-fluid">
 
+<iframe id="ytplayer" type="text/html" width="100%" height="360"
+src="http://www.youtube.com/embed/YXONmMQxfkA/?autoplay=1&playlist=tLKtSw8JYPI,qWUAoVcanp8&rel=0&amp;fs=0&amp;showinfo=0&controls=0"
+frameborder="0"></iframe>
+
+
+</div>
+<!--
 <div class="extra-slider slider-home container-fluid">
   <div class="wrapper ">
     <ul>
-      <!--
-      <li class="item pilar">
-        <img src="/img/home/adrian-salbuchi-en-la-cgt-azopardo.jpg" alt="">
-
-      </li>-->
 
       <li class="item pilar">
-        <img src="/img/pilares/proyecto-segunda-republica.jpg" alt="">
+        <img class=""  src="/img/pilares/proyecto-segunda-republica.jpg" alt="">
       </li>
       <li class="item pilar primero">
         <img class="lazypilar"  data-original="/img/pilares/proyecto-segunda-republica-1er-pilar.jpg" width="1440px" height="598px" alt="">
       </li>
-        <!--<h4>Primer Pilar:</h4>
-        <span class="pilar-name">Recuperar Nuestra Moneda Soberana</span>
-        <p class="pilar-description">Como Institución fundamental al servicio<br /> de los intereses del Pueblo de la Nación</p>
-      </li>-->
+        
       <li class="item pilar segundo">
         <img class="lazypilar"  data-original="/img/pilares/proyecto-segunda-republica-2do-pilar.jpg" alt="">
       </li>
@@ -41,6 +41,7 @@
 
   </div>
 </div>
+-->
 
 <!-- Go to www.addthis.com/dashboard to customize your tools
  <div class="addthis_inline_share_toolbox"></div>

@@ -18,8 +18,8 @@
 
                   <form class="form-horizontal" role="form" method="POST" action="/backend/sections/{{ $section->id }}">
 
-                    {{ csrf_field() }}
-                    {!! method_field('patch') !!}
+                      {{ csrf_field() }}
+                      {{ method_field('patch') }}
 
                       <div class="form-group{{ $errors->has('topnav') ? ' has-error' : '' }}">
                           <div class="col-md-6 col-md-offset-4">

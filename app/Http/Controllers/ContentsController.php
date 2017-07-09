@@ -195,7 +195,7 @@ class ContentsController extends Controller
         $path = 'img/programas/';
         $contentName = 'Programa';
       }elseif($request->input('typeview_id') == 5){
-        $path = 'img/radios/';
+        $path = 'img/radio/';
         $contentName = 'Radio';
       }elseif($request->input('typeview_id') == 6){
         $path = 'img/medios/';

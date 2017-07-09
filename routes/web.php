@@ -40,6 +40,7 @@ Route::get('/encuesta-psr', 'FrontController@encuestaPsr');
 Route::post('/encuesta-psr', 'PollsController@storeFromFront');
 Route::get('/adhesiones', 'FrontController@adhesiones');
 Route::post('/adhesiones', 'FrontController@storeAdhesiones');
+Route::post('/contacto', 'FrontController@contacto');
 
 Route::get('/', 'FrontController@getIndex');
 Route::get('/plataformapsr', 'FrontController@getIndexPlataforma');

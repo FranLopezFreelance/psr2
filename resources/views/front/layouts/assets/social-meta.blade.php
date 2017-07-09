@@ -1,6 +1,5 @@
-  <link rel="icon" type="image/png" href="/favicon.png">
+<link rel="icon" type="image/png" href="/favicon.png">
 
-<!-- Place this data between the <head> tags of your website -->
 <title>{{$target->html_title}}</title>
 <meta name="description" content="{{str_limit($target->social_desc,200)}}" />
 <!--Page description. No longer than 155 characters.-->

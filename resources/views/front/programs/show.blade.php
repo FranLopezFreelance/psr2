@@ -11,7 +11,6 @@ if($content->video_id != 'pendiente'){
 }
 else $ytviews = 0;
 
-
 ?>
 @include('front.articles.assets.content',$content)
 

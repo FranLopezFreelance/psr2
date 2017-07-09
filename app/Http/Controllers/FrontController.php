@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Accession;
+use App\Contact;
 use App\Content;
 use App\Section;
 use App\Tag;
@@ -98,7 +99,65 @@ class FrontController extends Controller
     $recomendados = [Content::where('id',1)->first(),Content::where('id',228)->first()];//475
     $masvistos = Content::where([['typeview_id','=',3]])->orderBy('views','desc')->take(7)->get();
 
-    return view('front.index', compact('target','nacional','internacional','videos','articulos','masvistos','recomendados','plataforma','videosplataforma'));
+    return view('front.produccion.index', compact('target','nacional','internacional','videos','articulos','masvistos','recomendados','plataforma','videosplataforma'));
+  }
+
+  public function getURLTest(Request $request){
+    if($request->ajax()) {
+
+      $page = Paginator::resolveCurrentPage();
+        $perPage=12;
+        $contents = new Paginator(Content::where([['typeview_id','=',4],['active','=',1]])->orderBy('date','desc')->skip((($page - 1) * $perPage)+6)->take($perPage + 1)->get(), $perPage, $page);
+//dd($contents);
+      $colsm = 3;
+      $colmd = 3;
+        return [
+            'videos' => view('front.home.assets.ajax-video-render')->with(compact('contents','colsm','colmd'))->render(),
+            'next_page' => $contents->nextPageUrl()
+        ];
+    }
+
+    $target = Section::where('id', 1)->first();
+    //$sql = "SELECT * FROM contents INNER JOIN tagscontents ON contents.id = tagscontents.content_id WHERE tagscontents.tag_id = 1 AND contents.typeview_id = 4 ORDER BY contents.date DESC";
+
+    $videos = Content::where([['typeview_id','=',4],['active','=',1]])->orderBy('date','desc')->paginate(6);
+    $primero = $videos->items()[0];
+    $videos->offsetUnset(0);
+    $segundo = $videos->items()[1];
+    $videos->offsetUnset(1);
+    if($primero->date == $segundo->date){
+      if($primero->tags->contains('id', 1)){
+        $nacional = $primero;
+        $internacional = $segundo;
+      }
+      else if($segundo->tags->contains('id', 1)){
+        $nacional = $segundo;
+        $internacional = $primero;
+      }
+    }else{//orden por fecha
+      $nacional = $primero;
+      $internacional = $segundo;
+    }
+
+    $videosplataforma = Content::select('contents.*')->join('tagscontents','contents.id','=','tagscontents.content_id')
+    ->where([['tagscontents.tag_id',50],['contents.typeview_id',4]])
+    ->orderBy('date','desc')
+    ->paginate(5);
+    //dd($videosplataforma);
+    $plataforma = $videosplataforma->items()[0];
+    $videosplataforma->offsetUnset(0);
+    //dd($plataforma);
+
+    $articulos = [
+      Content::where('id',279)->first(),
+      Content::where('id',112)->first(),
+      Content::where('id',368)->first(),
+      Content::where('id',1)->first()//481
+    ];
+    $recomendados = [Content::where('id',1)->first(),Content::where('id',228)->first()];//475
+    $masvistos = Content::where([['typeview_id','=',3]])->orderBy('views','desc')->take(7)->get();
+
+    return view('front.produccion.index', compact('target','nacional','internacional','videos','articulos','masvistos','recomendados','plataforma','videosplataforma'));
   }
 
   public function getSection($section, Request $request){
@@ -351,6 +410,29 @@ class FrontController extends Controller
     $accesion->save();
     $message = 'Tus datos han sido registrados correctamente';
     return view('front.custom.adhesiones.show', compact('provinces', 'target', 'message'));
+  }
+
+  public function contacto(Request $request){
+    $contact = new Contact($request->all());
+    $contact->save();
+
+    $target = Section::where('id', 1)->first();
+    //$sql = "SELECT * FROM contents INNER JOIN tagscontents ON contents.id = tagscontents.content_id WHERE tagscontents.tag_id = 1 AND contents.typeview_id = 4 ORDER BY contents.date DESC";
+    $nacional = Content::join('tagscontents', 'contents.id', '=', 'tagscontents.content_id')
+    ->where([["tagscontents.tag_id","=",1],["contents.typeview_id","=",4]])
+    ->orderBy('date','desc')
+    ->first();
+
+    $internacional = Content::join('tagscontents', 'contents.id', '=', 'tagscontents.content_id')
+    ->where([["tagscontents.tag_id","=",2],["contents.typeview_id","=",4]])
+    ->orderBy('date','desc')
+    ->first();
+
+    $videos = Content::where('typeview_id','=',4)->paginate(4);
+
+    $message = $contact->name." gracias por ponerte en contacto con nosotros. Pronto nos vamos a poner en contacto con vos.";
+
+    return back()->with('message');
   }
 
 }

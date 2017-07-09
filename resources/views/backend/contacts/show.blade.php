@@ -152,7 +152,6 @@
 
                                     <input type="hidden" name="user_id" value="{{ $admin->id }}" />
                                     <input type="hidden" name="no_coordinator" value="1" />
-                                    <input type="hidden" name="province_id" value="{{ $province->id }}" />
 
                                     <div class="form-group">
                                         <div class="col-md-6">

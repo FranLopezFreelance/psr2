@@ -11,7 +11,7 @@
       </div>
   </div>
 
-  @include('front.prensa.assets.carousel',['type'=>'PSR en TV','contenidos'=>$videos,'class'=>'videos'])
+  @include('front.prensa.assets.carousel',['type'=>'PSR en TV','contenidos'=>$videos,'class'=>'videos'])  
   @include('front.prensa.assets.carousel',['type'=>'PSR en Radio','contenidos'=>$radio,'class'=>'radio'])
   @include('front.prensa.assets.carousel',['type'=>'Notas y Entevistas escritas','contenidos'=>$articulos,'class'=>'articulos'])
 
