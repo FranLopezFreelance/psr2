@@ -203,6 +203,13 @@ class ContentsController extends Controller
       }elseif($request->input('typeview_id') == 9){
         $path = 'img/libros/';
         $contentName = 'Libro';
+      }elseif($request->input('typeview_id') == 11){
+        $path = 'img/PSR-en-accion/';
+        $contentName = 'PSR-en-accion';
+      }
+      }elseif($request->input('typeview_id') == 14){
+        $path = 'img/videos-cortos/';
+        $contentName = 'Video-corto';
       }
 
 

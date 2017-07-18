@@ -36,8 +36,10 @@ class FrontController extends Controller
                  ->get();
 
       $pilaresSidebar = $allSections->where('section_id', 2);
+      $provinces = Province::all();
 
        View::share( 'path', '');
+       View::share( 'provinces', $provinces);
        View::share( 'sections', $this->sections );
        View::share( 'recomendados', $recomendados );
        View::share( 'tags', $tags );
