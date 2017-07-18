@@ -19,6 +19,7 @@ html,body{
   background-color: white;
 }
 
+
 .full-width{width: 100%;}
 
 a{
@@ -259,9 +260,13 @@ nav.main-menu{
   }
   min-height: 30px;
   text-align: center;
+
   li.dropdown a:visited,li.dropdown a:link{
     background: transparent!important;
     color:black!important;
+  }
+  li.dropdown>ul.dropdown-menu>li.active>a{
+    color:white!important;
   }
   li.dropdown>ul.dropdown-menu>li>a{
     color:#282828!important;
@@ -352,10 +357,10 @@ nav.main-menu{
 			font-size: 14px;
 		}
     .q(@sm,{
-      &:hover{
+      &:hover,&.active{
   			.transition();
   			background-color: @blue-dark;
-  			a{color:white;}
+  			a{color:white!important;background-color: transparent;}
   		}
       });
 
@@ -364,6 +369,8 @@ nav.main-menu{
     }
 	}
 }
+
+
 
 .navbar-brand{
 	margin: 0;
@@ -379,13 +386,70 @@ nav.main-menu{
 }
 }
 
+nav.main-menu.navbar-default{border:none;}
+
+nav.subnav.main-menu{
+  background-color: @blue;
+  border: none;
+  div.container-fluid{
+    background-color: @blue;
+  }
+  ul.nav{
+    padding-right: 32px;
+  }
+  ul.nav li a{
+    //font-size: 11px!important;
+    color:white!important;
+    padding: 8px 20px!important;
+    span.caret{color:white;}
+  }
+  ul.nav li.nav-socialicon a{
+    padding: 5px 5px 6px 5px!important;
+  }
+  ul.nav li{
+    padding: 0px 0px!important;
+    .q(@sm,{
+      &:hover,&.active{
+  			.transition();
+  			background-color: @blue-dark;
+  			a{color:white!important;background-color: transparent;}
+  		}
+      &.dropdown>ul.dropdown-menu>li>a{
+        color:#282828!important;
+      }
+      &.dropdown>ul.dropdown-menu>li.active>a{
+        color:white!important;
+      }
+      &.dropdown:hover>a,&.dropdown>ul>li:hover>a{
+        color:white!important;
+      }
+
+      });
+  }
+
+}
+
 body.site.fixed{
   div.site-content{
-    padding-top: 130px;
+    padding-top: 170px;
+  }
+  nav.subnav.main-menu{
+    top:55px;
+    .q(@xl,{
+      top:60px;
+      });
+    z-index: 20;
+
+    ul.nav li a{
+      padding: 6px 20px 7px 20px!important;
+    }
+    ul.nav li.nav-socialicon a{
+      padding: 4px 5px!important;
+    }
   }
   nav.main-menu{
     position: fixed;
-    z-index: 1000;
+    z-index: 999;
     width: 100%;
     max-width: 100%;
     border-bottom: none;
@@ -394,6 +458,10 @@ body.site.fixed{
     i{
       padding-top: 15px;
     }
+
+    /*li.dropdown>ul.dropdown-menu{
+      z-index: 5000;
+    }*/
 
 
 .q(@sm,{
