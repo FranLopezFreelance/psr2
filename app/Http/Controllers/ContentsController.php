@@ -207,7 +207,7 @@ class ContentsController extends Controller
         $path = 'img/PSR-en-accion/';
         $contentName = 'PSR-en-accion';
       }
-      }elseif($request->input('typeview_id') == 14){
+      elseif($request->input('typeview_id') == 14){
         $path = 'img/videos-cortos/';
         $contentName = 'Video-corto';
       }

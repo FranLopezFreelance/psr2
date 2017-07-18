@@ -130,7 +130,9 @@ class Content extends Model
         case 6:$folder='medios'; break;
         case 9:$folder='libros'; break;
         case 12:$folder='custom'; break;
+        case 11:$folder='PSR-en-accion'; break;
         case 13:$folder='eventos'; break;
+        case 14:$folder='videos-cortos'; break;
       }
       return '/img/'.$folder.'/'.$subfolder.'/'.$this->img_url;
     }
