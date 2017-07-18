@@ -1366,6 +1366,28 @@ div.section div.breadcumb a {
 div.section div.breadcumb a:first-child {
   color: #282828;
 }
+.main-video-container {
+  position: relative;
+  padding-bottom: 56.6%;
+  height: 0;
+  overflow: hidden;
+}
+@media (min-width: 1200px) {
+  .main-video-container {
+    padding-bottom: 42.6%;
+  }
+}
+.main-video-container iframe,
+.main-video-container object,
+.main-video-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  height: auto;
+  width: 100%;
+}
 h4.title {
   color: white;
   margin: 0 auto;
@@ -2098,7 +2120,7 @@ div.section div.content div.tags a.tag {
 }
 .video-container {
   position: relative;
-  padding-bottom: 56.25%;
+  padding-bottom: 53.25%;
   padding-top: 30px;
   height: 0;
   overflow: hidden;
