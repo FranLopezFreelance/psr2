@@ -36,6 +36,7 @@ Route::post('/backend/observations/{poll}', 'PollsController@newObservation');
 
 /* FRONT CONTROLLERS */
 
+Route::get('/produccion', 'FrontController@getURLTest');
 Route::get('/encuesta-psr', 'FrontController@encuestaPsr');
 Route::post('/encuesta-psr', 'PollsController@storeFromFront');
 Route::get('/adhesiones', 'FrontController@adhesiones');

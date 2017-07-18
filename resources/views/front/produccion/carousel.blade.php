@@ -1,7 +1,7 @@
 <div class="main-video-container container-fluid">
 
 <iframe id="ytplayer" type="text/html" width="100%" height="360"
-src="http://www.youtube.com/embed/YXONmMQxfkA/?autoplay=1&playlist=tLKtSw8JYPI,qWUAoVcanp8&rel=0&amp;fs=0&amp;showinfo=0&controls=0"
+src="http://www.youtube.com/embed/YXONmMQxfkA/?autoplay=0&playlist=tLKtSw8JYPI,qWUAoVcanp8&rel=0&amp;fs=0&amp;showinfo=0&controls=0"
 frameborder="0"></iframe>
 
 
@@ -17,7 +17,7 @@ frameborder="0"></iframe>
       <li class="item pilar primero">
         <img class="lazypilar"  data-original="/img/pilares/proyecto-segunda-republica-1er-pilar.jpg" width="1440px" height="598px" alt="">
       </li>
-        
+
       <li class="item pilar segundo">
         <img class="lazypilar"  data-original="/img/pilares/proyecto-segunda-republica-2do-pilar.jpg" alt="">
       </li>

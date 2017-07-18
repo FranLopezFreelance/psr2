@@ -14,10 +14,7 @@
       <li class="item pilar primero">
         <img class="lazypilar"  data-original="/img/pilares/proyecto-segunda-republica-1er-pilar.jpg" width="1440px" height="598px" alt="">
       </li>
-        <!--<h4>Primer Pilar:</h4>
-        <span class="pilar-name">Recuperar Nuestra Moneda Soberana</span>
-        <p class="pilar-description">Como Institución fundamental al servicio<br /> de los intereses del Pueblo de la Nación</p>
-      </li>-->
+
       <li class="item pilar segundo">
         <img class="lazypilar"  data-original="/img/pilares/proyecto-segunda-republica-2do-pilar.jpg" alt="">
       </li>
@@ -41,7 +38,3 @@
 
   </div>
 </div>
-
-<!-- Go to www.addthis.com/dashboard to customize your tools
- <div class="addthis_inline_share_toolbox"></div>
- -->
