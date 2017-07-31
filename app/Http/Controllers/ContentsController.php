@@ -498,6 +498,9 @@ class ContentsController extends Controller
       }elseif($content->typeview_id == 9){
         $path = 'img/libros/';
         $contentName = 'Libro';
+      }elseif($content->typeview_id == 11){
+        $path = 'img/PSR-en-accion/';
+        $contentName = 'PSR-en-accion';
       }
 
       $file = $request->file('file');
