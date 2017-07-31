@@ -19,6 +19,7 @@ Route::get('backend', 'BackendController@index');
 Route::resource('backend/sections', 'SectionsController');
 Route::resource('backend/contents', 'ContentsController');
 Route::resource('backend/contacts', 'ContactsController');
+Route::resource('backend/accessions', 'AccessionsController');
 Route::resource('backend/polls', 'PollsController');
 Route::resource('backend/users', 'UsersController');
 

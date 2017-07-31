@@ -83,23 +83,17 @@
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    Contactos
-                                    @if(isset($not_responded))
-                                      <span class="badge">{{ $not_responded }}</span>
-                                    @endif
+                                    Datos
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="/backend/contacts"/> Ver</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    Encuestas <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="/backend/polls"/> Ver</a></li>
-                                    <li><a href="/backend/polls/create"/> Formulario</a></li>
+                                    <li><a href="/backend/contacts"/> Contactos
+                                      @if(isset($not_responded))
+                                        <span class="badge">{{ $not_responded }}</span>
+                                      @endif</a>
+                                    </li>
+                                    <li><a href="/backend/accessions"/> Adhesiones</a></li>
+                                    <li><a href="/backend/polls"/> Encuestas</a></li>
                                 </ul>
                             </li>
                             <li>
