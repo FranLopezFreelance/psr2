@@ -85,7 +85,7 @@ class Content extends Model
       }elseif($tipeView == 9){
         return '/img/libros/standard/'.$this->img_url;
       }elseif($tipeView == 11){
-        return 'img/PSR-en-accion/standard/'.$this->img_url;
+        return '/img/PSR-en-accion/standard/'.$this->img_url;
       }
     }
 
@@ -101,7 +101,7 @@ class Content extends Model
       }elseif($tipeView == 9){
         return '/img/libros/medium/'.$this->img_url;
       }elseif($tipeView == 11){
-        return 'img/PSR-en-accion/medium/'.$this->img_url;
+        return '/img/PSR-en-accion/medium/'.$this->img_url;
       }
     }
 
@@ -117,7 +117,7 @@ class Content extends Model
       }elseif($tipeView == 9){
         return '/img/libros/small/'.$this->img_url;
       }elseif($tipeView == 11){
-        return 'img/PSR-en-accion/small/'.$this->img_url;
+        return '/img/PSR-en-accion/small/'.$this->img_url;
       }
     }
 
