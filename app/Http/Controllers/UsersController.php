@@ -74,6 +74,8 @@ class UsersController extends Controller
 
       $user->password = Hash::make($request->input('password'));
 
+      $user->active = 1;
+      
       $user->save();
 
       if($request->input('provinces')){

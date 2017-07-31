@@ -82,6 +82,7 @@
                       </div>
 
                       @if($user->type_id == 2 || $user->type_id == 3)
+
                         <div class="form-group{{ $errors->has('telephone') ? ' has-error' : '' }}">
                             <label for="telephone" class="col-md-4 control-label">Teléfono</label>
 
@@ -97,6 +98,26 @@
                                 @if ($errors->has('telephone'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('telephone') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('facebook') ? ' has-error' : '' }}">
+                            <label for="facebook" class="col-md-4 control-label">Facebook</label>
+
+                            <div class="col-md-6">
+                                <input id="facebook" type="text" class="form-control" name="facebook"
+                                  @if(old('facebook'))
+                                    value="{{ old('facebook') }}"
+                                  @else
+                                    value="{{ $user->facebook }}"
+                                  @endif
+                                required>
+
+                                @if ($errors->has('facebook'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('facebook') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -149,6 +170,26 @@
                                 @if ($errors->has('provinces'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('provinces') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('zone') ? ' has-error' : '' }}">
+                            <label for="zone" class="col-md-4 control-label">Zonas</label>
+
+                            <div class="col-md-6">
+                                <input id="zone" type="text" class="form-control" name="zone"
+                                  @if(old('zone'))
+                                    value="{{ old('zone') }}"
+                                  @else
+                                    value="{{ $user->zone }}"
+                                  @endif
+                                >
+
+                                @if ($errors->has('zone'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('zone') }}</strong>
                                     </span>
                                 @endif
                             </div>

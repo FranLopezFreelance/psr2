@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+                <div class="panel-heading">Nuevo Usuario</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="/backend/users">
                         {{ csrf_field() }}
@@ -88,7 +88,21 @@
                               </div>
                           </div>
 
-                        <div>
+                          <div class="form-group{{ $errors->has('facebook') ? ' has-error' : '' }}">
+                              <label for="facebook" class="col-md-4 control-label">Facebook</label>
+
+                              <div class="col-md-6">
+                                  <input id="facebook" type="text" class="form-control" name="facebook" value="{{ old('facebook') }}">
+
+                                  @if ($errors->has('facebook'))
+                                      <span class="help-block">
+                                          <strong>{{ $errors->first('facebook') }}</strong>
+                                      </span>
+                                  @endif
+                              </div>
+                          </div>
+
+                          <div>
                           <div class="form-group{{ $errors->has('provinces') ? ' has-error' : '' }}">
                               <label for="provinces" class="col-md-4 control-label">Provincias Asignadas</label>
                               <div class="col-md-6">
@@ -105,6 +119,20 @@
                                   @if ($errors->has('provinces'))
                                       <span class="help-block">
                                           <strong>{{ $errors->first('provinces') }}</strong>
+                                      </span>
+                                  @endif
+                              </div>
+                          </div>
+
+                          <div class="form-group{{ $errors->has('zone') ? ' has-error' : '' }}">
+                              <label for="zone" class="col-md-4 control-label">Zona</label>
+
+                              <div class="col-md-6">
+                                  <input id="zone" type="text" class="form-control" name="zone" value="{{ old('zone') }}">
+
+                                  @if ($errors->has('zone'))
+                                      <span class="help-block">
+                                          <strong>{{ $errors->first('zone') }}</strong>
                                       </span>
                                   @endif
                               </div>
@@ -135,7 +163,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Register
+                                    Guardar
                                 </button>
                             </div>
                         </div>

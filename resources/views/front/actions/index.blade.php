@@ -16,6 +16,7 @@
             <li>
               <p><b>{{ $user->zone }}</b></p>
               <p><b>{{ $user->name }}</b></p>
+              <p><b>Teléfono:</b> {{ $user->telephone }}</p>
               <p><b>E-Mail:</b> {{ $user->email }}</p>
               <p><b>Facebook:</b> <a href="{{ $user->facebook }}" target="blank">Facebook Personal</a></p>
             </li>
