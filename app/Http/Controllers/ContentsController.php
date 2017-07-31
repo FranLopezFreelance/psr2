@@ -224,7 +224,7 @@ class ContentsController extends Controller
         $imageSmall = $imageFile->resize(320, 180);
         $imageSmall->save($path.'small/'.$name);
         $content->img_url = $name;
-      }else if($content->section_id == 30){///radio zonica
+      }else if($content->section_id == 30 || $content->section_id == 46){///radio zonica, psr en accion temporada 17
         $name = $url.'.jpg';
         $ytimg = 'http://img.youtube.com/vi/'.$content->video_id.'/maxresdefault.jpg';
         $file_headers = @get_headers($ytimg);

@@ -7,7 +7,7 @@ $subs[0]->headerTitle = 'Refundar El Estado Nacional Soberano';$subs[0]->btnName
 $subs[1]->headerTitle = 'Recuperar Nuestra Moneda Soberana';$subs[1]->btnName = 'Segundo Pilar';$subs[1]->pilarType = 'Práctico';
 $subs[2]->headerTitle = 'Rechazar el Sistema de Deuda';$subs[2]->btnName = 'Tercer Pilar';$subs[2]->pilarType = 'Práctico';
 $subs[3]->headerTitle = 'Rescatar a Las Instituciones Republicanas de su dependencia del Dinero';$subs[3]->btnName = 'Cuarto Pilar';$subs[3]->pilarType = 'Práctico';
-$subs[4]->headerTitle = 'Restablecer los Valores Éticos y Morales';$subs[4]->btnName = 'Quinto Pilar';$subs[4]->pilarType = 'Filosófico';
+$subs[4]->headerTitle = 'Recuperar Nuestra Soberanía Personal';$subs[4]->btnName = 'Quinto Pilar';$subs[4]->pilarType = 'Filosófico';
 foreach ($subs as $sub) {if($target->url == $sub->url)$target=$sub;}
 ?>
 <div class="container-fluid">

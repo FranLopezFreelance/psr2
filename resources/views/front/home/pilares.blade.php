@@ -15,8 +15,8 @@
     array('n'=>4,'nPilar'=>'cuarto','title'=>"Rescatar las Instituciones Republicanas de su dependencia del dinero",
     'type'=>'Práctico','url'=>'/pilares/rescatar-las-instituciones-republicanas'))
     @include('front.home.assets.pilar',
-    array('n'=>5,'nPilar'=>'quinto','title'=>"Restaurar los valores Éticos Tradicionales",
-    'type'=>'Filosófico','url'=>'/pilares/restablecer-los-valores-eticos-y-morales'))
+    array('n'=>5,'nPilar'=>'quinto','title'=>"Recuperar Nuestra Soberanía Personal",
+    'type'=>'Filosófico','url'=>'/pilares/recuperar-nuestra-soberania-personal'))
     </div>
 
 </div>
