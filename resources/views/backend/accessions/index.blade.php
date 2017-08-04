@@ -31,8 +31,7 @@
                   </tr>
                   @forelse($accessions as $accession)
                       <tr>
-                        <td>
-                          <a href="/backend/accessions/{{ $accession->id }}">{{ $accession->name }} {{ $accession->lastname }}</td>
+                        <td>{{ $accession->name }} {{ $accession->lastname }}</td>
                         <td>{{ $accession->city }}</td>
                         <td>{{ date("d-m-Y" , strtotime($accession->created_at)) }}</td>
                         <td>{{ $accession->email }}</td>

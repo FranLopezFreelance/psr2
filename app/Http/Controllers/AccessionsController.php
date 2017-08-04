@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Accession;
+use App\Contact;
 use App\Section;
 
 use Illuminate\Http\Request;
@@ -25,7 +26,9 @@ class AccessionsController extends Controller
 
       $accessions = Accession::orderBy('id', 'desc')->get();
 
-      return view('backend.accessions.index', compact('accessions', 'menuSections', 'menuLeftSections'));
+      $not_responded = Contact::where('contacted', 0)->get()->count();
+
+      return view('backend.accessions.index', compact('accessions', 'not_responded', 'menuSections', 'menuLeftSections'));
     }
 
     /**
