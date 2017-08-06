@@ -13,6 +13,17 @@
 use App\Article;
 
 Auth::routes();
+
+Route::get('/paso',function(){
+    //PDF file is stored under project/public/download/info.pdf
+    $file= public_path(). "/descargas/Boleta-PSR-PASO-2017.pdf";
+
+    $headers = array(
+              'Content-Type: application/pdf',
+            );
+
+    return Response::download($file, 'Boleta-PSR-PASO-2017.pdf', $headers);
+});
 //
 // /* BACKEND CONTROLLERS */
 Route::get('backend', 'BackendController@index');

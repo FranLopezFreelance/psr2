@@ -2233,3 +2233,129 @@ div.content.book .main-image {
 div.content.book .text {
   margin-bottom: 50px;
 }
+@media (min-width: 768px) {
+  div.adhesiones {
+    padding: 20px 0px 20px 30px;
+  }
+}
+div.adhesiones div.video {
+  padding-top: 10px;
+}
+@media (max-width: 480px) {
+  div.adhesiones div.video > iframe {
+    height: 220px;
+  }
+}
+div.adhesiones a.img-1 {
+  margin-top: -10px;
+}
+div.adhesiones a.img-2 {
+  display: block;
+  text-align: center;
+  padding-top: 20px;
+}
+@media (max-width: 480px) {
+  div.adhesiones a.img-2 img {
+    width: 100%;
+  }
+}
+div.coordinadores h2 {
+  margin-bottom: 40px;
+}
+div.coordinadores h4 {
+  background-color: #d3d3d3;
+  padding: 10px;
+  margin: 0;
+  border: 0;
+}
+div.coordinadores div.panel-heading h1 {
+  margin: 0;
+  padding: 0;
+}
+div.coordinadores div.panel-collapse {
+  border-radius: 10px;
+}
+div.coordinadores div.panel-collapse > div.panel-body {
+  padding: 0;
+  margin: 0;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+div.coordinadores div.panel-collapse > div.panel-body > h4:first-child {
+  -webkit-border-top-right-radius: 10px;
+  -webkit-border-bottom-right-radius: 0px;
+  -webkit-border-bottom-left-radius: 0px;
+  -webkit-border-top-left-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  -moz-border-radius-bottomright: 0px;
+  -moz-border-radius-bottomleft: 0px;
+  -moz-border-radius-topleft: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 10px;
+  background-clip: padding-box;
+  padding: 20px 20px 10px 20px;
+}
+div.coordinadores div.panel-collapse > div.panel-body > h4:first-child > a > img {
+  margin-right: 10px;
+}
+div.coordinadores div.panel-collapse > div.panel-body > h4 {
+  padding-left: 60px;
+}
+div.coordinadores div.panel-collapse > div.panel-body li {
+  padding-top: 0;
+}
+div.coordinadores div.panel-collapse > div.panel-body li h4 {
+  margin: 0;
+  margin-bottom: 20px;
+  padding-left: 80px;
+}
+div.coordinadores div.panel-collapse > div.panel-body li p {
+  padding-left: 120px;
+}
+div.coordinadores div.panel-collapse > div.panel-body li p.nombre-coordinador {
+  padding-left: 100px;
+  padding-bottom: 10px;
+}
+div.coordinadores div.panel-collapse > div.panel-body li p > img {
+  margin-right: 10px;
+}
+div.coordinadores div.panel-collapse > div.panel-body li:last-child {
+  -webkit-border-top-right-radius: 0px;
+  -webkit-border-bottom-right-radius: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  -webkit-border-top-left-radius: 0px;
+  -moz-border-radius-topright: 0px;
+  -moz-border-radius-bottomright: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  -moz-border-radius-topleft: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 0px;
+  background-clip: padding-box;
+}
+div.coordinadores ul {
+  padding: 0px;
+  margin: 0;
+  padding: 0;
+}
+div.coordinadores ul li {
+  list-style: none;
+}
+div.coordinadores ul p:first-child {
+  padding-left: 20px!important;
+}
+div.coordinadores ul li {
+  padding: 15px 0px;
+}
+div.coordinadores ul li:nth-child(even) {
+  background: #f6f6f6;
+}
+div.coordinadores ul li:nth-child(odd) {
+  background: #e9e5e5;
+}
+div.coordinadores ul p {
+  padding-left: 40px;
+}
