@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css"  href="/css/front/extra.slider.css" >
     <link rel="stylesheet" type="text/css"  href="/css/front/thestyle.min.css?v={{str_random(40)}}" >
     <link rel="stylesheet" type="text/css"  href="/css/front/adhesiones.css" >
-    <link rel="stylesheet" type="text/css"  href="/css/front/coordinadores.css" >
+    
 
 
     <!-- <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">-->
