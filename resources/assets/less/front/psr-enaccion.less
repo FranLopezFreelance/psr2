@@ -1,0 +1,80 @@
+div.coordinadores{
+  h2{
+    margin-bottom: 40px;
+  }
+  h4{
+    background-color: #d3d3d3;
+    padding: 10px;
+    margin: 0;
+    border: 0;
+
+  }
+  div.panel-heading{
+    h1{
+      margin: 0;
+      padding: 0;
+    }
+  }
+  div.panel-collapse{
+    .rounded(10px);
+  }
+  div.panel-collapse>div.panel-body{
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+    .rounded(10px);
+    >h4:first-child{
+    .border-radius(10px,0px,0px,10px);
+    padding: 20px 20px 10px 20px;
+      >a>img{
+        margin-right: 10px;
+      }
+    }
+    >h4{
+      padding-left: 60px;
+    }
+    ul{
+      //padding-left: 40px;
+    }
+    li{
+      //padding: 0;
+      padding-top: 0;
+
+
+      h4{
+        margin: 0;
+        margin-bottom: 20px;
+        padding-left: 80px;
+      }
+      p{
+        padding-left: 120px;
+        &.nombre-coordinador{
+          padding-left: 100px;
+          padding-bottom: 10px;
+        }
+        >img{
+          margin-right: 10px;
+        }
+      }
+    }
+    li:last-child{
+      .border-radius(0px,10px,10px,0px);
+    }
+  }
+  ul{
+    padding: 0px;
+    .list-unstyled;
+
+    p:first-child{
+      padding-left: 20px!important;
+    }
+    li{
+      padding: 15px 0px;
+    }
+
+    li:nth-child(even) {background: #f6f6f6}
+    li:nth-child(odd) {background: #e9e5e5}
+    p{padding-left: 40px};
+
+  }
+}

@@ -1,3 +1,27 @@
+<div class="container-fluid">
+  <div class="row">
+    <a href="/paso"><img class="full-width" src="/img/home/paso_.jpg" alt=""></a>
+  </div>
+
+</div>
+
+<div class="container-fluid adhesiones">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 video">
+      <iframe id="ytplayer" type="text/html" width="100%" height="400"
+      src="http://www.youtube.com/embed/Bdu4v2eFyqU/?autoplay=0&playlist=rDpq42E050Y&rel=0&amp;fs=0&amp;showinfo=0&controls=0"
+      frameborder="0"></iframe>
+    </div>
+    <div  class="col-xs-12 col-sm-12 col-md-6">
+      <a class="img-1" href="/adhesiones"><img class="full-width" src="/img/home/baner-a-form-adhesiones-1.jpg" alt=""></a>
+      <a class="img-2" href="/adhesiones"><img class="" src="/img/home/baner-a-form-adhesiones-2.jpg" alt=""></a>
+
+    </div>
+
+  </div>
+
+</div>
+
 <div class="main-video-container container-fluid">
 
 <iframe id="ytplayer" type="text/html" width="100%" height="360"

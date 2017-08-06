@@ -1,10 +1,11 @@
 @extends('front.layouts.interna')
 
 @section('content')
+<div class="coordinadores">
 
 <h2>PSR EN LAS PROVINCIAS</h2>
 
-<hr />
+
   @forelse($provinces->where('active', 1) as $province)
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
       <div class="panel panel-default">
@@ -29,7 +30,7 @@
                   <p><img class="social-coordinadores" src="/img/social/email.png" /> {{ $user->email }}</p>
                   <p><img class="social-coordinadores" src="/img/social/facebook_25.jpg" /> <a href="{{ $user->facebook }}" target="blank">Facebook Personal</a></p>
                 </li>
-                <hr />
+
               @empty
 
               @endforelse
@@ -41,5 +42,5 @@
     @empty
 
     @endforelse
-
+</div>
 @endsection
