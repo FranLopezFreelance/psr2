@@ -9,7 +9,13 @@
                   @if(Auth::user()->type_id == 3)
                     <h4>{{ $user->name }}</h4>
                   @else
-                    <h4><a href="/backend/users">Usuarios</a> / {{ $user->name }}</h4>
+                    <h4>
+                      @if($user->type_id == 1)
+                        <a href="/backend/users">Usuarios</a>
+                      @else
+                        Usuarios
+                      @endif
+                      / {{ $user->name }}</h4>
                   @endif
                 </div>
                 <div class="panel-body">

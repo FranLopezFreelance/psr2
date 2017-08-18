@@ -19,7 +19,7 @@
               <div class="panel-body">
                   <ul>
                     @forelse($menuLeftSections as $principalSection)
-                      @if($principalSection->id > 1)
+                      @if($principalSection->id > 1 && $principalSection->topnav_back == 1)
                         @if($principalSection->childrens()->count() > 0)
                           <li><a href="/backend/contents/section/{{ $principalSection->id }}">{{ $principalSection->name }} ({{ $principalSection->childrens()->count() }})</a></li>
                         @else

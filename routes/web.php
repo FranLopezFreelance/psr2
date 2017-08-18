@@ -38,6 +38,7 @@ Route::post('backend/contacts/addUser/{contact}', 'ContactsController@addUser');
 Route::get('backend/contacts/userContact/{contact}', 'ContactsController@userContact');
 Route::get('backend/contents/createBySection/{section}', 'ContentsController@createBySection');
 Route::get('backend/contents/createBySection/{section}/{subSection}', 'ContentsController@createBySubSection');
+Route::get('backend/contents/createBySection/{section}/{subSection}/{tagId}', 'ContentsController@createByTag');
 Route::get('backend/contents/getBySection/{subSection}', 'ContentsController@getContentBySubSection');
 Route::get('backend/tags/create/{tag}', 'ContentsController@addNewTag');
 Route::post('backend/contents/editImage/{content}', 'ContentsController@editImage');

@@ -102,13 +102,16 @@
                                     <li><a href="/backend/contacts"/> Ver</a></li>
                                 </ul>
                             </li>
-                          @elseif(Auth::user()->type_id == 2 or Auth::user()->type_id == 3)
+                          @elseif(Auth::user()->type_id == 2)
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    Encuestas <span class="caret"></span>
+                                    Contenidos <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="/backend/polls"/> Ver</a></li>
+                                  @forelse($menuSections as $section)
+                                    <li><a href="/backend/contents/section/{{ $section->id }}"/> {{ $section->name }}</a></li>
+                                  @empty
+                                  @endforelse
                                 </ul>
                             </li>
                           @endif

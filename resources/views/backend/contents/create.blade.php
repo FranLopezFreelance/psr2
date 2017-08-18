@@ -58,18 +58,6 @@
                             </div>
                         </div>
 
-                          <div class="form-group{{ $errors->has('video_id') ? ' has-error' : '' }}">
-                              <label for="video_id" class="col-md-4 control-label">Video ID</label>
-                              <div class="col-md-6">
-                                  <input id="video_id" type="text" class="form-control video_id" name="video_id" value="{{ old('video_id') }}">
-                                  @if ($errors->has('video_id'))
-                                      <span class="help-block">
-                                          <strong>{{ $errors->first('video_id') }}</strong>
-                                      </span>
-                                  @endif
-                              </div>
-                          </div>
-
                           <div class="form-group{{ $errors->has('radio_url') ? ' has-error' : '' }}">
                               <label for="radio_url" class="col-md-4 control-label">Radio URL</label>
                               <div class="col-md-6">
@@ -140,17 +128,7 @@
                               </div>
                           </div>
 
-                          <div class="form-group{{ $errors->has('video_id') ? ' has-error' : '' }}">
-                              <label for="video_id" class="col-md-4 control-label">Video ID</label>
-                              <div class="col-md-6">
-                                  <input id="video_id" type="text" class="form-control video_id" name="video_id" value="{{ old('video_id') }}">
-                                  @if ($errors->has('video_id'))
-                                      <span class="help-block">
-                                          <strong>{{ $errors->first('video_id') }}</strong>
-                                      </span>
-                                  @endif
-                              </div>
-                          </div>
+
 
                           <div class="form-group{{ $errors->has('radio_url') ? ' has-error' : '' }}">
                               <label for="radio_url" class="col-md-4 control-label">Radio URL</label>
@@ -212,17 +190,7 @@
                               </div>
                           </div>
 
-                          <div class="form-group{{ $errors->has('video_id') ? ' has-error' : '' }}">
-                              <label for="video_id" class="col-md-4 control-label">Video ID</label>
-                              <div class="col-md-6">
-                                  <input id="video_id" type="text" class="form-control video_id" name="video_id" value="{{ old('video_id') }}">
-                                  @if ($errors->has('video_id'))
-                                      <span class="help-block">
-                                          <strong>{{ $errors->first('video_id') }}</strong>
-                                      </span>
-                                  @endif
-                              </div>
-                          </div>
+
 
                         @endif
                       @endif
@@ -242,7 +210,7 @@
                             </div>
                         </div>
 
-                      @if($section->id == 4)
+                      @if($section->id == 4 || $section->id == 5)
                         <div class="form-group{{ $errors->has('videotype_id') ? ' has-error' : '' }}">
                             <label for="videotype_id" class="col-md-4 control-label">Tipo de Video</label>
                             <div class="col-md-6">
@@ -383,13 +351,17 @@
                           <div class="col-md-6">
                               <select class="form-control tags" name="tags[]" multiple="multiple" required>
                                 <option value="0">Elegir...</option>
-                                @foreach($tags as $tag)
-                                  @if(old('tag_id') && old('tag_id') == $tag->id)
-                                    <option value="{{ $tag->id }}" selected>{{ $tag->name }}</option>
-                                  @else
-                                    <option value="{{ $tag->id }}">{{ $tag->name }}</option>
-                                  @endif
-                                @endforeach
+                                  @foreach($tags as $tag)
+                                        @if(isset($tagId->id) && $tagId->id == $tag->id)
+                                          <option value="{{ $tag->id }}" selected>{{ $tag->name }}</option>
+                                        @endif
+
+                                        @if(old('tag_id') && old('tag_id') == $tag->id)
+                                          <option value="{{ $tag->id }}" selected>{{ $tag->name }}</option>
+                                        @else
+                                          <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                        @endif
+                                  @endforeach
                               </select>
 
                               @if ($errors->has('tags'))

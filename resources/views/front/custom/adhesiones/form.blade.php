@@ -20,7 +20,7 @@
 
                         <div class="col-md-7 col-md-offset-2 texto-adhesiones">
                           <p>Por el momento <b>sólo podemos juntar Adhesiones para el distrito de la Ciudad Autónoma de Buenos Aires</b>.</p>
-                          <p>Podés dirigirte personalemente a firmar tu Adhesión a <b>Suipacha 129 - 1er Piso, de Lunes a Viernes de 12 a 19 hs.
+                          <p>Podés dirigirte personalemente a firmar tu Adhesión a <b>Suipacha 119 - 1er Piso, de Lunes a Viernes de 12 a 19 hs.
                             o Sábados de 10 a 14 hs.</b></p>
 
                           <hr />

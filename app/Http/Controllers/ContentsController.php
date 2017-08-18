@@ -167,6 +167,35 @@ class ContentsController extends Controller
 
     }
 
+    public function createByTag(Section $section, Section $subSection, Tag $tagId){
+      $menuSections = Section::where('level', 1)
+                            ->where('topnav_back', 1)
+                            ->where('active', 1)->get();
+
+      $sections = Section::all();
+      $videoTypes = Videotype::all();
+      $subSections = $sections->where('section_id', $section->id);
+
+      $subSubSections = "";
+
+      if($subSection->level ==3){
+        $subSubSections = $sections->where('section_id', $subSection->parent->id);
+        $subSubSection = $subSection;
+        $subSection = $subSection->parent;
+      }
+
+      $typeviews = Typeview::all();
+      $authors = Author::all();
+      $tags = Tag::all();
+      $medios = Medio::all();
+      $radios = Radio::all();
+      $mediaTypes = Mediatype::all();
+
+      $not_responded = Contact::where('contacted', 0)->get()->count();
+      return view('backend.contents.create', compact('section', 'not_responded' , 'subSection', 'sections', 'subSections', 'radios',
+      'typeviews', 'authors', 'menuSections', 'tags', 'tagId', 'videoTypes', 'subSubSection', 'subSubSections', 'medios', 'mediaTypes'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
