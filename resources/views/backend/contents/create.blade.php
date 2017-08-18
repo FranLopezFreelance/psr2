@@ -13,7 +13,11 @@
                           <a href="/backend/contents/subSection/{{ $subSubSection->id }}"> {{ $subSubSection->name }}</a>
                           / Nuevo {{ $subSubSection->typeview->name }}
                         @else
-                            <a href="/backend/contents/subSection/{{ $subSection->id }}"> {{ $subSection->name }}</a>
+                              @if(Auth::user()->type_id == 2)
+                                {{ $subSection->name }}
+                              @else
+                                <a href="/backend/contents/subSection/{{ $subSection->id }}"> {{ $subSection->name }}</a>
+                              @endif
                             @if($section->typeview_id == 5)
                               / Nuevo programa
                             @else
